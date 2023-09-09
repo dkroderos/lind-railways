@@ -8,5 +8,6 @@ namespace RailwayReservationSystem.MVVM.ViewModel
 {
     internal class MainViewModel
     {
+
     }
 }
