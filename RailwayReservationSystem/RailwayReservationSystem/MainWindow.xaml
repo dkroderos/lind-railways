@@ -39,17 +39,26 @@
                                />
 
                     <!-- Menu -->
-                    <StackPanel Grid.Row="1">
-                        <RadioButton Content="Tickets" IsChecked="True"/>
-                        <RadioButton Content="Expired tickets"/>
-                        <RadioButton Content="Reserve a ticket"/>
-                        <RadioButton Content="Members"/>
+                    <StackPanel Grid.Row="1" x:Name="Menu">
+                        <RadioButton Content="Tickets" 
+                                     IsChecked="True"
+                                     Command="{Binding TicketsViewCommand}"
+                                     />
+                        <RadioButton Content="Expired tickets"
+                                     Command="{Binding ExpiredTicketsViewCommand}"
+                                     />
+                        <RadioButton Content="Reserve a ticket"
+                                     Command="{Binding AddTicketViewCommand}"
+                                     />
+                        <RadioButton Content="Members"
+                                     Command="{Binding MembersViewCommand}"
+                                     />
                     </StackPanel>
                 </Grid>
 
                 <!-- Content -->
-                <ContentControl Grid.Column="1" 
-                                 
+                <ContentControl Grid.Column="1" x:Name="Content"
+                                Content="{Binding CurrentView}" 
                                 />
 
             </Grid>
