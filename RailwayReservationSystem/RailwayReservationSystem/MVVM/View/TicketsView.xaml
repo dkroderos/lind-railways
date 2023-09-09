@@ -6,7 +6,7 @@
              xmlns:local="clr-namespace:RailwayReservationSystem.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="Yellow">
+             Background="Transparent">
     <Grid>
             
     </Grid>
