@@ -64,5 +64,6 @@ namespace RailwayReservationSystem.MVVM.ViewModel
                 CurrentView = BookingVM;
             });
         }
+
     }
 }

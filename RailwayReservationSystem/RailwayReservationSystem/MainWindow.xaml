@@ -36,7 +36,8 @@
                     <Ellipse Fill="{StaticResource Yellow}" 
                              Height="13" 
                              Width="13" 
-                             Margin="7 0 0 0"/>
+                             Margin="7 0 0 0"
+                             MouseUp="MinimizeButton_Clicked"/>
                 </StackPanel>
             </Border>
             <Grid x:Name="WindowGrid" Grid.Row="1">
@@ -76,8 +77,7 @@
                                      Height="50"
                                      FontSize="14"
                                      Command="{Binding TicketsViewCommand}"
-                                     Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"
-                                     />
+                                     Style="{StaticResource MenuButtonTheme}"                                     />
                             <RadioButton Content="Expired tickets"
                                      Foreground="{StaticResource Text}"
                                      Height="50"
