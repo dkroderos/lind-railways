@@ -30,6 +30,6 @@
         <TextBlock Text="Departure Date:" Foreground="White" FontSize="22"/>
         <DatePicker/>
         <TextBox Text="Number of tickets:"/>
-        <Button Content="BOOK NA PLEASE"/>
+        <Button Name="Book_Button" Content="BOOK" Click="Book_Button_Click" />
     </StackPanel>
 </UserControl>
