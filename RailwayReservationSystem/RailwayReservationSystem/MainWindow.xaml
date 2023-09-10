@@ -37,7 +37,7 @@
                     <TextBlock Text="LIND RAILWAYS"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
-                               Foreground="White"
+                               Foreground="{StaticResource Text}"
                                FontSize="22"
                                Margin="20 0 0 0"
                                />
@@ -45,7 +45,7 @@
                     <!-- Menu -->
                     <StackPanel Grid.Row="1" x:Name="Menu">
                         <RadioButton Content="Booking" 
-                                     Foreground="White"
+                                     Foreground="{StaticResource Text}"
                                      Height="50"
                                      FontSize="14"
                                      Command="{Binding BookingViewCommand}"
@@ -53,30 +53,31 @@
                                      />
 
                         <RadioButton Content="Tickets" 
-                                     Foreground="White"
+                                     Foreground="{StaticResource Text}"
                                      Height="50"
                                      FontSize="14"
                                      Command="{Binding TicketsViewCommand}"
                                      Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"
                                      />
                         <RadioButton Content="Expired tickets"
-                                     Foreground="White"
+                                     Foreground="{StaticResource Text}"
                                      Height="50"
                                      FontSize="14"
                                      Command="{Binding ExpiredTicketsViewCommand}"
                                      Style="{StaticResource MenuButtonTheme}"
                                      />
                         <RadioButton Content="Reserve a ticket"
-                                     Foreground="White"
+                                     Foreground="{StaticResource Text}"
                                      Height="50"
                                      FontSize="14"
                                      Command="{Binding AddTicketViewCommand}"
                                      Style="{StaticResource MenuButtonTheme}"
                                      />
                         <RadioButton Content="Members"
-                                     Foreground="White"
+                                     Foreground="{StaticResource Text}"
                                      Height="50"
                                      FontSize="14"
+                                     IsChecked="True"
                                      Command="{Binding MembersViewCommand}"
                                      Style="{StaticResource MenuButtonTheme}"
                                      />

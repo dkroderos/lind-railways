@@ -14,7 +14,7 @@
     <SolidColorBrush x:Key="Sapphire">#7dc4e4</SolidColorBrush> 
     <SolidColorBrush x:Key="Blue">#8aadf4</SolidColorBrush> 
     <SolidColorBrush x:Key="Lavender">#b7bdf8</SolidColorBrush>
-    <SolidColorBrush x:Key="Text">#24273a</SolidColorBrush>
+    <SolidColorBrush x:Key="Text">#cad3f5</SolidColorBrush>
     <SolidColorBrush x:Key="Subtext1">#b8c0e0</SolidColorBrush>
     <SolidColorBrush x:Key="Subtext0">#a5adcb</SolidColorBrush>
     <SolidColorBrush x:Key="Overlay2">#939ab7</SolidColorBrush>
