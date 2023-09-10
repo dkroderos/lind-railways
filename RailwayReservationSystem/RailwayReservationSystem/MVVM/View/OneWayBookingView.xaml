@@ -10,11 +10,11 @@
     <StackPanel>
         <TextBlock Text="Class:" Foreground="White" FontSize="22"/>
         <StackPanel Orientation="Horizontal">
-            <RadioButton Content="Luxury Class"
+            <RadioButton Content="First Class"
                          Foreground="White"
                          FontSize="22"
                          />
-            <RadioButton Content="Sleeper Class"
+            <RadioButton Content="Second Class"
                          Foreground="White"
                          FontSize="22"
                          />
@@ -30,6 +30,6 @@
         <TextBlock Text="Departure Date:" Foreground="White" FontSize="22"/>
         <DatePicker/>
         <TextBox Text="Number of tickets:"/>
-        <Button Content="BOOK NA PLEASE"/>
+        <Button Name="Book_Button" Content="BOOK" Click="Book_Button_Click" />
     </StackPanel>
 </UserControl>
