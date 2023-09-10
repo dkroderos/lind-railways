@@ -4,15 +4,38 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:RailwayReservationSystem.MVVM.View"
+             xmlns:viewModel="clr-namespace:RailwayReservationSystem.MVVM.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="600" d:DesignWidth="760" 
              >
-    <Border Margin="20" CornerRadius="20">
-        <Border.Background>
-            <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                <GradientStop Color="#8440ff" Offset="0.0"/>
-                <GradientStop Color="#6c36cf" Offset="1"/>
-            </LinearGradientBrush>
-        </Border.Background>
+    <UserControl.DataContext>
+        <viewModel:BookingViewModel/>
+    </UserControl.DataContext>
+    <Border Margin="20" CornerRadius="20" Background="#592bad">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.Row="0">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <RadioButton Content="One Way"
+                Grid.Column="0"
+                HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             FontSize="50"
+                             Foreground="White"/>
+                <RadioButton Content="Round Trip"
+                Grid.Column="1"
+                HorizontalAlignment="Center"
+                             VerticalAlignment="Center"
+                             FontSize="50"
+                             Foreground="White"/>
+            </Grid>
+        </Grid>
     </Border>
 </UserControl>
