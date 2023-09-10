@@ -46,6 +46,7 @@
                         <RadioButton Content="Tickets" 
                                      IsChecked="True"
                                      Command="{Binding TicketsViewCommand}"
+                                     Style="{Binding MenuTheme}"
                                      />
                         <RadioButton Content="Expired tickets"
                                      Command="{Binding ExpiredTicketsViewCommand}"
@@ -63,7 +64,6 @@
                 <ContentControl Grid.Column="1" x:Name="Content"
                                 Content="{Binding CurrentView}" 
                                 />
-
             </Grid>
         </Grid>
     </Border>
