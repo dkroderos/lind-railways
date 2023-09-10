@@ -10,7 +10,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/TitleBarTheme.xaml"/>
                 <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
-                <ResourceDictionary Source="Theme/CatppuccinMacchiatoTheme.xaml"/>
+                <ResourceDictionary Source="Theme/CatppuccinLatteTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type viewModel:TicketsViewModel}">
                 <view:TicketsView/>

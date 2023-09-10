@@ -11,15 +11,15 @@
     <StackPanel>
         <TextBlock Text="Class" Foreground="White" FontSize="22"/>
         <StackPanel Orientation="Horizontal">
-            <RadioButton Content="High Class"
+            <RadioButton Content="First Class"
         Foreground="White"
         FontSize="22"
         />
-            <RadioButton Content="Low Class"
+            <RadioButton Content="Second Class"
         Foreground="White"
         FontSize="22"
         />
-            <RadioButton Content="Sabit Sa gilid Class"
+            <RadioButton Content="Sleeper Class"
         Foreground="White"
         FontSize="22"
         />
