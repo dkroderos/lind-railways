@@ -7,84 +7,106 @@
         xmlns:viewModel="clr-namespace:RailwayReservationSystem.MVVM.ViewModel"
         mc:Ignorable="d"
         Title="Railway Reservation System" Height="600" Width="1000"
-        MinHeight="600"
+        MinHeight="625"
         MinWidth="800"
         ResizeMode="NoResize"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
         >
+
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    <Border Background="#272537"
-            CornerRadius="20">
-        <Grid x:Name="WindowGrid">
-            <Grid Grid.Row="1">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="240"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+    <Border Background="{StaticResource Base}"
+            CornerRadius="10">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="25"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0"
+                    Background="{StaticResource Crust}"
+                    CornerRadius="10 10 0 0">
+                <StackPanel Orientation="Horizontal">
+                    <Ellipse Fill="{StaticResource Red}" 
+                             Height="13" 
+                             Width="13" 
+                             Margin="7 0 0 0"/>
+                    <Ellipse Fill="{StaticResource Yellow}" 
+                             Height="13" 
+                             Width="13" 
+                             Margin="7 0 0 0"
+                             MouseUp="MinimizeButton_Clicked"/>
+                </StackPanel>
+            </Border>
+            <Grid x:Name="WindowGrid" Grid.Row="1">
+                <Grid Grid.Row="1">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="240"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
 
-                <Grid x:Name="Dasbhoard">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="*"/>
-                        <RowDefinition Height="5*"/>
-                    </Grid.RowDefinitions>
+                    <Grid x:Name="Dasbhoard">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="5*"/>
+                        </Grid.RowDefinitions>
 
-                    <!-- Title -->
-                    <TextBlock Text="LIND RAILWAYS"
+                        <!-- Title -->
+                        <TextBlock Text="LIND RAILWAYS"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
-                               Foreground="White"
+                               Foreground="{StaticResource Text}"
                                FontSize="22"
                                Margin="20 0 0 0"
                                />
 
-                    <!-- Menu -->
-                    <StackPanel Grid.Row="1" x:Name="Menu">
-                        <RadioButton Content="Booking" 
-                                     Foreground="White"
+                        <!-- Menu -->
+                        <StackPanel Grid.Row="1" x:Name="Menu">
+                            <RadioButton Content="Booking" 
+                                     Foreground="{StaticResource Text}"
                                      Height="50"
                                      FontSize="14"
                                      Command="{Binding BookingViewCommand}"
                                      Style="{StaticResource MenuButtonTheme}"
                                      />
 
-                        <RadioButton Content="Tickets" 
-                                     Foreground="White"
+                            <RadioButton Content="Tickets" 
+                                     Foreground="{StaticResource Text}"
                                      Height="50"
                                      FontSize="14"
                                      Command="{Binding TicketsViewCommand}"
-                                     Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"
-                                     />
-                        <RadioButton Content="Expired tickets"
-                                     Foreground="White"
+                                     Style="{StaticResource MenuButtonTheme}"                                     />
+                            <RadioButton Content="Expired tickets"
+                                     Foreground="{StaticResource Text}"
                                      Height="50"
                                      FontSize="14"
                                      Command="{Binding ExpiredTicketsViewCommand}"
                                      Style="{StaticResource MenuButtonTheme}"
                                      />
-                        <RadioButton Content="Reserve a ticket"
-                                     Foreground="White"
+                            <RadioButton Content="Reserve a ticket"
+                                     Foreground="{StaticResource Text}"
                                      Height="50"
                                      FontSize="14"
                                      Command="{Binding AddTicketViewCommand}"
                                      Style="{StaticResource MenuButtonTheme}"
                                      />
-                        <RadioButton Content="Members"
-                                     Foreground="White"
+                            <RadioButton Content="Members"
+                                     Foreground="{StaticResource Text}"
                                      Height="50"
                                      FontSize="14"
+                                     IsChecked="True"
                                      Command="{Binding MembersViewCommand}"
                                      Style="{StaticResource MenuButtonTheme}"
                                      />
-                    </StackPanel>
-                </Grid>
+                        </StackPanel>
+                    </Grid>
 
-                <ContentControl Grid.Column="1" x:Name="Content"
+                    <ContentControl Grid.Column="1" x:Name="Content"
                                 Content="{Binding CurrentView}" 
                                 />
+                </Grid>
             </Grid>
         </Grid>
     </Border>
