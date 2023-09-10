@@ -9,13 +9,16 @@
         Title="Railway Reservation System" Height="600" Width="1000"
         MinHeight="600"
         MinWidth="800"
-        ResizeMode="CanResize"
+        ResizeMode="NoResize"
         WindowStyle="None"
+        AllowsTransparency="True"
+        Background="Transparent"
         >
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    <Border Background="#272537">
+    <Border Background="#272537"
+            CornerRadius="20">
         <Grid x:Name="WindowGrid">
             <Grid Grid.Row="1">
                 <Grid.ColumnDefinitions>
@@ -30,7 +33,7 @@
                     </Grid.RowDefinitions>
 
                     <!-- Title -->
-                    <TextBlock Text="Railway Reservation&#x0a;System"
+                    <TextBlock Text="LIND RAILWAYS"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                Foreground="White"
@@ -40,27 +43,48 @@
 
                     <!-- Menu -->
                     <StackPanel Grid.Row="1" x:Name="Menu">
+                        <RadioButton Content="Booking" 
+                                     Foreground="White"
+                                     Height="50"
+                                     FontSize="14"
+                                     Command="{Binding BookingViewCommand}"
+                                     Style="{StaticResource MenuButtonTheme}"
+                                     />
+
                         <RadioButton Content="Tickets" 
-                                     IsChecked="True"
+                                     Foreground="White"
+                                     Height="50"
+                                     FontSize="14"
                                      Command="{Binding TicketsViewCommand}"
+                                     Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"
                                      />
                         <RadioButton Content="Expired tickets"
+                                     Foreground="White"
+                                     Height="50"
+                                     FontSize="14"
                                      Command="{Binding ExpiredTicketsViewCommand}"
+                                     Style="{StaticResource MenuButtonTheme}"
                                      />
                         <RadioButton Content="Reserve a ticket"
+                                     Foreground="White"
+                                     Height="50"
+                                     FontSize="14"
                                      Command="{Binding AddTicketViewCommand}"
+                                     Style="{StaticResource MenuButtonTheme}"
                                      />
                         <RadioButton Content="Members"
+                                     Foreground="White"
+                                     Height="50"
+                                     FontSize="14"
                                      Command="{Binding MembersViewCommand}"
+                                     Style="{StaticResource MenuButtonTheme}"
                                      />
                     </StackPanel>
                 </Grid>
 
-                <!-- Content -->
                 <ContentControl Grid.Column="1" x:Name="Content"
                                 Content="{Binding CurrentView}" 
                                 />
-
             </Grid>
         </Grid>
     </Border>
