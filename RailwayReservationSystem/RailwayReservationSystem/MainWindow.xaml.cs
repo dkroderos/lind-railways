@@ -20,6 +20,12 @@ namespace RailwayReservationSystem
     /// </summary>
     public partial class MainWindow : Window
     {
+        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
+        {
+            base.OnMouseLeftButtonDown(e);
+
+            this.DragMove();
+        }
         public MainWindow()
         {
             InitializeComponent();
