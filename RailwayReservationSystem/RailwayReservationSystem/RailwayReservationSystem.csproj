@@ -9,7 +9,6 @@
 
   <ItemGroup>
     <Folder Include="Fonts\" />
-    <Folder Include="Images\" />
     <Folder Include="Folder\" />
   </ItemGroup>
 
