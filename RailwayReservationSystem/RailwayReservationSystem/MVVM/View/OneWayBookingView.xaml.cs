@@ -13,27 +13,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace RailwayReservationSystem
+namespace RailwayReservationSystem.MVVM.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for OneWayBookingView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class OneWayBookingView : UserControl
     {
-        protected override void OnMouseLeftButtonDown(MouseButtonEventArgs e)
-        {
-            base.OnMouseLeftButtonDown(e);
-
-            this.DragMove();
-        }
-        public MainWindow()
+        public OneWayBookingView()
         {
             InitializeComponent();
-        }
-
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
-        {
-
         }
     }
 }
