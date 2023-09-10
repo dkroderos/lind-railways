@@ -11,7 +11,7 @@
     <UserControl.DataContext>
         <viewModel:BookingViewModel/>
     </UserControl.DataContext>
-    <Border Margin="20" CornerRadius="20" Background="#592bad">
+    <Border Margin="15" CornerRadius="15" Background="{StaticResource Red}">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
