@@ -9,7 +9,7 @@
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Theme/TitleBarTheme.xaml"/>
-                <ResourceDictionary Source="Theme/MenuTheme.xaml"/>
+                <ResourceDictionary Source="Theme/MenuButtonTheme.xaml"/>
             </ResourceDictionary.MergedDictionaries>
             <DataTemplate DataType="{x:Type viewModel:TicketsViewModel}">
                 <view:TicketsView/>

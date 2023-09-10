@@ -45,17 +45,32 @@
                     <StackPanel Grid.Row="1" x:Name="Menu">
                         <RadioButton Content="Tickets" 
                                      IsChecked="True"
+                                     Foreground="White"
+                                     Height="50"
+                                     FontSize="14"
                                      Command="{Binding TicketsViewCommand}"
-                                     Style="{Binding MenuTheme}"
+                                     Style="{StaticResource MenuButtonTheme}"
                                      />
                         <RadioButton Content="Expired tickets"
+                                     Foreground="White"
+                                     Height="50"
+                                     FontSize="14"
                                      Command="{Binding ExpiredTicketsViewCommand}"
+                                     Style="{StaticResource MenuButtonTheme}"
                                      />
                         <RadioButton Content="Reserve a ticket"
+                                     Foreground="White"
+                                     Height="50"
+                                     FontSize="14"
                                      Command="{Binding AddTicketViewCommand}"
+                                     Style="{StaticResource MenuButtonTheme}"
                                      />
                         <RadioButton Content="Members"
+                                     Foreground="White"
+                                     Height="50"
+                                     FontSize="14"
                                      Command="{Binding MembersViewCommand}"
+                                     Style="{StaticResource MenuButtonTheme}"
                                      />
                     </StackPanel>
                 </Grid>
