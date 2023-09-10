@@ -44,7 +44,6 @@
                     <!-- Menu -->
                     <StackPanel Grid.Row="1" x:Name="Menu">
                         <RadioButton Content="Booking" 
-                                     IsChecked="True"
                                      Foreground="White"
                                      Height="50"
                                      FontSize="14"

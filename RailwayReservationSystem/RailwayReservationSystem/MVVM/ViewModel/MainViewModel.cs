@@ -41,7 +41,7 @@ namespace RailwayReservationSystem.MVVM.ViewModel
             MembersVM = new MembersViewModel();
             BookingVM = new BookingViewModel();
 
-            CurrentView = BookingVM;
+            CurrentView = MembersVM;
 
             TicketsViewCommand = new RelayCommand(o =>
             {

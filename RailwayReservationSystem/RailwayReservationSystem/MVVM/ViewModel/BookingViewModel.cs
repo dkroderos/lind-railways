@@ -32,6 +32,8 @@ namespace RailwayReservationSystem.MVVM.ViewModel
             OneWayBookingVM = new OneWayBookingViewModel();
             RoundTripBookingVM = new RoundTripBookingViewModel();
 
+            CurrentView = OneWayBookingVM;
+
             OneWayBookingViewCommand = new RelayCommand(o =>
             {
                 CurrentView = OneWayBookingVM;
