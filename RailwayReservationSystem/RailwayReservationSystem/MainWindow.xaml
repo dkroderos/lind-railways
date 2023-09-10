@@ -43,13 +43,21 @@
 
                     <!-- Menu -->
                     <StackPanel Grid.Row="1" x:Name="Menu">
-                        <RadioButton Content="Tickets" 
+                        <RadioButton Content="Schedules" 
                                      IsChecked="True"
                                      Foreground="White"
                                      Height="50"
                                      FontSize="14"
                                      Command="{Binding TicketsViewCommand}"
                                      Style="{StaticResource MenuButtonTheme}"
+                                     />
+                        <RadioButton Content="Tickets" 
+                                     IsChecked="True"
+                                     Foreground="White"
+                                     Height="50"
+                                     FontSize="14"
+                                     Command="{Binding TicketsViewCommand}"
+                                     Style="{StaticResource MenuButtonTheme}" Checked="RadioButton_Checked"
                                      />
                         <RadioButton Content="Expired tickets"
                                      Foreground="White"
