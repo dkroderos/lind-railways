@@ -20,10 +20,10 @@
 
         <Style.Triggers>
             <Trigger Property="IsChecked" Value="True">
-                <Setter Property="Background" Value="#57527a"/>
+                <Setter Property="Background" Value="{DynamicResource Mantle}"/>
             </Trigger>
             <Trigger Property="IsMouseOver" Value="True">
-                <Setter Property="Background" Value="#22232F"/>
+                <Setter Property="Background" Value="{DynamicResource Surface0}"/>
             </Trigger>
         </Style.Triggers>
     </Style>

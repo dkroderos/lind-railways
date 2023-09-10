@@ -14,10 +14,11 @@
         AllowsTransparency="True"
         Background="Transparent"
         >
+
     <Window.DataContext>
         <viewModel:MainViewModel/>
     </Window.DataContext>
-    <Border Background="#272537"
+    <Border Background="{StaticResource Base}"
             CornerRadius="20">
         <Grid x:Name="WindowGrid">
             <Grid Grid.Row="1">
