@@ -23,6 +23,10 @@
         FontSize="22"
         />
         </StackPanel>
+        <TextBlock Text="From:" Foreground="White" FontSize="22"/>
+        <TextBox Text="Location"/>
+        <TextBlock Text="To:" Foreground="White" FontSize="22"/>
+        <TextBox Text="Location"/>
         <TextBlock Text="Departure Date" Foreground="White" FontSize="22"/>
         <DatePicker/>
         <TextBox Text="Number of tickets"/>
