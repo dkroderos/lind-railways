@@ -26,6 +26,12 @@
             <DataTemplate DataType="{x:Type viewModel:BookingViewModel}">
                 <view:BookingView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:OneWayBookingViewModel}">
+                <view:OneWayBookingView/>
+            </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:RoundTripBookingViewModel}">
+                <view:RoundTripBookingView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

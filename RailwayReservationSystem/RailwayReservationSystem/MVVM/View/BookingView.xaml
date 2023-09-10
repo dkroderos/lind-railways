@@ -28,14 +28,19 @@
                 HorizontalAlignment="Center"
                              VerticalAlignment="Center"
                              FontSize="50"
-                             Foreground="White"/>
+                             Foreground="White"
+                             Command="{Binding OneWayBookingViewCommand}"/>
                 <RadioButton Content="Round Trip"
                 Grid.Column="1"
                 HorizontalAlignment="Center"
                              VerticalAlignment="Center"
                              FontSize="50"
-                             Foreground="White"/>
+                             Foreground="White"
+                             Command="{Binding RoundTripBookingViewCommand}"/>
             </Grid>
+            <ContentControl Grid.Row="1"
+                            Content="{Binding CurrentView}"
+                            />
         </Grid>
     </Border>
 </UserControl>
