@@ -9,7 +9,7 @@
         Title="Railway Reservation System" Height="600" Width="1000"
         MinHeight="600"
         MinWidth="800"
-        ResizeMode="CanResize"
+        ResizeMode="NoResize"
         WindowStyle="None"
         AllowsTransparency="True"
         Background="Transparent"
@@ -43,16 +43,16 @@
 
                     <!-- Menu -->
                     <StackPanel Grid.Row="1" x:Name="Menu">
-                        <RadioButton Content="Schedules" 
+                        <RadioButton Content="Booking" 
                                      IsChecked="True"
                                      Foreground="White"
                                      Height="50"
                                      FontSize="14"
-                                     Command="{Binding TicketsViewCommand}"
+                                     Command="{Binding BookingViewCommand}"
                                      Style="{StaticResource MenuButtonTheme}"
                                      />
+
                         <RadioButton Content="Tickets" 
-                                     IsChecked="True"
                                      Foreground="White"
                                      Height="50"
                                      FontSize="14"
@@ -83,7 +83,6 @@
                     </StackPanel>
                 </Grid>
 
-                <!-- Content -->
                 <ContentControl Grid.Column="1" x:Name="Content"
                                 Content="{Binding CurrentView}" 
                                 />

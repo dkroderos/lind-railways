@@ -23,6 +23,9 @@
             <DataTemplate DataType="{x:Type viewModel:MembersViewModel}">
                 <view:MembersView/>
             </DataTemplate>
+            <DataTemplate DataType="{x:Type viewModel:BookingViewModel}">
+                <view:BookingView/>
+            </DataTemplate>
         </ResourceDictionary>
     </Application.Resources>
 </Application>

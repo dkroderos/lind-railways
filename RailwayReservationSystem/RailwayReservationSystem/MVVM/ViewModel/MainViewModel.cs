@@ -13,11 +13,13 @@ namespace RailwayReservationSystem.MVVM.ViewModel
         public RelayCommand ExpiredTicketsViewCommand { get; set; }
         public RelayCommand AddTicketViewCommand { get; set; }
         public RelayCommand MembersViewCommand { get; set; }
+        public RelayCommand BookingViewCommand { get; set; }
 
         public TicketsViewModel TicketsVM { get; set; }
         public ExpiredTicketsViewModel ExpiredTicketsVM { get; set; }
         public AddTicketViewModel AddTicketVM { get; set; }
         public MembersViewModel MembersVM { get; set; }
+        public BookingViewModel BookingVM { get; set; }
 
         private object currentView;
 
@@ -37,8 +39,9 @@ namespace RailwayReservationSystem.MVVM.ViewModel
             ExpiredTicketsVM = new ExpiredTicketsViewModel();
             AddTicketVM = new AddTicketViewModel();
             MembersVM = new MembersViewModel();
+            BookingVM = new BookingViewModel();
 
-            CurrentView = TicketsVM;
+            CurrentView = BookingVM;
 
             TicketsViewCommand = new RelayCommand(o =>
             {
@@ -55,6 +58,10 @@ namespace RailwayReservationSystem.MVVM.ViewModel
             MembersViewCommand = new RelayCommand(o =>
             {
                 CurrentView = MembersVM;
+            });
+            BookingViewCommand = new RelayCommand(o =>
+            {
+                CurrentView = BookingVM;
             });
         }
     }
