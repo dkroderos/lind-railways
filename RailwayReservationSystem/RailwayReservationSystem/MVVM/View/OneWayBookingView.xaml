@@ -6,9 +6,26 @@
              xmlns:local="clr-namespace:RailwayReservationSystem.MVVM.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800"
-             Background="White"
              >
-    <Grid>
-            
-    </Grid>
+    <StackPanel>
+        <TextBlock Text="Class" Foreground="White" FontSize="22"/>
+        <StackPanel Orientation="Horizontal">
+            <RadioButton Content="High Class"
+        Foreground="White"
+        FontSize="22"
+        />
+            <RadioButton Content="Low Class"
+        Foreground="White"
+        FontSize="22"
+        />
+            <RadioButton Content="Sabit Sa gilid Class"
+        Foreground="White"
+        FontSize="22"
+        />
+        </StackPanel>
+        <TextBlock Text="Departure Date" Foreground="White" FontSize="22"/>
+        <DatePicker/>
+        <TextBox Text="Number of tickets"/>
+        <Button Content="BOOK NA PLEASE"/>
+    </StackPanel>
 </UserControl>
