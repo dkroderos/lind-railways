@@ -8,7 +8,7 @@
     <SolidColorBrush x:Key="Maroon">#ee99a0</SolidColorBrush> 
     <SolidColorBrush x:Key="Peach">#f5a97f</SolidColorBrush> 
     <SolidColorBrush x:Key="Yellow">#eed49f</SolidColorBrush> 
-    <SolidColorBrush x:Key="Greel">#a6da95</SolidColorBrush> 
+    <SolidColorBrush x:Key="Green">#a6da95</SolidColorBrush> 
     <SolidColorBrush x:Key="Teal">#8bd5ca</SolidColorBrush> 
     <SolidColorBrush x:Key="Sky">#91d7e3</SolidColorBrush> 
     <SolidColorBrush x:Key="Sapphire">#7dc4e4</SolidColorBrush> 
