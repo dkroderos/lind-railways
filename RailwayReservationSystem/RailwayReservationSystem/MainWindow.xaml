@@ -33,7 +33,7 @@
                     </Grid.RowDefinitions>
 
                     <!-- Title -->
-                    <TextBlock Text="Railway Reservation&#x0a;System"
+                    <TextBlock Text="LIND RAILWAYS"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                Foreground="White"
