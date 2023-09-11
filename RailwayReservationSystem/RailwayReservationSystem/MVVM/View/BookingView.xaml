@@ -40,6 +40,7 @@
                              Command="{Binding RoundTripBookingViewCommand}"/>
             </Grid>
             <ContentControl Grid.Row="1"
+                            Margin="20"
                             Content="{Binding CurrentView}"
                             />
         </Grid>
