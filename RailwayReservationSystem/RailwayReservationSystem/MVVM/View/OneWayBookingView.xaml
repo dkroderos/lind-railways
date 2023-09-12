@@ -23,13 +23,26 @@
                          FontSize="22"
                          />
         </StackPanel>
-        <TextBlock Text="From:" Foreground="White" FontSize="22"/>
-        <TextBox Text="Location"/>
-        <TextBlock Text="To:" Foreground="White" FontSize="22"/>
-        <TextBox Text="Location"/>
-        <TextBlock Text="Departure Date:" Foreground="White" FontSize="22"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="From:" Foreground="White" FontSize="22"/>
+                <TextBox Style="{StaticResource ModernTextBox}"
+                         HorizontalAlignment="Left"
+                         VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="To:" Foreground="White" FontSize="22"/>
+                <TextBox Style="{StaticResource ModernTextBox}"
+                         HorizontalAlignment="Left"
+                         VerticalContentAlignment="Center"/>
+            </StackPanel>
+        </Grid>
         <DatePicker/>
-        <TextBox Text="Number of tickets:"/>
+        <TextBox Text="Number of tickets:" Style="{StaticResource ModernTextBox}"/>
         <Button Name="Book_Button" Content="BOOK" Click="Book_Button_Click" />
     </StackPanel>
 </UserControl>
