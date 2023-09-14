@@ -6,12 +6,12 @@
              xmlns:local="clr-namespace:RailwayReservationSystem.MVVM.View"
              xmlns:viewModel="clr-namespace:RailwayReservationSystem.MVVM.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="600" d:DesignWidth="760" 
+             d:DesignHeight="600" d:DesignWidth="760" Loaded="UserControl_Loaded" 
              >
     <UserControl.DataContext>
         <viewModel:BookingViewModel/>
     </UserControl.DataContext>
-    <Border Margin="15" CornerRadius="15" Background="{StaticResource Red}">
+        <Border Margin="15" CornerRadius="15" >
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
@@ -40,6 +40,7 @@
                              Command="{Binding RoundTripBookingViewCommand}"/>
             </Grid>
             <ContentControl Grid.Row="1"
+                            Margin="20"
                             Content="{Binding CurrentView}"
                             />
         </Grid>

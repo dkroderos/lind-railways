@@ -111,9 +111,12 @@
                         </StackPanel>
                     </Grid>
 
-                    <ContentControl Grid.Column="1" x:Name="Content"
-                                Content="{Binding CurrentView}" 
+                    <Border Background="{StaticResource Mantle}" Grid.Column="1">
+                        <ContentControl Grid.Column="1" x:Name="Content"
+                                        Background="{StaticResource Mantle}"
+                                        Content="{Binding CurrentView}" 
                                 />
+                    </Border>
                 </Grid>
             </Grid>
         </Grid>

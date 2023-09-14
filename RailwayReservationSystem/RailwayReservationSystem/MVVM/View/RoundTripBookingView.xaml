@@ -24,11 +24,20 @@
         FontSize="22"
         />
         </StackPanel>
-        <TextBlock Text="From:" Foreground="White" FontSize="22"/>
-        <TextBox Text="Location"/>
-        <TextBlock Text="To:" Foreground="White" FontSize="22"/>
-        <TextBox Text="Location"/>
-        <TextBlock Text="Departure Date:" Foreground="White" FontSize="22"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="From:" Foreground="White" FontSize="22"/>
+                <TextBox Text="Location"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="To:" Foreground="White" FontSize="22"/>
+                <TextBox Text="Location"/>
+            </StackPanel>
+        </Grid>
         <DatePicker/>
         <TextBlock Text="Arrival Date:" Foreground="White" FontSize="22"/>
         <DatePicker/>
