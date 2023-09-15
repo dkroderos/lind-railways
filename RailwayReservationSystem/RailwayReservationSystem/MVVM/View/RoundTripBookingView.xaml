@@ -38,10 +38,11 @@
                 <TextBox Text="Location"/>
             </StackPanel>
         </Grid>
+        <TextBlock Text="Departure Date:" Foreground="White" FontSize="22"/>
         <DatePicker/>
         <TextBlock Text="Arrival Date:" Foreground="White" FontSize="22"/>
         <DatePicker/>
         <TextBox Text="Number of tickets:"/>
-        <Button Content="BOOK NA PLEASE" />
+        <Button Content="Book Ticket" Click="Button_Click"   />
     </StackPanel>
 </UserControl>
