@@ -9,30 +9,39 @@
 >
 
     <StackPanel>
-        <TextBlock Text="Class" Foreground="White" FontSize="22"/>
+        <TextBlock Text="Class:" Foreground="White" FontSize="22"/>
         <StackPanel Orientation="Horizontal">
-            <RadioButton Content="High Class"
+            <RadioButton Content="First Class"
         Foreground="White"
         FontSize="22"
         />
-            <RadioButton Content="Low Class"
+            <RadioButton Content="Second Class"
         Foreground="White"
         FontSize="22"
         />
-            <RadioButton Content="Sabit Sa gilid Class"
+            <RadioButton Content="Sleeper Class"
         Foreground="White"
         FontSize="22"
         />
         </StackPanel>
-        <TextBlock Text="From:" Foreground="White" FontSize="22"/>
-        <TextBox Text="Location"/>
-        <TextBlock Text="To:" Foreground="White" FontSize="22"/>
-        <TextBox Text="Location"/>
-        <TextBlock Text="Departure Date" Foreground="White" FontSize="22"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="From:" Foreground="White" FontSize="22"/>
+                <TextBox Text="Location"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="To:" Foreground="White" FontSize="22"/>
+                <TextBox Text="Location"/>
+            </StackPanel>
+        </Grid>
         <DatePicker/>
-        <TextBlock Text="Arrival Date" Foreground="White" FontSize="22"/>
+        <TextBlock Text="Arrival Date:" Foreground="White" FontSize="22"/>
         <DatePicker/>
-        <TextBox Text="Number of tickets"/>
+        <TextBox Text="Number of tickets:"/>
         <Button Content="BOOK NA PLEASE" />
     </StackPanel>
 </UserControl>

@@ -54,13 +54,21 @@
                         </Grid.RowDefinitions>
 
                         <!-- Title -->
-                        <TextBlock Text="LIND RAILWAYS"
+                        <Grid Grid.Row="0">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Image Source="Images/logo.png"/>
+                            <TextBlock Text="    LIND&#x0a;RAILWAYS"
+                        Grid.Column="1"
                                VerticalAlignment="Center"
                                HorizontalAlignment="Left"
                                Foreground="{StaticResource Text}"
                                FontSize="22"
-                               Margin="20 0 0 0"
+                               Margin="0"
                                />
+                        </Grid>
 
                         <!-- Menu -->
                         <StackPanel Grid.Row="1" x:Name="Menu">
@@ -103,9 +111,12 @@
                         </StackPanel>
                     </Grid>
 
-                    <ContentControl Grid.Column="1" x:Name="Content"
-                                Content="{Binding CurrentView}" 
+                    <Border Background="{StaticResource Mantle}" Grid.Column="1">
+                        <ContentControl Grid.Column="1" x:Name="Content"
+                                        Background="{StaticResource Mantle}"
+                                        Content="{Binding CurrentView}" 
                                 />
+                    </Border>
                 </Grid>
             </Grid>
         </Grid>
