@@ -24,5 +24,10 @@ namespace RailwayReservationSystem.MVVM.View
         {
             InitializeComponent();
         }
+
+        private void Book_Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("BOOKED!");
+        }
     }
 }

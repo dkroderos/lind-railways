@@ -31,9 +31,9 @@ namespace RailwayReservationSystem
             InitializeComponent();
         }
 
-        private void RadioButton_Checked(object sender, RoutedEventArgs e)
+        private void MinimizeButton_Clicked(object sender, RoutedEventArgs e)
         {
-
+            MessageBox.Show("Minimized");
         }
     }
 }
