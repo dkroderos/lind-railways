@@ -43,7 +43,7 @@
         </Grid>
         <TextBlock Text="Departure Date:" Foreground="White" FontSize="22"/>
         <DatePicker/>
-        <TextBox Text="Number of tickets:" Style="{StaticResource ModernTextBox}"/>
-        <Button Name="Book_Button" Content="Book Ticket" Click="Book_Button_Click" />
+        <TextBox Text="Number of tickets:" Style="{StaticResource ModernTextBox}" RenderTransformOrigin="0.496,0.694" Height="72"/>
+        <Button x:Name="Book_Button" Content="Book Ticket" Click="Book_Button_Click" />
     </StackPanel>
 </UserControl>
