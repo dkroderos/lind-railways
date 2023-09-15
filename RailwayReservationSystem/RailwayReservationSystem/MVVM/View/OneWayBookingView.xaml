@@ -41,8 +41,9 @@
                          VerticalContentAlignment="Center"/>
             </StackPanel>
         </Grid>
+        <TextBlock Text="Departure Date:" Foreground="White" FontSize="22"/>
         <DatePicker/>
         <TextBox Text="Number of tickets:" Style="{StaticResource ModernTextBox}"/>
-        <Button Name="Book_Button" Content="BOOK" Click="Book_Button_Click" />
+        <Button Name="Book_Button" Content="Book Ticket" Click="Book_Button_Click" />
     </StackPanel>
 </UserControl>
