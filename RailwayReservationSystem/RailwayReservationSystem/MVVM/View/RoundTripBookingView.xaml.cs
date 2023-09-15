@@ -24,5 +24,10 @@ namespace RailwayReservationSystem.MVVM.View
         {
             InitializeComponent();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MessageBox.Show("Nakapagbook kana, Tulog ka muna, sleepwell!");
+        }
     }
 }

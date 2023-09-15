@@ -10,11 +10,11 @@
     <StackPanel>
         <TextBlock Text="Class:" Foreground="White" FontSize="22"/>
         <StackPanel Orientation="Horizontal">
-            <RadioButton Content="Luxury Class"
+            <RadioButton Content="First Class"
                          Foreground="White"
                          FontSize="22"
                          />
-            <RadioButton Content="Sleeper Class"
+            <RadioButton Content="Second Class"
                          Foreground="White"
                          FontSize="22"
                          />
@@ -23,13 +23,27 @@
                          FontSize="22"
                          />
         </StackPanel>
-        <TextBlock Text="From:" Foreground="White" FontSize="22"/>
-        <TextBox Text="Location"/>
-        <TextBlock Text="To:" Foreground="White" FontSize="22"/>
-        <TextBox Text="Location"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Column="0">
+                <TextBlock Text="From:" Foreground="White" FontSize="22"/>
+                <TextBox Style="{StaticResource ModernTextBox}"
+                         HorizontalAlignment="Left"
+                         VerticalContentAlignment="Center"/>
+            </StackPanel>
+            <StackPanel Grid.Column="1">
+                <TextBlock Text="To:" Foreground="White" FontSize="22"/>
+                <TextBox Style="{StaticResource ModernTextBox}"
+                         HorizontalAlignment="Left"
+                         VerticalContentAlignment="Center"/>
+            </StackPanel>
+        </Grid>
         <TextBlock Text="Departure Date:" Foreground="White" FontSize="22"/>
         <DatePicker/>
-        <TextBox Text="Number of tickets:"/>
-        <Button Content="BOOK NA PLEASE"/>
+        <TextBox Text="Number of tickets:" Style="{StaticResource ModernTextBox}" RenderTransformOrigin="0.496,0.694" Height="72"/>
+        <Button x:Name="Book_Button" Content="Book Ticket" Click="Book_Button_Click" />
     </StackPanel>
 </UserControl>
