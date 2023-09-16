@@ -18,6 +18,7 @@ namespace LINDRailways
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
+            //builder.Services.AddSingleton(Mainpage);
 
             return builder.Build();
         }
