@@ -11,12 +11,14 @@ namespace LINDRailways.Model
         public string TrainName { get; }
         public string Origin { get; }
         public string Destination { get; }
+        public TimeOnly DepartureTime { get; }
 
-        public TrainSchedule(string trainName, string origin, string destination)
+        public TrainSchedule(string trainName, string origin, string destination, TimeOnly departureTime)
         {
             TrainName = trainName;
             Origin = origin;
             Destination = destination;
+            DepartureTime = departureTime;
         }
     }
 }
