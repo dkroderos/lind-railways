@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using LINDRailways.View;
+using LINDRailways.ViewModel;
+using Microsoft.Extensions.Logging;
 
 namespace LINDRailways
 {
@@ -18,7 +20,13 @@ namespace LINDRailways
 #if DEBUG
 		builder.Logging.AddDebug();
 #endif
-            //builder.Services.AddSingleton(Mainpage);
+
+            builder.Services.AddSingleton<HomeViewModel>();
+            builder.Services.AddSingleton<TrainSchedulesViewModel>();
+            builder.Services.AddSingleton<TicketsViewModel>();
+            builder.Services.AddSingleton<HomePage>();
+            builder.Services.AddSingleton<TicketsPage>();
+            builder.Services.AddSingleton<TrainSchedulesPage>();
 
             return builder.Build();
         }

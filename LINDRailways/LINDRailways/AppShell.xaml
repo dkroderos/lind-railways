@@ -7,9 +7,19 @@
     xmlns:view="clr-namespace:LINDRailways.View"
     Shell.FlyoutBehavior="Flyout">
 
-    <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate view:HomeView}"
-        Route="HomeView" />
-
+    <FlyoutItem Title="Home">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate view:HomePage}"/>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Train Shedules">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate view:TrainSchedulesPage}"/>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Tickets">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate view:TicketsPage}"/>
+        </Tab>
+    </FlyoutItem>
 </Shell>
