@@ -4,18 +4,18 @@
              x:Class="LINDRailways.View.AddTicketPage"
              xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
              x:DataType="viewmodel:AddTicketViewModel"
-             Title="{Binding TrainSchedule.TrainName}">
+             Title="{Binding TrainSchedule.TrainName.Name}">
     <VerticalStackLayout>
         <Label 
-            Text="{Binding TrainSchedule.TrainName}"
+            Text="{Binding TrainSchedule.TrainName.Name}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Label 
-            Text="{Binding TrainSchedule.Origin}"
+            Text="{Binding TrainSchedule.Origin.Name}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Label 
-            Text="{Binding TrainSchedule.Destination}"
+            Text="{Binding TrainSchedule.Destination.Name}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
         <Label 
