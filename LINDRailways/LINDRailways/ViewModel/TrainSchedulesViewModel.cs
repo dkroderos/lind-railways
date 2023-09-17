@@ -55,18 +55,12 @@ namespace LINDRailways.ViewModel
             TransportationEntity eniesLobby = new("Enies Lobby",
                 ".", ".", ".");
 
-            TrainSchedules.Add(new TrainSchedule(mugenTrain, philippines,
-                japan, new TimeOnly(18, 0)));
-            TrainSchedules.Add(new TrainSchedule(mugenTrain, japan, philippines,
-                new TimeOnly(6, 0)));
-            TrainSchedules.Add(new TrainSchedule(capitolTrain, district12,
-                capitol, new TimeOnly(10, 0)));
-            TrainSchedules.Add(new TrainSchedule(capitolTrain, capitol,
-                district12, new TimeOnly(22, 0)));
-            TrainSchedules.Add(new TrainSchedule(seaTrain, water7,
-                eniesLobby, new TimeOnly(23, 0)));
-            TrainSchedules.Add(new TrainSchedule(seaTrain, eniesLobby,
-                water7, new TimeOnly(11, 0)));
+            TrainSchedules.Add(new TrainSchedule(mugenTrain, philippines, japan, new TimeOnly(18, 0)));
+            TrainSchedules.Add(new TrainSchedule(mugenTrain, japan, philippines, new TimeOnly(6, 0)));
+            TrainSchedules.Add(new TrainSchedule(capitolTrain, district12, capitol, new TimeOnly(10, 0)));
+            TrainSchedules.Add(new TrainSchedule(capitolTrain, capitol, district12, new TimeOnly(22, 0)));
+            TrainSchedules.Add(new TrainSchedule(seaTrain, water7, eniesLobby, new TimeOnly(23, 0)));
+            TrainSchedules.Add(new TrainSchedule(seaTrain, eniesLobby, water7, new TimeOnly(11, 0)));
         }
     }
 }
