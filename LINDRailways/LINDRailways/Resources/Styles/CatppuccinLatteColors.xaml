@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LINDRailways.Resources.Styles.CatppuccinLatteColors">
+    <SolidColorBrush x:Key="LatteRosewater">#f4dbd6</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteFlamingo">#f0c6c6</SolidColorBrush>
+    <SolidColorBrush x:Key="LattePink">#f5bde6</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteMauve">#c6a0f6</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteRed">#ed8796</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteMaroon">#ee99a0</SolidColorBrush>
+    <SolidColorBrush x:Key="LattePeach">#f5a97f</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteYellow">#eed49f</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteGreen">#a6da95</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteTeal">#8bd5ca</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteSky">#91d7e3</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteSapphire">#7dc4e4</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteBlue">#8aadf4</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteLavender">#b7bdf8</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteText">#cad3f5</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteSubtext1">#b8c0e0</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteSubtext0">#a5adcb</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteOverlay2">#939ab7</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteOverlay1">#8087a2</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteOverlay0">#6e738d</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteSurface2">#5b6078</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteSurface1">#494d64</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteSurface0">#363a4f</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteBase">#24273a</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteMantle">#1e2030</SolidColorBrush>
+    <SolidColorBrush x:Key="LatteCrust">#181926</SolidColorBrush>
+</ResourceDictionary>

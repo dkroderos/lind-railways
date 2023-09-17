@@ -58,7 +58,28 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Resources\Styles\CatppuccinLatteColors.xaml.cs">
+	    <DependentUpon>CatppuccinLatteColors.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Resources\Styles\CatppuccinMacchiatoColors.xaml.cs">
+	    <DependentUpon>CatppuccinMacchiatoColors.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <MauiXaml Update="Resources\Styles\CatppuccinLatteColors.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\CatppuccinMacchiatoColors.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Resources\Styles\CatppuccinStyles.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\HomePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\PendingTicketsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\TicketsPage.xaml">
