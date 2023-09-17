@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="LINDRailways.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:LINDRailways"
+    xmlns:view="clr-namespace:LINDRailways.View"
+    Shell.FlyoutBehavior="Flyout">
+
+    <FlyoutItem Title="Home">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate view:HomePage}"/>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Train Shedules">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate view:TrainSchedulesPage}"/>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Tickets">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate view:TicketsPage}"/>
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Pending Tickets">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate view:PendingTicketsPage}"/>
+        </Tab>
+    </FlyoutItem>
+</Shell>

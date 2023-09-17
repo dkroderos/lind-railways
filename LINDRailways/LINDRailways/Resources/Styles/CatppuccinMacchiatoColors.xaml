@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LINDRailways.Resources.Styles.CatppuccinMacchiatoColors">
+    <Color x:Key="MacchiatoRosewater">#f4dbd6</Color>
+    <Color x:Key="MacchiatoFlamingo">#f0c6c6</Color>
+    <Color x:Key="MacchiatoPink">#f5bde6</Color>
+    <Color x:Key="MacchiatoMauve">#c6a0f6</Color>
+    <Color x:Key="MacchiatoRed">#ed8796</Color>
+    <Color x:Key="MacchiatoMaroon">#ee99a0</Color>
+    <Color x:Key="MacchiatoPeach">#f5a97f</Color>
+    <Color x:Key="MacchiatoYellow">#eed49f</Color>
+    <Color x:Key="MacchiatoGreen">#a6da95</Color>
+    <Color x:Key="MacchiatoTeal">#8bd5ca</Color>
+    <Color x:Key="MacchiatoSky">#91d7e3</Color>
+    <Color x:Key="MacchiatoSapphire">#7dc4e4</Color>
+    <Color x:Key="MacchiatoBlue">#8aadf4</Color>
+    <Color x:Key="MacchiatoLavender">#b7bdf8</Color>
+    <Color x:Key="MacchiatoText">#cad3f5</Color>
+    <Color x:Key="MacchiatoSubtext1">#b8c0e0</Color>
+    <Color x:Key="MacchiatoSubtext0">#a5adcb</Color>
+    <Color x:Key="MacchiatoOverlay2">#939ab7</Color>
+    <Color x:Key="MacchiatoOverlay1">#8087a2</Color>
+    <Color x:Key="MacchiatoOverlay0">#6e738d</Color>
+    <Color x:Key="MacchiatoSurface2">#5b6078</Color>
+    <Color x:Key="MacchiatoSurface1">#494d64</Color>
+    <Color x:Key="MacchiatoSurface0">#363a4f</Color>
+    <Color x:Key="MacchiatoBase">#24273a</Color>
+    <Color x:Key="MacchiatoMantle">#1e2030</Color>
+    <Color x:Key="MacchiatoCrust">#181926</Color>
+
+   
+</ResourceDictionary>
