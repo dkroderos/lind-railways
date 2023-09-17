@@ -17,18 +17,7 @@ namespace LINDRailways.ViewModel
         {
             Title = "Train Schedules";
 
-            TrainSchedules.Add(new TrainSchedule("Mugen Train", "Philippines",
-                "Japan", new TimeOnly(18, 0)));
-            TrainSchedules.Add(new TrainSchedule("Mugen Train", "Japan",
-                "Philippines", new TimeOnly(6, 0)));
-            TrainSchedules.Add(new TrainSchedule("Capitol Train", "District 12",
-                "Capitol", new TimeOnly(10, 0)));
-            TrainSchedules.Add(new TrainSchedule("Capitol Train", "Capitol",
-                "District 12", new TimeOnly(22, 0)));
-            TrainSchedules.Add(new TrainSchedule("Sea Train", "Water 7",
-                "Enies Lobby", new TimeOnly(23, 0)));
-            TrainSchedules.Add(new TrainSchedule("Sea Train", "Enies Lobby",
-                "Water 7", new TimeOnly(11, 0)));
+            AddTrainSchedules();
         }
 
         [RelayCommand]
@@ -40,8 +29,44 @@ namespace LINDRailways.ViewModel
             await Shell.Current.GoToAsync($"{nameof(AddTicketPage)}",
                 true, new Dictionary<string, object>
                 {
-                    { "TrainSchedule", trainSchedule } 
+                    { "TrainSchedule", trainSchedule }
                 });
+        }
+
+        private void AddTrainSchedules()
+        {
+            TransportationEntity mugenTrain = new("Mugen Train",
+                ".", ".", ".");
+            TransportationEntity capitolTrain = new("Capitol Train",
+                ".", ".", ".");
+            TransportationEntity seaTrain = new("Sea Train",
+                ".", ".", ".");
+
+            TransportationEntity philippines = new("Philippines",
+                ".", ".", ".");
+            TransportationEntity japan = new("Japan",
+                ".", ".", ".");
+            TransportationEntity district12 = new("District 12",
+                ".", ".", ".");
+            TransportationEntity capitol = new("Capitol",
+                ".", ".", ".");
+            TransportationEntity water7 = new("Water 7",
+                ".", ".", ".");
+            TransportationEntity eniesLobby = new("Enies Lobby",
+                ".", ".", ".");
+
+            TrainSchedules.Add(new TrainSchedule(mugenTrain, philippines,
+                japan, new TimeOnly(18, 0)));
+            TrainSchedules.Add(new TrainSchedule(mugenTrain, japan, philippines,
+                new TimeOnly(6, 0)));
+            TrainSchedules.Add(new TrainSchedule(capitolTrain, district12,
+                capitol, new TimeOnly(10, 0)));
+            TrainSchedules.Add(new TrainSchedule(capitolTrain, capitol,
+                district12, new TimeOnly(22, 0)));
+            TrainSchedules.Add(new TrainSchedule(seaTrain, water7,
+                eniesLobby, new TimeOnly(23, 0)));
+            TrainSchedules.Add(new TrainSchedule(seaTrain, eniesLobby,
+                water7, new TimeOnly(11, 0)));
         }
     }
 }
