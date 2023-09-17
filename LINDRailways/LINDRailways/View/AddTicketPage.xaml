@@ -5,22 +5,20 @@
              xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
              x:DataType="viewmodel:AddTicketViewModel"
              Title="{Binding TrainSchedule.TrainName.Name}">
-    <VerticalStackLayout>
-        <Label 
-            Text="{Binding TrainSchedule.TrainName.Name}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding TrainSchedule.Origin.Name}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding TrainSchedule.Destination.Name}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-        <Label 
-            Text="{Binding TrainSchedule.DepartureTime}"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid>
+        <VerticalStackLayout>
+            <Label Text="{Binding TrainSchedule.TrainName.Name}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding TrainSchedule.Origin.Name}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding TrainSchedule.Destination.Name}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" />
+            <Label Text="{Binding TrainSchedule.DepartureTime}"
+                   VerticalOptions="Center" 
+                   HorizontalOptions="Center" />
+        </VerticalStackLayout>
+    </Grid>
 </ContentPage>
