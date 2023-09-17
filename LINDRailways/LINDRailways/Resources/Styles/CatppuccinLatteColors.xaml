@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LINDRailways.Resources.Styles.CatppuccinLatteColors">
+    <Color x:Key="LatteRosewater">#dc8a78</Color>
+    <Color x:Key="LatteFlamingo">#dd7878</Color>
+    <Color x:Key="LattePink">#ea76cb</Color>
+    <Color x:Key="LatteMauve">#8839ef</Color>
+    <Color x:Key="LatteRed">#d20f39</Color>
+    <Color x:Key="LatteMaroon">#e64553</Color>
+    <Color x:Key="LattePeach">#fe640b</Color>
+    <Color x:Key="LatteYellow">#df8e1d</Color>
+    <Color x:Key="LatteGreen">#40a02b</Color>
+    <Color x:Key="LatteTeal">#179299</Color>
+    <Color x:Key="LatteSky">#04a5e5</Color>
+    <Color x:Key="LatteSapphire">#209fb5</Color>
+    <Color x:Key="LatteBlue">#1e66f5</Color>
+    <Color x:Key="LatteLavender">#7287fd</Color>
+    <Color x:Key="LatteText">#4c4f69</Color>
+    <Color x:Key="LatteSubtext1">#5c5f77</Color>
+    <Color x:Key="LatteSubtext0">#6c6f85</Color>
+    <Color x:Key="LatteOverlay2">#7c7f93</Color>
+    <Color x:Key="LatteOverlay1">#8c8fa1</Color>
+    <Color x:Key="LatteOverlay0">#9ca0b0</Color>
+    <Color x:Key="LatteSurface2">#acb0be</Color>
+    <Color x:Key="LatteSurface1">#bcc0cc</Color>
+    <Color x:Key="LatteSurface0">#ccd0da</Color>
+    <Color x:Key="LatteBase">#eff1f5</Color>
+    <Color x:Key="LatteMantle">#e6e9ef</Color>
+    <Color x:Key="LatteCrust">#dce0e8</Color>
+</ResourceDictionary>

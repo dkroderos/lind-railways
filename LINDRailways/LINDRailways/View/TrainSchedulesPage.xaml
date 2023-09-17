@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="LINDRailways.View.TrainSchedulesPage"
+             xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
+             xmlns:model="clr-namespace:LINDRailways.Model"
+             x:DataType="viewmodel:TrainSchedulesViewModel"
+             Title="{Binding Title}">
+
+    <Grid Padding="5">
+        <CollectionView SelectionMode="None"
+                    ItemsSource="{Binding TrainSchedules}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:TrainSchedule">
+                    <Border HeightRequest="125"
+                            Padding="0"
+                            Stroke="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}"
+                            StrokeShape="RoundRectangle 10 40 40 10"
+                            StrokeThickness="4">
+                        <Border.Shadow>
+                            <Shadow Brush="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
+                                    Offset="10, 10"
+                                    Opacity="0.8"/>
+                        </Border.Shadow>
+                        <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}">
+                            <Grid Padding="0">
+                                <VerticalStackLayout>
+                                    <Label Text="{Binding TrainName}"/>
+                                    <Label Text="{Binding Origin}"/>
+                                    <Label Text="{Binding Destination}"/>
+                                    <Label Text="{Binding DepartureTime}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </Grid>
+</ContentPage>
