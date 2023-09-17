@@ -9,7 +9,7 @@
 
     <Grid Padding="5">
         <CollectionView SelectionMode="None"
-                    ItemsSource="{Binding TrainSchedules}">
+                        ItemsSource="{Binding TrainSchedules}">
 
             <CollectionView.ItemTemplate>
                 <DataTemplate x:DataType="model:TrainSchedule">
@@ -24,6 +24,10 @@
                                     Opacity="0.8"/>
                         </Border.Shadow>
                         <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer CommandParameter="{Binding .}"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainSchedulesViewModel}}, Path=GoToAddTicketCommand}"/>
+                            </Frame.GestureRecognizers>
                             <Grid Padding="0">
                                 <VerticalStackLayout>
                                     <Label Text="{Binding TrainName}"/>
