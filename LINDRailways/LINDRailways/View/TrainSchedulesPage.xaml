@@ -30,9 +30,9 @@
                             </Frame.GestureRecognizers>
                             <Grid Padding="0">
                                 <VerticalStackLayout>
-                                    <Label Text="{Binding TrainName}"/>
-                                    <Label Text="{Binding Origin}"/>
-                                    <Label Text="{Binding Destination}"/>
+                                    <Label Text="{Binding TrainName.Name}"/>
+                                    <Label Text="{Binding Origin.Name}"/>
+                                    <Label Text="{Binding Destination.Name}"/>
                                     <Label Text="{Binding DepartureTime}"/>
                                 </VerticalStackLayout>
                             </Grid>
