@@ -5,8 +5,8 @@
              xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
              x:DataType="viewmodel:AddTicketViewModel"
              Title="{Binding TrainSchedule.TrainName.Name}">
-    <Grid>
-        <VerticalStackLayout>
+    <Grid RowDefinitions="*,Auto">
+        <VerticalStackLayout Grid.Row="0">
             <Label Text="{Binding TrainSchedule.TrainName.Name}"
                    VerticalOptions="Center" 
                    HorizontalOptions="Center" />
@@ -20,5 +20,21 @@
                    VerticalOptions="Center" 
                    HorizontalOptions="Center" />
         </VerticalStackLayout>
+        <Grid Grid.Row="1"
+              BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
+              ColumnDefinitions="*,*"
+              Padding="10">
+            <Button Grid.Column="0" 
+                    Text="Register"
+                    Margin="0,0,5,0"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LatteBlue}, Dark={StaticResource MacchiatoBlue}}"
+                    TextColor="{AppThemeBinding Light={StaticResource MacchiatoText}, Dark={StaticResource LatteText}}"
+                    />
+            <Button Grid.Column="1" 
+                    Margin="5,0,0,0"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen}, Dark={StaticResource MacchiatoGreen}}"
+                    TextColor="{AppThemeBinding Light={StaticResource MacchiatoText}, Dark={StaticResource LatteText}}"
+                    Text="Book"/>
+        </Grid>
     </Grid>
 </ContentPage>
