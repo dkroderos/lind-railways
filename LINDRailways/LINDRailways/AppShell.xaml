@@ -22,4 +22,9 @@
             <ShellContent ContentTemplate="{DataTemplate view:TicketsPage}"/>
         </Tab>
     </FlyoutItem>
+    <FlyoutItem Title="Pending Tickets">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate view:PendingTicketsPage}"/>
+        </Tab>
+    </FlyoutItem>
 </Shell>
