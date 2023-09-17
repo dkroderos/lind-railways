@@ -8,7 +8,7 @@
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/CatppuccinLatteColors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/CatppuccinMacchiatoColors.xaml" />
-                <!--<ResourceDictionary Source="Resources/Styles/CatppuccinStyles.xaml" />-->
+                <ResourceDictionary Source="Resources/Styles/CatppuccinStyles.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
