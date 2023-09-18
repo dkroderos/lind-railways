@@ -3,6 +3,7 @@ using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,21 +11,25 @@ namespace LINDRailways.Services
 {
     public static class TicketService
     {
-
-        private static SQLiteAsyncConnection db;
+        private static SQLiteAsyncConnection Database;
         private static async Task Init()
         {
-            if (db != null)
+            if (Database is not null)
                 return;
 
-            var databasePath = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments), "TicketsData.db");
+            string databaseFilename = "Tickets.db3";
 
-            db = new SQLiteAsyncConnection(databasePath);
+            SQLite.SQLiteOpenFlags flags =
+                SQLite.SQLiteOpenFlags.ReadWrite |
+                SQLite.SQLiteOpenFlags.Create |
+                SQLite.SQLiteOpenFlags.SharedCache; 
 
-            await db.CreateTableAsync<Ticket>();
+            Database = new SQLiteAsyncConnection(databaseFilename, flags);
+
+            var result = await Database.CreateTableAsync<Ticket>();
         }
 
-        public static async Task AddTicket(string passengerName, DateOnly departureDate, 
+        public static async Task AddTicket(string passengerName, DateOnly departureDate,
             bool isMale, bool isPaid, TrainSchedule trainSchedule)
         {
             await Init();
@@ -38,21 +43,21 @@ namespace LINDRailways.Services
                 TrainSchedule = trainSchedule
             };
 
-            var id = await db.InsertAsync(ticket);
+            var id = await Database.InsertAsync(ticket);
         }
 
         public static async Task RemoveTicket(int id)
         {
             await Init();
 
-            await db.DeleteAsync<Ticket>(id);
+            await Database.DeleteAsync<Ticket>(id);
         }
 
         public static async Task<IEnumerable<Ticket>> GetPaidTickets()
         {
             await Init();
 
-            var ticket = await db.Table<Ticket>().ToListAsync();
+            var ticket = await Database.Table<Ticket>().ToListAsync();
 
             return ticket;
         }

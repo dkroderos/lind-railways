@@ -1,4 +1,5 @@
 ﻿using LINDRailways.Model;
+using LINDRailways.Services;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -18,7 +19,7 @@ namespace LINDRailways.ViewModel
             GetTickets();
         }
 
-        public void GetTickets()
+        public async void GetTickets()
         {
             Tickets.Clear();
 
@@ -41,6 +42,12 @@ namespace LINDRailways.ViewModel
                 IsPaid = true,
                 TrainSchedule = trainSchedule
             });
+
+            IEnumerable<Ticket> tickets = await TicketService.GetPaidTickets();
+            foreach (Ticket ticket in tickets)
+            {
+                Tickets.Add(ticket);
+            }
         }
     }
 }

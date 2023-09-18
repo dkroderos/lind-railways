@@ -32,7 +32,9 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                //await TicketService.AddTicket("David", DateOnly.FromDateTime(DateTime.Now), true, true, TrainSchedule);
+                await TicketService.AddTicket("David", 
+                    DateOnly.FromDateTime(DateTime.Now), true, true, 
+                    TrainSchedule);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!", 
                     "Ticket Booked", "OK");
@@ -55,7 +57,8 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                //await TicketService.AddTicket("David", DateOnly.FromDateTime(DateTime.Now), true, true, TrainSchedule);
+                await TicketService.AddTicket("David", 
+                    DateOnly.FromDateTime(DateTime.Now), true, false, TrainSchedule);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!", 
                     "Ticket Reserved", "OK");
