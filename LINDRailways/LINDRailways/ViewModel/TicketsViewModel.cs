@@ -14,6 +14,33 @@ namespace LINDRailways.ViewModel
         public TicketsViewModel()
         {
             Title = "Tickets";
+
+            GetTickets();
+        }
+
+        public void GetTickets()
+        {
+            Tickets.Clear();
+
+            TransportationEntity mugenTrain = new("Mugen Train",
+                ".", "mugen_train.jpg", ".");
+
+            TransportationEntity philippines = new("Philippines",
+                ".", ".", ".");
+            TransportationEntity japan = new("Japan", ".", ".", ".");
+
+            TrainSchedule trainSchedule = new(mugenTrain,
+                philippines, japan, new TimeOnly(18, 0));
+
+            Tickets.Add(new Ticket
+            {
+                Id = 1,
+                PassengerName = "Test",
+                DepartureDate = DateOnly.FromDateTime(DateTime.Now),
+                IsMale = true,
+                IsPaid = true,
+                TrainSchedule = trainSchedule
+            });
         }
     }
 }

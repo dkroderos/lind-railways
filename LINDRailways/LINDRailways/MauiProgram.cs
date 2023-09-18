@@ -29,7 +29,7 @@ namespace LINDRailways
             builder.Services.AddTransient<AddTicketViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
-            builder.Services.AddSingleton<TicketsPage>();
+            builder.Services.AddTransient<TicketsPage>();
             builder.Services.AddSingleton<TrainSchedulesPage>();
             builder.Services.AddSingleton<PendingTicketsPage>();
 
