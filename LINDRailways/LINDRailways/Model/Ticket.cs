@@ -11,12 +11,16 @@ namespace LINDRailways.Model
         public string PassengerName { get; set; }
         public DateOnly DepartureDate { get; set; }
         public TrainSchedule TrainSchedule { get; set; }
+        public bool IsMale { get; set; }
+        public bool IsPaid { get; set; }
 
-        public Ticket(string passengerName, DateOnly departureDate, TrainSchedule trainSchedule)
+        public Ticket(string passengerName, DateOnly departureDate, TrainSchedule trainSchedule, bool isMale, bool isPaid)
         {
             this.PassengerName = passengerName;
             this.DepartureDate = departureDate;
             this.TrainSchedule = trainSchedule;
+            this.IsMale = isMale;
+            this.IsPaid = isPaid;
         }
     }
 }
