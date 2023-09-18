@@ -3,12 +3,50 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LINDRailways.View.TicketsPage"
              xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
+             xmlns:model="clr-namespace:LINDRailways.Model"
              x:DataType="viewmodel:TicketsViewModel"
              Title="{Binding Title}">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+     <Grid Padding="5">
+        <CollectionView SelectionMode="None"
+                        ItemsSource="{Binding Tickets}">
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate x:DataType="model:Ticket">
+                    <Border HeightRequest="125"
+                            Padding="0"
+                            Stroke="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}"
+                            StrokeShape="RoundRectangle 10 40 40 10"
+                            StrokeThickness="4">
+                        <Border.Shadow>
+                            <Shadow Brush="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
+                                    Offset="10, 10"
+                                    Opacity="0.8"/>
+                        </Border.Shadow>
+                        <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}"
+                               Padding="20">
+                            <Frame.GestureRecognizers>
+                                <!--<TapGestureRecognizer CommandParameter="{Binding .}"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainSchedulesViewModel}}, Path=GoToAddTicketCommand}"/>-->
+                            </Frame.GestureRecognizers>
+                            <Grid Padding="0" 
+                                  Margin="0"
+                                  ColumnDefinitions="*">
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label Text="{Binding PassengerName}"/>
+                                    <Label Text="{Binding DepartureDate}"/>
+                                    <Label Text="{Binding IsMale}"/>
+                                    <Label Text="{Binding IsPaid}"/>
+                                    <Label Text="{Binding TrainSchedule.TrainName}"/>
+                                    <Label Text="{Binding TrainSchedule.Origin}"/>
+                                    <Label Text="{Binding TrainSchedule.Destination}"/>
+                                    <Label Text="{Binding TrainSchedule.DepartureTime}"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+
+        </CollectionView>
+    </Grid>
 </ContentPage>

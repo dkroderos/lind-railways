@@ -37,6 +37,8 @@ namespace LINDRailways.Services
                 IsPaid = isPaid,
                 TrainSchedule = trainSchedule
             };
+
+            var id = await db.InsertAsync(ticket);
         }
 
         public static async Task RemoveTicket(int id)
@@ -46,7 +48,7 @@ namespace LINDRailways.Services
             await db.DeleteAsync<Ticket>(id);
         }
 
-        public static async Task<IEnumerable<Ticket>> GetPaidTicket()
+        public static async Task<IEnumerable<Ticket>> GetPaidTickets()
         {
             await Init();
 
