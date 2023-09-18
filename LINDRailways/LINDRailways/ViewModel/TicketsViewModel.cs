@@ -33,15 +33,15 @@ namespace LINDRailways.ViewModel
             TrainSchedule trainSchedule = new(mugenTrain,
                 philippines, japan, new TimeOnly(18, 0));
 
-            Tickets.Add(new Ticket
-            {
-                Id = 1,
-                PassengerName = "Test",
-                DepartureDate = DateOnly.FromDateTime(DateTime.Now),
-                IsMale = true,
-                IsPaid = true,
-                TrainSchedule = trainSchedule
-            });
+            //Tickets.Add(new Ticket
+            //{
+            //    Id = 1,
+            //    PassengerName = "Test",
+            //    DepartureDate = DateOnly.FromDateTime(DateTime.Now),
+            //    IsMale = true,
+            //    IsPaid = true,
+            //    TrainSchedule = trainSchedule
+            //});
 
             IEnumerable<Ticket> tickets = await TicketService.GetPaidTickets();
             foreach (Ticket ticket in tickets)

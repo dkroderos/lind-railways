@@ -32,17 +32,18 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                await TicketService.AddTicket("David", 
-                    DateOnly.FromDateTime(DateTime.Now), true, true, 
-                    TrainSchedule);
+                await TicketService.AddTicket("David", 1, 1,
+                    DateOnly.FromDateTime(DateTime.Now).ToString(),
+                    TrainSchedule.TrainName.Name, TrainSchedule.Origin.Name,
+                    TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString()); ;
 
-                await Shell.Current.CurrentPage.DisplayAlert("Success!", 
+                await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     "Ticket Booked", "OK");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                await Shell.Current.CurrentPage.DisplayAlert("Error!", 
+                await Shell.Current.CurrentPage.DisplayAlert("Error!",
                     $"Unable to book ticket: {ex.Message}", "OK");
             }
         }
@@ -57,8 +58,10 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                await TicketService.AddTicket("David", 
-                    DateOnly.FromDateTime(DateTime.Now), true, false, TrainSchedule);
+                await TicketService.AddTicket("David", 1, 0,
+                    DateOnly.FromDateTime(DateTime.Now).ToString(),
+                    TrainSchedule.TrainName.Name, TrainSchedule.Origin.Name,
+                    TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString()); ;
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!", 
                     "Ticket Reserved", "OK");

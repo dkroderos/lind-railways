@@ -18,29 +18,34 @@ namespace LINDRailways.Services
                 return;
 
             string databaseFilename = "Tickets.db3";
+            string databasePath = Path.Combine(FileSystem.AppDataDirectory, databaseFilename);
 
             SQLite.SQLiteOpenFlags flags =
                 SQLite.SQLiteOpenFlags.ReadWrite |
                 SQLite.SQLiteOpenFlags.Create |
-                SQLite.SQLiteOpenFlags.SharedCache; 
+                SQLite.SQLiteOpenFlags.SharedCache;
 
-            Database = new SQLiteAsyncConnection(databaseFilename, flags);
+            Database = new SQLiteAsyncConnection(databasePath, flags);
 
             var result = await Database.CreateTableAsync<Ticket>();
         }
 
-        public static async Task AddTicket(string passengerName, DateOnly departureDate,
-            bool isMale, bool isPaid, TrainSchedule trainSchedule)
+        public static async Task AddTicket(string passengerName, int isMale,
+            int isPaid, string departureDate, string trainName, string origin,
+            string destination, string departureTime)
         {
             await Init();
 
             var ticket = new Ticket
             {
                 PassengerName = passengerName,
-                DepartureDate = departureDate,
                 IsMale = isMale,
                 IsPaid = isPaid,
-                TrainSchedule = trainSchedule
+                DepartureDate = departureDate,
+                TrainName = trainName,
+                Origin = origin,
+                Destination = destination,
+                DepartureTime = departureTime
             };
 
             var id = await Database.InsertAsync(ticket);

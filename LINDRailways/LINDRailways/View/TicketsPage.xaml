@@ -36,10 +36,10 @@
                                     <Label Text="{Binding DepartureDate}"/>
                                     <Label Text="{Binding IsMale}"/>
                                     <Label Text="{Binding IsPaid}"/>
-                                    <Label Text="{Binding TrainSchedule.TrainName}"/>
-                                    <Label Text="{Binding TrainSchedule.Origin}"/>
-                                    <Label Text="{Binding TrainSchedule.Destination}"/>
-                                    <Label Text="{Binding TrainSchedule.DepartureTime}"/>
+                                    <Label Text="{Binding TrainName}"/>
+                                    <Label Text="{Binding Origin}"/>
+                                    <Label Text="{Binding Destination}"/>
+                                    <Label Text="{Binding DepartureTime}"/>
                                 </VerticalStackLayout>
                             </Grid>
                         </Frame>

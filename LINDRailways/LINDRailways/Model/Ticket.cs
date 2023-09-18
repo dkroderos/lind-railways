@@ -12,18 +12,12 @@ namespace LINDRailways.Model
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string PassengerName { get; set; }
-        public DateOnly DepartureDate { get; set; }
-        public bool IsMale { get; set; }
-        public bool IsPaid { get; set; }
-        public TrainSchedule TrainSchedule { get; set; }
-
-        //public Ticket(string passengerName, DateOnly departureDate, TrainSchedule trainSchedule, bool isMale, bool isPaid)
-        //{
-        //    this.PassengerName = passengerName;
-        //    this.DepartureDate = departureDate;
-        //    this.TrainSchedule = trainSchedule;
-        //    this.IsMale = isMale;
-        //    this.IsPaid = isPaid;
-        //}
+        public int IsMale { get; set; }
+        public int IsPaid { get; set; }
+        public string DepartureDate { get; set; }
+        public string TrainName { get; set; }
+        public string Origin { get; set; }
+        public string Destination { get; set; }
+        public string DepartureTime { get; set; }
     }
 }
