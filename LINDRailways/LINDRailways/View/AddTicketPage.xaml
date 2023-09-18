@@ -4,10 +4,22 @@
              x:Class="LINDRailways.View.AddTicketPage"
              xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
              x:DataType="viewmodel:AddTicketViewModel"
-             Title="{Binding Title}">
+             Title="{Binding TrainSchedule.TrainName}">
     <VerticalStackLayout>
         <Label 
-            Text="Welcome to .NET MAUI!"
+            Text="{Binding TrainSchedule.TrainName}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding TrainSchedule.Origin}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding TrainSchedule.Destination}"
+            VerticalOptions="Center" 
+            HorizontalOptions="Center" />
+        <Label 
+            Text="{Binding TrainSchedule.DepartureTime}"
             VerticalOptions="Center" 
             HorizontalOptions="Center" />
     </VerticalStackLayout>
