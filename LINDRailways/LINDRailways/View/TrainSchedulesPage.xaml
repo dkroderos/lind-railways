@@ -7,43 +7,50 @@
              x:DataType="viewmodel:TrainSchedulesViewModel"
              Title="{Binding Title}">
 
-    <Grid Padding="5">
-        <CollectionView SelectionMode="None"
-                        ItemsSource="{Binding TrainSchedules}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="REFRESH"
+                     Command="{Binding GetTrainSchedulesCommand}"/>
+    </ContentPage.ToolbarItems>
 
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="model:TrainSchedule">
-                    <Border HeightRequest="125"
+    <Grid Padding="5">
+        <RefreshView Command="{Binding GetTrainSchedulesCommand}"
+                     IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView SelectionMode="None"
+                            ItemsSource="{Binding TrainSchedules}">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:TrainSchedule">
+                        <Border HeightRequest="125"
                             Padding="0"
                             Stroke="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}"
                             StrokeShape="RoundRectangle 10 40 40 10"
                             StrokeThickness="4">
-                        <Border.Shadow>
-                            <Shadow Brush="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
+                            <Border.Shadow>
+                                <Shadow Brush="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
                                     Offset="10, 10"
                                     Opacity="0.8"/>
-                        </Border.Shadow>
-                        <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}"
+                            </Border.Shadow>
+                            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}"
                                Padding="20">
-                            <Frame.GestureRecognizers>
-                                <TapGestureRecognizer CommandParameter="{Binding .}"
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer CommandParameter="{Binding .}"
                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainSchedulesViewModel}}, Path=GoToAddTicketCommand}"/>
-                            </Frame.GestureRecognizers>
-                            <Grid Padding="0" 
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="0" 
                                   Margin="0"
                                   ColumnDefinitions="*">
-                                <VerticalStackLayout Grid.Column="1">
-                                    <Label Text="{Binding TrainName.Name}"/>
-                                    <Label Text="{Binding Origin.Name}"/>
-                                    <Label Text="{Binding Destination.Name}"/>
-                                    <Label Text="{Binding DepartureTime}"/>
-                                </VerticalStackLayout>
-                            </Grid>
-                        </Frame>
-                    </Border>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-
-        </CollectionView>
+                                    <VerticalStackLayout Grid.Column="1">
+                                        <Label Text="{Binding TrainName.Name}"/>
+                                        <Label Text="{Binding Origin.Name}"/>
+                                        <Label Text="{Binding Destination.Name}"/>
+                                        <Label Text="{Binding DepartureTime}"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </RefreshView>
     </Grid>
 </ContentPage>

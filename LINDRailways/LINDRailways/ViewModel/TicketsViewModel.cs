@@ -1,10 +1,12 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using LINDRailways.Model;
 using LINDRailways.Services;
 using LINDRailways.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -17,9 +19,10 @@ namespace LINDRailways.ViewModel
         public TicketsViewModel()
         {
             Title = "Tickets";
-
-            GetTickets();
         }
+
+        [ObservableProperty]
+        private bool isRefreshing;
 
         [RelayCommand]
         private async Task GoToTicketDetailsAsync(Ticket ticket)
@@ -34,24 +37,32 @@ namespace LINDRailways.ViewModel
                 });
         }
 
-        public async void GetTickets()
+        [RelayCommand]
+        public async Task GetTicketsAsync()
         {
-            Tickets.Clear();
+            if (IsBusy)
+                return;
 
-            TransportationEntity mugenTrain = new("Mugen Train",
-                ".", "mugen_train.jpg", ".");
-
-            TransportationEntity philippines = new("Philippines",
-                ".", ".", ".");
-            TransportationEntity japan = new("Japan", ".", ".", ".");
-
-            TrainSchedule trainSchedule = new(mugenTrain,
-                philippines, japan, new TimeOnly(18, 0));
-
-            IEnumerable<Ticket> tickets = await TicketService.GetPaidTickets();
-            foreach (Ticket ticket in tickets)
+            try
             {
-                Tickets.Add(ticket);
+                IsBusy = true;
+                Tickets.Clear();
+
+                IEnumerable<Ticket> tickets = await TicketService.GetPaidTickets();
+                foreach (Ticket ticket in tickets)
+                {
+                    Tickets.Add(ticket);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get tickets: {ex.Message}", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+                IsRefreshing = false;
             }
         }
     }

@@ -6,52 +6,59 @@
              xmlns:model="clr-namespace:LINDRailways.Model"
              x:DataType="viewmodel:TicketsViewModel"
              Title="{Binding Title}">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="REFRESH"
+                     Command="{Binding GetTicketsCommand}"/>
+    </ContentPage.ToolbarItems>
     <Grid RowDefinitions="*,Auto">
         <Grid Grid.Row="0" Padding="5">
-            <CollectionView SelectionMode="None"
+            <RefreshView IsRefreshing="{Binding IsRefreshing}"
+                         Command="{Binding GetTicketsCommand}">
+                <CollectionView SelectionMode="None"
                         ItemsSource="{Binding Tickets}"
                         >
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:Ticket">
-                        <Border HeightRequest="125"
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Ticket">
+                            <Border HeightRequest="125"
                             Padding="0"
                             Stroke="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}"
                             StrokeShape="RoundRectangle 10 40 40 10"
                             StrokeThickness="4">
-                            <Border.Shadow>
-                                <Shadow Brush="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
+                                <Border.Shadow>
+                                    <Shadow Brush="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
                                     Offset="10, 10"
                                     Opacity="0.8"/>
-                            </Border.Shadow>
-                            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}"
+                                </Border.Shadow>
+                                <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}"
                                Padding="20">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer CommandParameter="{Binding .}"
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer CommandParameter="{Binding .}"
                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TicketsViewModel}}, Path=GoToTicketDetailsCommand}"/>
-                                </Frame.GestureRecognizers>
-                                <Grid Padding="0" 
+                                    </Frame.GestureRecognizers>
+                                    <Grid Padding="0" 
                                   Margin="0"
                                   ColumnDefinitions="*">
-                                    <VerticalStackLayout Grid.Column="1">
-                                        <Label Text="{Binding Id}"/>
-                                        <Label Text="{Binding PassengerName}"/>
-                                        <Label Text="{Binding DepartureDate}"/>
-                                        <Label Text="{Binding IsMale}"/>
-                                        <Label Text="{Binding IsPaid}"/>
-                                        <Label Text="{Binding TrainName}"/>
-                                        <Label Text="{Binding Origin}"/>
-                                        <Label Text="{Binding Destination}"/>
-                                        <Label Text="{Binding DepartureTime}"/>
-                                    </VerticalStackLayout>
-                                </Grid>
-                            </Frame>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
+                                        <VerticalStackLayout Grid.Column="1">
+                                            <Label Text="{Binding Id}"/>
+                                            <Label Text="{Binding PassengerName}"/>
+                                            <Label Text="{Binding DepartureDate}"/>
+                                            <Label Text="{Binding IsMale}"/>
+                                            <Label Text="{Binding IsPaid}"/>
+                                            <Label Text="{Binding TrainName}"/>
+                                            <Label Text="{Binding Origin}"/>
+                                            <Label Text="{Binding Destination}"/>
+                                            <Label Text="{Binding DepartureTime}"/>
+                                        </VerticalStackLayout>
+                                    </Grid>
+                                </Frame>
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
 
-            </CollectionView>
+                </CollectionView>
 
+            </RefreshView>
         </Grid>
         <Grid Grid.Row="1"
               BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"

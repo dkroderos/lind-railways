@@ -1,9 +1,12 @@
-﻿using CommunityToolkit.Mvvm.Input;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using LINDRailways.Model;
 using LINDRailways.View;
+using SQLite;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +23,9 @@ namespace LINDRailways.ViewModel
             AddTrainSchedules();
         }
 
+        [ObservableProperty]
+        private bool isRefreshing;
+
         [RelayCommand]
         private async Task GoToAddTicketAsync(TrainSchedule trainSchedule)
         {
@@ -31,6 +37,31 @@ namespace LINDRailways.ViewModel
                 {
                     { "TrainSchedule", trainSchedule }
                 });
+        }
+
+        [RelayCommand]
+        private async Task GetTrainSchedulesAsync()
+        {
+            if (IsBusy) 
+                return;
+
+            try
+            {
+                IsBusy = true;
+                TrainSchedules.Clear();
+
+                AddTrainSchedules();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get train schedules: {ex.Message}", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+                IsRefreshing = false;
+            }
         }
 
         private void AddTrainSchedules()
