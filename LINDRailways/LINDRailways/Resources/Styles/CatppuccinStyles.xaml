@@ -23,6 +23,17 @@
     <Style TargetType="CollectionView" x:Key="TrainSchedules">
     </Style>
 
+    <Style TargetType="Button" ApplyToDerivedTypes="True">
+        <Setter Property="CornerRadius"
+                Value="25"/>
+        <Setter Property="HeightRequest"
+                Value="50"/>
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}" />
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource LatteSurface1}, Dark={StaticResource MacchiatoSurface1}}" />
+    </Style>
+
     <Style TargetType="Label" ApplyToDerivedTypes="True">
         <Setter Property="TextColor"
                 Value="{AppThemeBinding Light={StaticResource LatteSubtext0}, Dark={StaticResource MacchiatoSubtext0}}" />

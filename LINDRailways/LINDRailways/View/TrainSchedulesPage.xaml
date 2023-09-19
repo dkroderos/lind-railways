@@ -23,16 +23,19 @@
                                     Offset="10, 10"
                                     Opacity="0.8"/>
                         </Border.Shadow>
-                        <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}">
+                        <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}"
+                               Padding="20">
                             <Frame.GestureRecognizers>
                                 <TapGestureRecognizer CommandParameter="{Binding .}"
                                                       Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainSchedulesViewModel}}, Path=GoToAddTicketCommand}"/>
                             </Frame.GestureRecognizers>
-                            <Grid Padding="0">
-                                <VerticalStackLayout>
-                                    <Label Text="{Binding TrainName}"/>
-                                    <Label Text="{Binding Origin}"/>
-                                    <Label Text="{Binding Destination}"/>
+                            <Grid Padding="0" 
+                                  Margin="0"
+                                  ColumnDefinitions="*">
+                                <VerticalStackLayout Grid.Column="1">
+                                    <Label Text="{Binding TrainName.Name}"/>
+                                    <Label Text="{Binding Origin.Name}"/>
+                                    <Label Text="{Binding Destination.Name}"/>
                                     <Label Text="{Binding DepartureTime}"/>
                                 </VerticalStackLayout>
                             </Grid>
