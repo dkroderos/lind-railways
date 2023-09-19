@@ -3,12 +3,64 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="LINDRailways.View.TicketsPage"
              xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
+             xmlns:model="clr-namespace:LINDRailways.Model"
              x:DataType="viewmodel:TicketsViewModel"
              Title="{Binding Title}">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="*,Auto">
+        <Grid Grid.Row="0" Padding="5">
+            <CollectionView SelectionMode="None"
+                        ItemsSource="{Binding Tickets}"
+                        >
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Ticket">
+                        <Border HeightRequest="125"
+                            Padding="0"
+                            Stroke="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}"
+                            StrokeShape="RoundRectangle 10 40 40 10"
+                            StrokeThickness="4">
+                            <Border.Shadow>
+                                <Shadow Brush="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
+                                    Offset="10, 10"
+                                    Opacity="0.8"/>
+                            </Border.Shadow>
+                            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}"
+                               Padding="20">
+                                <Frame.GestureRecognizers>
+                                    <!--<TapGestureRecognizer CommandParameter="{Binding .}"
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainSchedulesViewModel}}, Path=GoToAddTicketCommand}"/>-->
+                                </Frame.GestureRecognizers>
+                                <Grid Padding="0" 
+                                  Margin="0"
+                                  ColumnDefinitions="*">
+                                    <VerticalStackLayout Grid.Column="1">
+                                        <Label Text="{Binding Id}"/>
+                                        <Label Text="{Binding PassengerName}"/>
+                                        <Label Text="{Binding DepartureDate}"/>
+                                        <Label Text="{Binding IsMale}"/>
+                                        <Label Text="{Binding IsPaid}"/>
+                                        <Label Text="{Binding TrainName}"/>
+                                        <Label Text="{Binding Origin}"/>
+                                        <Label Text="{Binding Destination}"/>
+                                        <Label Text="{Binding DepartureTime}"/>
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
+
+        </Grid>
+        <Grid Grid.Row="1"
+              BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
+              Padding="10">
+            <Button Grid.Column="0" 
+                    Text="Add Ticket"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LattePink}, Dark={StaticResource MacchiatoPink}}"
+                    TextColor="{AppThemeBinding Light={StaticResource MacchiatoText}, Dark={StaticResource LatteText}}"
+                    />
+        </Grid>
+    </Grid>
 </ContentPage>
