@@ -1,8 +1,12 @@
-﻿using LINDRailways.Model;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
+using LINDRailways.Model;
 using LINDRailways.Services;
+using LINDRailways.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,38 +19,50 @@ namespace LINDRailways.ViewModel
         public TicketsViewModel()
         {
             Title = "Tickets";
-
-            GetTickets();
         }
 
-        public async void GetTickets()
+        [ObservableProperty]
+        private bool isRefreshing;
+
+        [RelayCommand]
+        private async Task GoToTicketDetailsAsync(Ticket ticket)
         {
-            Tickets.Clear();
+            if (ticket is null)
+                return;
 
-            TransportationEntity mugenTrain = new("Mugen Train",
-                ".", "mugen_train.jpg", ".");
+            await Shell.Current.GoToAsync($"{nameof(TicketDetailsPage)}",
+                true, new Dictionary<string, object>
+                {
+                    { "Ticket", ticket }
+                });
+        }
 
-            TransportationEntity philippines = new("Philippines",
-                ".", ".", ".");
-            TransportationEntity japan = new("Japan", ".", ".", ".");
+        [RelayCommand]
+        public async Task GetTicketsAsync()
+        {
+            if (IsBusy)
+                return;
 
-            TrainSchedule trainSchedule = new(mugenTrain,
-                philippines, japan, new TimeOnly(18, 0));
-
-            //Tickets.Add(new Ticket
-            //{
-            //    Id = 1,
-            //    PassengerName = "Test",
-            //    DepartureDate = DateOnly.FromDateTime(DateTime.Now),
-            //    IsMale = true,
-            //    IsPaid = true,
-            //    TrainSchedule = trainSchedule
-            //});
-
-            IEnumerable<Ticket> tickets = await TicketService.GetPaidTickets();
-            foreach (Ticket ticket in tickets)
+            try
             {
-                Tickets.Add(ticket);
+                IsBusy = true;
+                Tickets.Clear();
+
+                IEnumerable<Ticket> tickets = await TicketService.GetPaidTickets();
+                foreach (Ticket ticket in tickets)
+                {
+                    Tickets.Add(ticket);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get tickets: {ex.Message}", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+                IsRefreshing = false;
             }
         }
     }

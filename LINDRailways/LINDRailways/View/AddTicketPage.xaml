@@ -38,6 +38,9 @@
                 <Label Text="{Binding TrainSchedule.TrainName.Description}"
                        VerticalOptions="Center" 
                        HorizontalOptions="Start" />
+                <Label Text="{Binding TrainSchedule.Origin.Name}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
                 <Label Text="{Binding TrainSchedule.Destination.Name}"
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" />

@@ -47,6 +47,7 @@ namespace LINDRailways.ViewModel
                     $"Unable to book ticket: {ex.Message}", "OK");
             }
         }
+
         [RelayCommand]
         private async Task ReserveTicketAsync()
         {
