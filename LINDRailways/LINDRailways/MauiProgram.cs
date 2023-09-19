@@ -23,17 +23,19 @@ namespace LINDRailways
 
             builder.Services.AddSingleton<HomeViewModel>();
             builder.Services.AddSingleton<TrainSchedulesViewModel>();
-            builder.Services.AddSingleton<TicketsViewModel>();
             builder.Services.AddSingleton<PendingTicketsViewModel>();
+            builder.Services.AddSingleton<TicketsViewModel>();
 
             builder.Services.AddTransient<AddTicketViewModel>();
+            builder.Services.AddTransient<TicketDetailsViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
-            builder.Services.AddSingleton<TicketsPage>();
             builder.Services.AddSingleton<TrainSchedulesPage>();
             builder.Services.AddSingleton<PendingTicketsPage>();
+            builder.Services.AddSingleton<TicketsPage>();
 
             builder.Services.AddTransient<AddTicketPage>();
+            builder.Services.AddTransient<TicketDetailsPage>();
 
             return builder.Build();
         }
