@@ -6,20 +6,46 @@
              x:DataType="viewmodel:AddTicketViewModel"
              Title="{Binding TrainSchedule.TrainName.Name}">
     <Grid RowDefinitions="*,Auto">
-        <VerticalStackLayout Grid.Row="0">
-            <Label Text="{Binding TrainSchedule.TrainName.Name}"
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center" />
-            <Label Text="{Binding TrainSchedule.Origin.Name}"
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center" />
-            <Label Text="{Binding TrainSchedule.Destination.Name}"
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center" />
-            <Label Text="{Binding TrainSchedule.DepartureTime}"
-                   VerticalOptions="Center" 
-                   HorizontalOptions="Center" />
-        </VerticalStackLayout>
+        <ScrollView>
+            <VerticalStackLayout Grid.Row="0">
+                <Grid ColumnDefinitions="*,Auto,*"
+                      RowDefinitions="160,Auto">
+                    <BoxView BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
+                             Grid.ColumnSpan="3"
+                             HeightRequest="160"
+                             HorizontalOptions="FillAndExpand"/>
+                    <Border Grid.RowSpan="2"
+                            Grid.Column="1"
+                            HeightRequest="200"
+                            WidthRequest="200"
+                            Stroke="{AppThemeBinding Light={StaticResource LatteLavender}, Dark={StaticResource MacchiatoLavender}}"
+                            StrokeThickness="15"
+                            StrokeShape="RoundRectangle 80,80,80,80"
+                            Margin="0,60,0,0">
+                        
+                        <Image Aspect="AspectFit"
+                               WidthRequest="200"
+                               HeightRequest="200"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Source="{Binding TrainSchedule.TrainName.ImageSource}"/>
+                    </Border>
+                </Grid>
+                <Label Text="{Binding TrainSchedule.TrainName.Name}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" 
+                       FontSize="30"/>
+                <Label Text="{Binding TrainSchedule.TrainName.Description}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Start" />
+                <Label Text="{Binding TrainSchedule.Destination.Name}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
+                <Label Text="{Binding TrainSchedule.DepartureTime}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
+            </VerticalStackLayout>
+        </ScrollView>
         <Grid Grid.Row="1"
               BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
               ColumnDefinitions="*,*"
