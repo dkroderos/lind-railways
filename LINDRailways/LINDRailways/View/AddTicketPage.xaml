@@ -38,6 +38,9 @@
                 <Label Text="{Binding TrainSchedule.TrainName.Description}"
                        VerticalOptions="Center" 
                        HorizontalOptions="Start" />
+                <Label Text="{Binding TrainSchedule.Origin.Name}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
                 <Label Text="{Binding TrainSchedule.Destination.Name}"
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" />
@@ -55,11 +58,13 @@
                     Margin="0,0,5,0"
                     BackgroundColor="{AppThemeBinding Light={StaticResource LatteBlue}, Dark={StaticResource MacchiatoBlue}}"
                     TextColor="{AppThemeBinding Light={StaticResource MacchiatoText}, Dark={StaticResource LatteText}}"
+                    Command="{Binding ReserveTicketCommand}"
                     />
             <Button Grid.Column="1" 
                     Margin="5,0,0,0"
                     BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen}, Dark={StaticResource MacchiatoGreen}}"
                     TextColor="{AppThemeBinding Light={StaticResource MacchiatoText}, Dark={StaticResource LatteText}}"
+                    Command="{Binding BookTicketCommand}"
                     Text="Book"/>
         </Grid>
     </Grid>
