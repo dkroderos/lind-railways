@@ -1,5 +1,7 @@
-﻿using LINDRailways.Model;
+﻿using CommunityToolkit.Mvvm.Input;
+using LINDRailways.Model;
 using LINDRailways.Services;
+using LINDRailways.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -19,6 +21,19 @@ namespace LINDRailways.ViewModel
             GetTickets();
         }
 
+        [RelayCommand]
+        private async Task GoToTicketDetailsAsync(Ticket ticket)
+        {
+            if (ticket is null)
+                return;
+
+            await Shell.Current.GoToAsync($"{nameof(TicketDetailsPage)}",
+                true, new Dictionary<string, object>
+                {
+                    { "Ticket", ticket }
+                });
+        }
+
         public async void GetTickets()
         {
             Tickets.Clear();
@@ -32,16 +47,6 @@ namespace LINDRailways.ViewModel
 
             TrainSchedule trainSchedule = new(mugenTrain,
                 philippines, japan, new TimeOnly(18, 0));
-
-            //Tickets.Add(new Ticket
-            //{
-            //    Id = 1,
-            //    PassengerName = "Test",
-            //    DepartureDate = DateOnly.FromDateTime(DateTime.Now),
-            //    IsMale = true,
-            //    IsPaid = true,
-            //    TrainSchedule = trainSchedule
-            //});
 
             IEnumerable<Ticket> tickets = await TicketService.GetPaidTickets();
             foreach (Ticket ticket in tickets)
