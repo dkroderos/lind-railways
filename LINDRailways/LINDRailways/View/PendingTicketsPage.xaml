@@ -17,7 +17,7 @@
             <RefreshView IsRefreshing="{Binding IsRefreshing}"
                          Command="{Binding GetPendingTicketsCommand}">
                 <CollectionView SelectionMode="None"
-                        ItemsSource="{Binding Tickets}"
+                        ItemsSource="{Binding PendingTickets}"
                         >
 
                     <CollectionView.ItemTemplate>
@@ -36,7 +36,7 @@
                                Padding="20">
                                     <Frame.GestureRecognizers>
                                         <TapGestureRecognizer CommandParameter="{Binding .}"
-                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TicketsViewModel}}, Path=GoToTicketDetailsCommand}"/>
+                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PendingTicketsViewModel}}, Path=GoToTicketDetailsCommand}"/>
                                     </Frame.GestureRecognizers>
                                     <Grid Padding="0" 
                                   Margin="0"

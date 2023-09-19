@@ -15,7 +15,7 @@ namespace LINDRailways.ViewModel
 {
     public partial class PendingTicketsViewModel : BaseViewModel
     {
-        public ObservableCollection<Ticket> Tickets { get; } = new();
+        public ObservableCollection<Ticket> PendingTickets { get; } = new();
         public PendingTicketsViewModel()
         {
             Title = "Pending Tickets";
@@ -46,7 +46,7 @@ namespace LINDRailways.ViewModel
             try
             {
                 IsBusy = true;
-                Tickets.Clear();
+                PendingTickets.Clear();
 
                 IEnumerable<Ticket> allTickets = await TicketService.GetAllTickets();
 
@@ -56,7 +56,7 @@ namespace LINDRailways.ViewModel
 
                 foreach (Ticket ticket in pendingTickets)
                 {
-                    Tickets.Add(ticket);
+                    PendingTickets.Add(ticket);
                 }
             }
             catch (Exception ex)
@@ -88,11 +88,10 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                IEnumerable<Ticket> allTickets = await TicketService.GetAllTickets();
+                foreach (Ticket pendingTicket in PendingTickets)
+                    await TicketService.RemoveTicket(pendingTicket.Id);
 
-                var pendingTickets = from ticket in allTickets
-                                  where ticket.IsPaid == 0
-                                  select ticket;
+                PendingTickets.Clear();
 
                 await Shell.Current.CurrentPage.DisplayAlert("Cancelled!",
                                    "ALL pending tickets has been canceled", "OK");
@@ -122,11 +121,8 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                IEnumerable<Ticket> allTickets = await TicketService.GetAllTickets();
-
-                var pendingTickets = from ticket in allTickets
-                                  where ticket.IsPaid == 0
-                                  select ticket;
+                foreach (Ticket pendingTicket in PendingTickets)
+                    await TicketService.PayTicket(pendingTicket);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Paid!",
                                    "ALL pending tickets has been paid", "OK");

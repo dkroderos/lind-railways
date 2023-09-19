@@ -48,7 +48,7 @@ namespace LINDRailways.Services
                 DepartureTime = departureTime
             };
 
-            var id = await Database.InsertAsync(ticket);
+            await Database.InsertAsync(ticket);
         }
 
         public static async Task RemoveTicket(int id)
@@ -56,6 +56,27 @@ namespace LINDRailways.Services
             await Init();
 
             await Database.DeleteAsync<Ticket>(id);
+        }
+
+        public static async Task PayTicket(Ticket ticket)
+        {
+            await Init();
+
+            var newTicket = new Ticket
+            {
+                PassengerName = ticket.PassengerName,
+                IsMale = ticket.IsMale,
+                IsPaid = 1,
+                DepartureDate = ticket.DepartureDate,
+                TrainName = ticket.TrainName,
+                Origin = ticket.Origin,
+                Destination = ticket.Destination,
+                DepartureTime = ticket.DepartureTime
+            };
+
+            await Database.InsertAsync(newTicket);
+
+            await Database.DeleteAsync<Ticket>(ticket.Id);
         }
 
         public static async Task<IEnumerable<Ticket>> GetAllTickets()

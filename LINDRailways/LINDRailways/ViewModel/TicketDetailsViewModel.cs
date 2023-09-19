@@ -69,7 +69,7 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                await TicketService.RemoveTicket(Ticket.Id);
+                await TicketService.PayTicket(Ticket);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     "Ticket Paid", "OK");
