@@ -58,7 +58,7 @@ namespace LINDRailways.Services
             await Database.DeleteAsync<Ticket>(id);
         }
 
-        public static async Task<IEnumerable<Ticket>> GetPaidTickets()
+        public static async Task<IEnumerable<Ticket>> GetAllTickets()
         {
             await Init();
 

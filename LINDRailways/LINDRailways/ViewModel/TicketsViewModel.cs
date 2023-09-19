@@ -38,7 +38,7 @@ namespace LINDRailways.ViewModel
         }
 
         [RelayCommand]
-        public async Task GetTicketsAsync()
+        private async Task GetTicketsAsync()
         {
             if (IsBusy)
                 return;
@@ -48,8 +48,13 @@ namespace LINDRailways.ViewModel
                 IsBusy = true;
                 Tickets.Clear();
 
-                IEnumerable<Ticket> tickets = await TicketService.GetPaidTickets();
-                foreach (Ticket ticket in tickets)
+                IEnumerable<Ticket> allTickets = await TicketService.GetAllTickets();
+
+                var paidTickets = from ticket in allTickets
+                                  where ticket.IsPaid == 1 
+                                  select ticket;
+
+                foreach (Ticket ticket in paidTickets)
                 {
                     Tickets.Add(ticket);
                 }
