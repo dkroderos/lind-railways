@@ -124,6 +124,8 @@ namespace LINDRailways.ViewModel
                 foreach (Ticket pendingTicket in PendingTickets)
                     await TicketService.PayTicket(pendingTicket);
 
+                PendingTickets.Clear();
+
                 await Shell.Current.CurrentPage.DisplayAlert("Paid!",
                                    "ALL pending tickets has been paid", "OK");
             }
