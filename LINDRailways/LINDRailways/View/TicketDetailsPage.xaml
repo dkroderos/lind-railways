@@ -6,16 +6,82 @@
              x:DataType="viewmodel:TicketDetailsViewModel"
              Title="{Binding Ticket.TrainName}">
     <Grid RowDefinitions="*,Auto">
-        <ScrollView Grid.Row="0">
-            <VerticalStackLayout>
-                <Label Text="{Binding Ticket.Id}"/>
-                <Label Text="{Binding Ticket.DepartureTime}"/>
-                <Label Text="{Binding Ticket.DepartureDate}"/>
-                <Label Text="{Binding Ticket.IsMale}"/>
-                <Label Text="{Binding Ticket.IsPaid}"/>
-                <Label Text="{Binding Ticket.Origin}"/>
-                <Label Text="{Binding Ticket.Destination}"/>
-                <Label Text="{Binding Ticket.TrainName}"/>
+        <ScrollView>
+            <VerticalStackLayout Grid.Row="0">
+                <Grid ColumnDefinitions="*,Auto,*"
+                      RowDefinitions="160,Auto">
+                    <BoxView BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
+                             Grid.ColumnSpan="3"
+                             HeightRequest="160"
+                             HorizontalOptions="FillAndExpand"/>
+                    <Border Grid.RowSpan="2"
+                            Grid.Column="1"
+                            HeightRequest="200"
+                            WidthRequest="200"
+                            Stroke="{AppThemeBinding Light={StaticResource LatteLavender}, Dark={StaticResource MacchiatoLavender}}"
+                            StrokeThickness="15"
+                            StrokeShape="RoundRectangle 80,80,80,80"
+                            Margin="0,60,0,0">
+
+                        <Image Aspect="AspectFit"
+                               WidthRequest="200"
+                               HeightRequest="200"
+                               HorizontalOptions="Center"
+                               VerticalOptions="Center"
+                               Source="{Binding PassengerPhoto}"
+                               />
+                    </Border>
+                </Grid>
+                <Label Text="{Binding Ticket.PassengerName}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" 
+                       Margin="0,0,0,20"
+                       FontSize="30"/>
+                <VerticalStackLayout Margin="20,0,20,0">
+                    <HorizontalStackLayout HorizontalOptions="Start" >
+                        <Label Text="Train Name:  "/>
+                        <Label Text="{Binding Ticket.TrainName}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start" >
+                        <Label Text="Origin:  "/>
+                        <Label Text="{Binding Ticket.Origin}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Label Text="Destination:  "/>
+                        <Label Text="{Binding Ticket.Destination}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start" >
+                        <Label Text="Departure Date:  "/>
+                        <Label Text="{Binding Ticket.DepartureDate}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start" >
+                        <Label Text="Departure Time:  "/>
+                        <Label Text="{Binding Ticket.DepartureTime}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start" >
+                        <Label Text="Gender:  "/>
+                        <Label Text="{Binding Gender}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start" >
+                        <Label Text="Is Paid:  "/>
+                        <Label Text="{Binding IsPaid}"
+                       VerticalOptions="Center" 
+                       HorizontalOptions="Center" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
             </VerticalStackLayout>
         </ScrollView>
         <Grid Grid.Row="1"
