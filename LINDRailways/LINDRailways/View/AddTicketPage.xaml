@@ -65,7 +65,7 @@
                            />
                     <Entry Text="{Binding PassengerName}"/>
                     <HorizontalStackLayout HorizontalOptions="Start" >
-                        <CheckBox BindingContext="{Binding IsMale}"/>
+                        <CheckBox IsChecked="{Binding IsMale}"/>
                         <Label Text="Are you a male?"/>
                     </HorizontalStackLayout>
                 </VerticalStackLayout>

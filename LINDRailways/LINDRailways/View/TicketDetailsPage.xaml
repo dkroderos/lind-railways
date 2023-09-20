@@ -28,7 +28,7 @@
                                HeightRequest="200"
                                HorizontalOptions="Center"
                                VerticalOptions="Center"
-                               Source="{Binding PassengerPhoto}"
+                               Source="{Binding Ticket.PassengerPhoto}"
                                />
                     </Border>
                 </Grid>
@@ -70,13 +70,13 @@
                     </HorizontalStackLayout>
                     <HorizontalStackLayout HorizontalOptions="Start" >
                         <Label Text="Gender:  "/>
-                        <Label Text="{Binding Gender}"
+                        <Label Text="{Binding Ticket.Gender}"
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout HorizontalOptions="Start" >
                         <Label Text="Is Paid:  "/>
-                        <Label Text="{Binding IsPaid}"
+                        <Label Text="{Binding Ticket.IsPaidString}"
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" />
                     </HorizontalStackLayout>
