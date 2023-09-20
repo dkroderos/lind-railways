@@ -19,6 +19,8 @@ namespace LINDRailways.ViewModel
         public PendingTicketsViewModel()
         {
             Title = "Pending Tickets";
+
+            _ = GetPendingTicketsAsync();
         }
 
         [ObservableProperty]

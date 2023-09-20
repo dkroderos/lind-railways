@@ -69,6 +69,7 @@
                     Text="Add Ticket"
                     BackgroundColor="{AppThemeBinding Light={StaticResource LattePink}, Dark={StaticResource MacchiatoPink}}"
                     TextColor="{AppThemeBinding Light={StaticResource MacchiatoText}, Dark={StaticResource LatteText}}"
+                    Command="{Binding GoToTrainSchedulesCommand}"
                     />
         </Grid>
     </Grid>

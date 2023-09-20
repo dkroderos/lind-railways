@@ -19,6 +19,8 @@ namespace LINDRailways.ViewModel
         public TicketsViewModel()
         {
             Title = "Tickets";
+
+            _ = GetTicketsAsync();
         }
 
         [ObservableProperty]
@@ -35,6 +37,12 @@ namespace LINDRailways.ViewModel
                 {
                     { "Ticket", ticket }
                 });
+        }
+
+        [RelayCommand]
+        private async Task GoToTrainSchedulesAsync()
+        {
+            await Shell.Current.GoToAsync(nameof(TrainSchedulesPage), true);
         }
 
         [RelayCommand]
