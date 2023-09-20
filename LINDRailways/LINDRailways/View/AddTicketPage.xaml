@@ -22,7 +22,7 @@
                             StrokeThickness="15"
                             StrokeShape="RoundRectangle 80,80,80,80"
                             Margin="0,60,0,0">
-                        
+
                         <Image Aspect="AspectFit"
                                WidthRequest="200"
                                HeightRequest="200"
@@ -34,19 +34,42 @@
                 <Label Text="{Binding TrainSchedule.TrainName.Name}"
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" 
+                       Margin="0,0,0,20"
                        FontSize="30"/>
                 <Label Text="{Binding TrainSchedule.TrainName.Description}"
-                       VerticalOptions="Center" 
-                       HorizontalOptions="Start" />
-                <Label Text="{Binding TrainSchedule.Origin.Name}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Margin="0,0,0,20"
+                       />
+                <VerticalStackLayout Margin="20,0,20,0">
+                    <HorizontalStackLayout HorizontalOptions="Start" >
+                        <Label Text="Origin:  "/>
+                        <Label Text="{Binding TrainSchedule.Origin.Name}"
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" />
-                <Label Text="{Binding TrainSchedule.Destination.Name}"
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start" >
+                        <Label Text="Destination:  "/>
+                        <Label Text="{Binding TrainSchedule.Destination.Name}"
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" />
-                <Label Text="{Binding TrainSchedule.DepartureTime}"
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start" >
+                        <Label Text="Departure Time:  "/>
+                        <Label Text="{Binding TrainSchedule.DepartureTime}"
                        VerticalOptions="Center" 
                        HorizontalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <Label Margin="0,20,0,0"
+                           Text="Enter Name:"
+                           />
+                    <Entry Text="{Binding PassengerName}"/>
+                    <HorizontalStackLayout HorizontalOptions="Start" >
+                        <CheckBox BindingContext="{Binding IsMale}"/>
+                        <Label Text="Are you a male?"/>
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
             </VerticalStackLayout>
         </ScrollView>
         <Grid Grid.Row="1"

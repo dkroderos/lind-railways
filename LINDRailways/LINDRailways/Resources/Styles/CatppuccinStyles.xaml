@@ -36,7 +36,9 @@
 
     <Style TargetType="Entry" ApplyToDerivedTypes="True">
         <Setter Property="BackgroundColor"
-                Value="{AppThemeBinding Light={StaticResource LattePink}, Dark={StaticResource MacchiatoPink}}" />
+                Value="{AppThemeBinding Light={StaticResource LatteSurface2}, Dark={StaticResource MacchiatoSurface2}}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource LatteSubtext1}, Dark={StaticResource MacchiatoSubtext1}}" />
     </Style>
 
     <Style TargetType="Label" ApplyToDerivedTypes="True">

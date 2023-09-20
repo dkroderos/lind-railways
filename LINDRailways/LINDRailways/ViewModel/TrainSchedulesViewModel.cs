@@ -67,11 +67,14 @@ namespace LINDRailways.ViewModel
         private void AddTrainSchedules()
         {
             TransportationEntity mugenTrain = new("Mugen Train",
-                ".", "mugen_train.jpg", ".");
+                "A train that is completely safe from demons.", 
+                "mugen_train.jpg", ".");
             TransportationEntity capitolTrain = new("Capitol Train",
-                ".", "capitol_train.jpg", ".");
+                "A train where you can find your love one before your death.", 
+                "capitol_train.jpg", ".");
             TransportationEntity seaTrain = new("Sea Train",
-                ".", "sea_train.jpg", ".");
+                "Is it a boat? Is it a fish? No, it's a train on water.", 
+                "sea_train.jpg", ".");
 
             TransportationEntity philippines = new("Philippines",
                 ".", ".", ".");
