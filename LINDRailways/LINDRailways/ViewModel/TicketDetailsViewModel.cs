@@ -37,14 +37,52 @@ namespace LINDRailways.ViewModel
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     "Ticket Cancelled", "OK");
+
+                await Shell.Current.GoToAsync("..");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
+
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
                     $"Unable to cancel ticket: {ex.Message}", "OK");
             }
+        }
 
+        [RelayCommand]
+        private async Task PayTicketAsync()
+        {
+            if (this.Ticket.IsPaid == 1)
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Already Paid!",
+                    "Ticket is already paid", "OK");
+
+                return;
+            }
+
+            bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
+                "Pay Ticket", "Are you sure you want to pay this ticket?",
+                "Yes", "No");
+
+            if (!isConfirmed)
+                return;
+
+            try
+            {
+                await TicketService.PayTicket(Ticket);
+
+                await Shell.Current.CurrentPage.DisplayAlert("Success!",
+                    "Ticket Paid", "OK");
+
+                await Shell.Current.GoToAsync("..");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+
+                await Shell.Current.CurrentPage.DisplayAlert("Error!",
+                    $"Unable to pay ticket: {ex.Message}", "OK");
+            }
         }
     }
 }

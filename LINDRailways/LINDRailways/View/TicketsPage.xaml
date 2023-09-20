@@ -6,10 +6,12 @@
              xmlns:model="clr-namespace:LINDRailways.Model"
              x:DataType="viewmodel:TicketsViewModel"
              Title="{Binding Title}">
+
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="REFRESH"
                      Command="{Binding GetTicketsCommand}"/>
     </ContentPage.ToolbarItems>
+
     <Grid RowDefinitions="*,Auto">
         <Grid Grid.Row="0" Padding="5">
             <RefreshView IsRefreshing="{Binding IsRefreshing}"
@@ -67,6 +69,7 @@
                     Text="Add Ticket"
                     BackgroundColor="{AppThemeBinding Light={StaticResource LattePink}, Dark={StaticResource MacchiatoPink}}"
                     TextColor="{AppThemeBinding Light={StaticResource MacchiatoText}, Dark={StaticResource LatteText}}"
+                    Command="{Binding GoToTrainSchedulesCommand}"
                     />
         </Grid>
     </Grid>

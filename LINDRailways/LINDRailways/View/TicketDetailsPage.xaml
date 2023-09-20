@@ -33,6 +33,7 @@
                     Margin="5,0,0,0"
                     BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen}, Dark={StaticResource MacchiatoGreen}}"
                     TextColor="{AppThemeBinding Light={StaticResource MacchiatoText}, Dark={StaticResource LatteText}}"
+                    Command="{Binding PayTicketCommand}"
                     Text="Pay Ticket"/>
         </Grid>
     </Grid>
