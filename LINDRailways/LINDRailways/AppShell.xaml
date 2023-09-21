@@ -5,26 +5,28 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:local="clr-namespace:LINDRailways"
     xmlns:view="clr-namespace:LINDRailways.View"
-    Shell.FlyoutBehavior="{OnPlatform WinUI=Locked,MacCatalyst=Locked,Default=Flyout}">
+    Shell.FlyoutBehavior="{OnPlatform WinUI=Locked,
+                                      MacCatalyst=Locked,
+                                      Default=Flyout}">
 
     <FlyoutItem Title="Home">
         <Tab>
-            <ShellContent ContentTemplate="{DataTemplate view:HomePage}"/>
+            <ShellContent ContentTemplate="{DataTemplate view:HomePage}" />
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Train Shedules">
         <Tab>
-            <ShellContent ContentTemplate="{DataTemplate view:TrainSchedulesPage}"/>
+            <ShellContent ContentTemplate="{DataTemplate view:TrainSchedulesPage}" />
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Tickets">
         <Tab>
-            <ShellContent ContentTemplate="{DataTemplate view:TicketsPage}"/>
+            <ShellContent ContentTemplate="{DataTemplate view:TicketsPage}" />
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Pending Tickets">
         <Tab>
-            <ShellContent ContentTemplate="{DataTemplate view:PendingTicketsPage}"/>
+            <ShellContent ContentTemplate="{DataTemplate view:PendingTicketsPage}" />
         </Tab>
     </FlyoutItem>
 </Shell>
