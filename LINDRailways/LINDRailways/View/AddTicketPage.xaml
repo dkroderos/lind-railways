@@ -64,7 +64,13 @@
                            Text="Enter Name:"
                            />
                     <Entry Text="{Binding PassengerName}"/>
-                    <HorizontalStackLayout HorizontalOptions="Start" >
+                    <Label Margin="0,20,0,0"
+                           Text="Enter Departure Date:"
+                           />
+                    <DatePicker Date="{Binding DepartureDate}" 
+                                MinimumDate="{Binding MinimumDepartureDate}"
+                                MaximumDate="{Binding MaximumDepartureDate}"/>
+                    <HorizontalStackLayout HorizontalOptions="Start" Margin="0,20,0,0">
                         <CheckBox IsChecked="{Binding IsMale}"/>
                         <Label Text="Are you a male?"/>
                     </HorizontalStackLayout>

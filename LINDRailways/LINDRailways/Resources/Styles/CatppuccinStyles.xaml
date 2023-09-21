@@ -13,14 +13,12 @@
                 Value="True" />
         <Setter Property="Shell.FlyoutBackground"
                 Value="{AppThemeBinding Light={StaticResource LatteMantle}, Dark={StaticResource MacchiatoMantle}}" />
+        <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}" />
     </Style>
 
     <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
         <Setter Property="BackgroundColor"
                 Value="{AppThemeBinding Light={StaticResource LatteBase}, Dark={StaticResource MacchiatoBase}}" />
-    </Style>
-
-    <Style TargetType="CollectionView" x:Key="TrainSchedules">
     </Style>
 
     <Style TargetType="Button" ApplyToDerivedTypes="True">
@@ -41,10 +39,20 @@
                 Value="{AppThemeBinding Light={StaticResource LatteSubtext1}, Dark={StaticResource MacchiatoSubtext1}}" />
     </Style>
 
+    <Style TargetType="DatePicker" ApplyToDerivedTypes="True">
+        <Setter Property="BackgroundColor"
+                Value="{AppThemeBinding Light={StaticResource LatteSurface2}, Dark={StaticResource MacchiatoSurface2}}" />
+        <Setter Property="TextColor"
+                Value="{AppThemeBinding Light={StaticResource LatteSubtext1}, Dark={StaticResource MacchiatoSubtext1}}" />
+    </Style>
+
+    <Style TargetType="CheckBox" ApplyToDerivedTypes="True">
+        <Setter Property="Color"
+                Value="{AppThemeBinding Light={StaticResource LatteSubtext1}, Dark={StaticResource MacchiatoSubtext1}}" />
+    </Style>
+
     <Style TargetType="Label" ApplyToDerivedTypes="True">
         <Setter Property="TextColor"
                 Value="{AppThemeBinding Light={StaticResource LatteSubtext0}, Dark={StaticResource MacchiatoSubtext0}}" />
-        <!--<Setter Property="FontSize"
-                Value="100"/>-->
     </Style>
 </ResourceDictionary>

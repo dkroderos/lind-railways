@@ -70,7 +70,7 @@ namespace LINDRailways.ViewModel
                 "A train that is completely safe from demons.", 
                 "mugen_train.jpg", ".");
             TransportationEntity capitolTrain = new("Capitol Train",
-                "A train where you can find your love one before your death.", 
+                "A train to find your love one before your death.", 
                 "capitol_train.jpg", ".");
             TransportationEntity seaTrain = new("Sea Train",
                 "Is it a boat? Is it a fish? No, it's a train on water.", 
