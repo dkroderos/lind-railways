@@ -28,7 +28,7 @@ namespace LINDRailways.ViewModel
         private TrainSchedule trainSchedule;
 
         [ObservableProperty]
-        private DateTime departureDate;
+        private DateTime departureDate = DateTime.Now.AddDays(1);
 
         [ObservableProperty]
         private DateTime minimumDepartureDate = DateTime.Now.AddDays(1);
