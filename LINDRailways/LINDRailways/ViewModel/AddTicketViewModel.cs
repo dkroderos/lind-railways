@@ -19,11 +19,42 @@ namespace LINDRailways.ViewModel
         }
 
         [ObservableProperty]
-        TrainSchedule trainSchedule;
+        private string passengerName;
+
+        [ObservableProperty]
+        private bool isMale;
+
+        [ObservableProperty]
+        private TrainSchedule trainSchedule;
+
+        [ObservableProperty]
+        private DateTime departureDate = DateTime.Now.AddDays(1);
+
+        [ObservableProperty]
+        private DateTime minimumDepartureDate = DateTime.Now.AddDays(1);
+
+        [ObservableProperty]
+        private DateTime maximumDepartureDate = DateTime.Now.AddDays(14);
 
         [RelayCommand]
         private async Task BookTicketAsync()
         {
+            if (PassengerName == null)
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Empty Name", 
+                    "Please enter your name", "OK");
+
+                return;
+            }
+
+            if (DepartureDate < DateTime.Now)
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Departure Date", 
+                    "Please enter a valid departure date", "OK");
+
+                return;
+            }
+
             bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
                 "Book Ticket", "Are you sure you want to book?", "Yes", "No");
 
@@ -32,8 +63,8 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                await TicketService.AddTicket("David", 1, 1,
-                    DateOnly.FromDateTime(DateTime.Now).ToString(),
+                await TicketService.AddTicket(PassengerName, IsMale ? 1 : 0, 1,
+                    DateOnly.FromDateTime(DepartureDate).ToString(),
                     TrainSchedule.TrainName.Name, TrainSchedule.Origin.Name,
                     TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString()); ;
 
@@ -51,6 +82,22 @@ namespace LINDRailways.ViewModel
         [RelayCommand]
         private async Task ReserveTicketAsync()
         {
+            if (PassengerName == null)
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Empty Name", 
+                    "Please enter your name", "OK");
+
+                return;
+            }
+
+            if (DepartureDate < DateTime.Now)
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Departure Date", 
+                    "Please enter a valid departure date", "OK");
+
+                return;
+            }
+
             bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
                 "Reserve Ticket", "Are you sure you want to reserve?", "Yes", "No");
 
@@ -59,7 +106,7 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                await TicketService.AddTicket("David", 1, 0,
+                await TicketService.AddTicket(PassengerName, IsMale ? 1 : 0, 0,
                     DateOnly.FromDateTime(DateTime.Now).ToString(),
                     TrainSchedule.TrainName.Name, TrainSchedule.Origin.Name,
                     TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString()); ;

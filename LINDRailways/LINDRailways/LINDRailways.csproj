@@ -12,7 +12,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>LINDRailways</ApplicationTitle>
+		<ApplicationTitle>LIND Railways</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.lindrailways</ApplicationId>
@@ -50,6 +50,8 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\capitol_train.jpg" />
+	  <None Remove="Resources\Images\female.jpg" />
+	  <None Remove="Resources\Images\male.jpg" />
 	  <None Remove="Resources\Images\mugen_train.jpg" />
 	  <None Remove="Resources\Images\sea_train.jpg" />
 	</ItemGroup>

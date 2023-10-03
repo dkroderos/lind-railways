@@ -1,49 +1,50 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LINDRailways.View.TrainSchedulesPage"
-             xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
-             xmlns:model="clr-namespace:LINDRailways.Model"
-             x:DataType="viewmodel:TrainSchedulesViewModel"
-             Title="{Binding Title}">
+<ContentPage
+    x:Class="LINDRailways.View.TrainSchedulesPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:LINDRailways.Model"
+    xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
+    Title="{Binding Title}"
+    x:DataType="viewmodel:TrainSchedulesViewModel">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="REFRESH"
-                     Command="{Binding GetTrainSchedulesCommand}"/>
+        <ToolbarItem Command="{Binding GetTrainSchedulesCommand}" Text="REFRESH" />
     </ContentPage.ToolbarItems>
 
     <Grid Padding="5">
-        <RefreshView Command="{Binding GetTrainSchedulesCommand}"
-                     IsRefreshing="{Binding IsRefreshing}">
-            <CollectionView SelectionMode="None"
-                            ItemsSource="{Binding TrainSchedules}">
+        <RefreshView Command="{Binding GetTrainSchedulesCommand}" IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding TrainSchedules}" SelectionMode="None">
 
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:TrainSchedule">
-                        <Border HeightRequest="125"
+                        <Border
                             Padding="0"
-                            Stroke="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}"
+                            HeightRequest="125"
+                            Stroke="{AppThemeBinding Light={StaticResource LatteText},
+                                                     Dark={StaticResource MacchiatoText}}"
                             StrokeShape="RoundRectangle 10 40 40 10"
                             StrokeThickness="4">
                             <Border.Shadow>
-                                <Shadow Brush="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
-                                    Offset="10, 10"
-                                    Opacity="0.8"/>
+                                <Shadow
+                                    Brush="{AppThemeBinding Light={StaticResource LatteCrust},
+                                                            Dark={StaticResource MacchiatoCrust}}"
+                                    Opacity="0.8"
+                                    Offset="10, 10" />
                             </Border.Shadow>
-                            <Frame BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}"
-                               Padding="20">
+                            <Frame Padding="20" BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer CommandParameter="{Binding .}"
-                                                      Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainSchedulesViewModel}}, Path=GoToAddTicketCommand}"/>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainSchedulesViewModel}}, Path=GoToAddTicketCommand}" CommandParameter="{Binding .}" />
                                 </Frame.GestureRecognizers>
-                                <Grid Padding="0" 
-                                  Margin="0"
-                                  ColumnDefinitions="*">
+                                <Grid
+                                    Margin="0"
+                                    Padding="0"
+                                    ColumnDefinitions="*">
                                     <VerticalStackLayout Grid.Column="1">
-                                        <Label Text="{Binding TrainName.Name}"/>
-                                        <Label Text="{Binding Origin.Name}"/>
-                                        <Label Text="{Binding Destination.Name}"/>
-                                        <Label Text="{Binding DepartureTime}"/>
+                                        <Label Text="{Binding TrainName.Name}" />
+                                        <Label Text="{Binding Origin.Name}" />
+                                        <Label Text="{Binding Destination.Name}" />
+                                        <Label Text="{Binding DepartureTime}" />
                                     </VerticalStackLayout>
                                 </Grid>
                             </Frame>
