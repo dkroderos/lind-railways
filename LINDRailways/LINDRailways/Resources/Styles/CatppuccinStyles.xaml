@@ -9,6 +9,7 @@
         <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}" />
         <Setter Property="Shell.NavBarHasShadow" Value="True" />
         <Setter Property="Shell.FlyoutBackground" Value="{AppThemeBinding Light={StaticResource LatteMantle}, Dark={StaticResource MacchiatoMantle}}" />
+        <Setter Property="Shell.FlyoutBackgroundColor" Value="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}" />
         <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}" />
     </Style>
 

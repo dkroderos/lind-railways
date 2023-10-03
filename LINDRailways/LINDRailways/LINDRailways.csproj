@@ -12,7 +12,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 
 		<!-- Display name -->
-		<ApplicationTitle>LINDRailways</ApplicationTitle>
+		<ApplicationTitle>LIND Railways</ApplicationTitle>
 
 		<!-- App Identifier -->
 		<ApplicationId>com.companyname.lindrailways</ApplicationId>

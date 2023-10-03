@@ -6,10 +6,6 @@
     xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
     Title="{Binding Title}"
     x:DataType="viewmodel:HomeViewModel">
-    <VerticalStackLayout>
-        <Label
-            HorizontalOptions="Center"
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" />
-    </VerticalStackLayout>
+
+    <VerticalStackLayout />
 </ContentPage>
