@@ -19,7 +19,7 @@ namespace LINDRailways.ViewModel
         }
 
         [ObservableProperty]
-        Ticket ticket;
+        private Ticket ticket;
 
         [RelayCommand]
         private async Task CancelTicketAsync()

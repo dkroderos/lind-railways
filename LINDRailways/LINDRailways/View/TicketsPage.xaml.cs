@@ -9,6 +9,4 @@ public partial class TicketsPage : ContentPage
 		InitializeComponent();
 		BindingContext = viewModel;
 	}
-	
-
 }
