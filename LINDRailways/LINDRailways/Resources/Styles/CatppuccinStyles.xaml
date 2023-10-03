@@ -1,50 +1,44 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LINDRailways.Resources.Styles.CatppuccinStyles">
-    <Style TargetType="Shell" ApplyToDerivedTypes="True">
-        <Setter Property="Shell.BackgroundColor" 
-                Value="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}" />
-        <Setter Property="Shell.ForegroundColor" 
-                Value="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}" />
-        <Setter Property="Shell.TitleColor" 
-                Value="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}" />
-        <Setter Property="Shell.NavBarHasShadow" 
-                Value="True" />
-        <Setter Property="Shell.FlyoutBackground"
-                Value="{AppThemeBinding Light={StaticResource LatteMantle}, Dark={StaticResource MacchiatoMantle}}" />
+<ResourceDictionary
+    x:Class="LINDRailways.Resources.Styles.CatppuccinStyles"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <Style ApplyToDerivedTypes="True" TargetType="Shell">
+        <Setter Property="Shell.BackgroundColor" Value="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}" />
+        <Setter Property="Shell.ForegroundColor" Value="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}" />
+        <Setter Property="Shell.TitleColor" Value="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}" />
+        <Setter Property="Shell.NavBarHasShadow" Value="True" />
+        <Setter Property="Shell.FlyoutBackground" Value="{AppThemeBinding Light={StaticResource LatteMantle}, Dark={StaticResource MacchiatoMantle}}" />
+        <Setter Property="Shell.FlyoutBackgroundColor" Value="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}" />
+        <Setter Property="Shell.TabBarBackgroundColor" Value="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}" />
     </Style>
 
-    <Style TargetType="ContentPage" ApplyToDerivedTypes="True">
-        <Setter Property="BackgroundColor"
-                Value="{AppThemeBinding Light={StaticResource LatteBase}, Dark={StaticResource MacchiatoBase}}" />
+    <Style ApplyToDerivedTypes="True" TargetType="ContentPage">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LatteBase}, Dark={StaticResource MacchiatoBase}}" />
     </Style>
 
-    <Style TargetType="CollectionView" x:Key="TrainSchedules">
+    <Style ApplyToDerivedTypes="True" TargetType="Button">
+        <Setter Property="CornerRadius" Value="25" />
+        <Setter Property="HeightRequest" Value="50" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}" />
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LatteSurface1}, Dark={StaticResource MacchiatoSurface1}}" />
     </Style>
 
-    <Style TargetType="Button" ApplyToDerivedTypes="True">
-        <Setter Property="CornerRadius"
-                Value="25"/>
-        <Setter Property="HeightRequest"
-                Value="50"/>
-        <Setter Property="TextColor"
-                Value="{AppThemeBinding Light={StaticResource LatteText}, Dark={StaticResource MacchiatoText}}" />
-        <Setter Property="BackgroundColor"
-                Value="{AppThemeBinding Light={StaticResource LatteSurface1}, Dark={StaticResource MacchiatoSurface1}}" />
+    <Style ApplyToDerivedTypes="True" TargetType="Entry">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LatteSurface2}, Dark={StaticResource MacchiatoSurface2}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LatteSubtext1}, Dark={StaticResource MacchiatoSubtext1}}" />
     </Style>
 
-    <Style TargetType="Entry" ApplyToDerivedTypes="True">
-        <Setter Property="BackgroundColor"
-                Value="{AppThemeBinding Light={StaticResource LatteSurface2}, Dark={StaticResource MacchiatoSurface2}}" />
-        <Setter Property="TextColor"
-                Value="{AppThemeBinding Light={StaticResource LatteSubtext1}, Dark={StaticResource MacchiatoSubtext1}}" />
+    <Style ApplyToDerivedTypes="True" TargetType="DatePicker">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LatteSurface2}, Dark={StaticResource MacchiatoSurface2}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LatteSubtext1}, Dark={StaticResource MacchiatoSubtext1}}" />
     </Style>
 
-    <Style TargetType="Label" ApplyToDerivedTypes="True">
-        <Setter Property="TextColor"
-                Value="{AppThemeBinding Light={StaticResource LatteSubtext0}, Dark={StaticResource MacchiatoSubtext0}}" />
-        <!--<Setter Property="FontSize"
-                Value="100"/>-->
+    <Style ApplyToDerivedTypes="True" TargetType="CheckBox">
+        <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource LatteSubtext1}, Dark={StaticResource MacchiatoSubtext1}}" />
+    </Style>
+
+    <Style ApplyToDerivedTypes="True" TargetType="Label">
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LatteSubtext0}, Dark={StaticResource MacchiatoSubtext0}}" />
     </Style>
 </ResourceDictionary>

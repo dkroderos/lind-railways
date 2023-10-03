@@ -17,7 +17,7 @@ namespace LINDRailways.Services
             if (Database is not null)
                 return;
 
-            string databaseFilename = "Tickets.db3";
+            string databaseFilename = "Tickets";
             string databasePath = Path.Combine(FileSystem.AppDataDirectory, databaseFilename);
 
             SQLite.SQLiteOpenFlags flags =
@@ -45,7 +45,10 @@ namespace LINDRailways.Services
                 TrainName = trainName,
                 Origin = origin,
                 Destination = destination,
-                DepartureTime = departureTime
+                DepartureTime = departureTime,
+                IsPaidString = isPaid == 1 ? "Yes" : "No",
+                Gender = isMale == 1 ? "Male" : "Female",
+                PassengerPhoto = isMale == 1 ? "male.jpg" : "female.jpg"
             };
 
             await Database.InsertAsync(ticket);
@@ -71,7 +74,10 @@ namespace LINDRailways.Services
                 TrainName = ticket.TrainName,
                 Origin = ticket.Origin,
                 Destination = ticket.Destination,
-                DepartureTime = ticket.DepartureTime
+                DepartureTime = ticket.DepartureTime,
+                IsPaidString = "Yes",
+                Gender = ticket.IsMale == 1 ? "Male" : "Female",
+                PassengerPhoto = ticket.IsMale == 1 ? "male.jpg" : "female.jpg"
             };
 
             await Database.InsertAsync(newTicket);

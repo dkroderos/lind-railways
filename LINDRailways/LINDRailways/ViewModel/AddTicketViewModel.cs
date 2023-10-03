@@ -27,13 +27,30 @@ namespace LINDRailways.ViewModel
         [ObservableProperty]
         private TrainSchedule trainSchedule;
 
+        [ObservableProperty]
+        private DateTime departureDate = DateTime.Now.AddDays(1);
+
+        [ObservableProperty]
+        private DateTime minimumDepartureDate = DateTime.Now.AddDays(1);
+
+        [ObservableProperty]
+        private DateTime maximumDepartureDate = DateTime.Now.AddDays(14);
+
         [RelayCommand]
         private async Task BookTicketAsync()
         {
             if (PassengerName == null)
             {
-                await Shell.Current.CurrentPage.DisplayAlert("Empty name", 
+                await Shell.Current.CurrentPage.DisplayAlert("Empty Name", 
                     "Please enter your name", "OK");
+
+                return;
+            }
+
+            if (DepartureDate < DateTime.Now)
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Departure Date", 
+                    "Please enter a valid departure date", "OK");
 
                 return;
             }
@@ -47,7 +64,7 @@ namespace LINDRailways.ViewModel
             try
             {
                 await TicketService.AddTicket(PassengerName, IsMale ? 1 : 0, 1,
-                    DateOnly.FromDateTime(DateTime.Now).ToString(),
+                    DateOnly.FromDateTime(DepartureDate).ToString(),
                     TrainSchedule.TrainName.Name, TrainSchedule.Origin.Name,
                     TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString()); ;
 
@@ -67,8 +84,16 @@ namespace LINDRailways.ViewModel
         {
             if (PassengerName == null)
             {
-                await Shell.Current.CurrentPage.DisplayAlert("Empty name", 
+                await Shell.Current.CurrentPage.DisplayAlert("Empty Name", 
                     "Please enter your name", "OK");
+
+                return;
+            }
+
+            if (DepartureDate < DateTime.Now)
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Departure Date", 
+                    "Please enter a valid departure date", "OK");
 
                 return;
             }

@@ -1,94 +1,113 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LINDRailways.View.AddTicketPage"
-             xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
-             x:DataType="viewmodel:AddTicketViewModel"
-             Title="{Binding TrainSchedule.TrainName.Name}">
+<ContentPage
+    x:Class="LINDRailways.View.AddTicketPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
+    Title="{Binding TrainSchedule.TrainName.Name}"
+    x:DataType="viewmodel:AddTicketViewModel">
     <Grid RowDefinitions="*,Auto">
         <ScrollView>
             <VerticalStackLayout Grid.Row="0">
-                <Grid ColumnDefinitions="*,Auto,*"
-                      RowDefinitions="160,Auto">
-                    <BoxView BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
-                             Grid.ColumnSpan="3"
-                             HeightRequest="160"
-                             HorizontalOptions="FillAndExpand"/>
-                    <Border Grid.RowSpan="2"
-                            Grid.Column="1"
-                            HeightRequest="200"
-                            WidthRequest="200"
-                            Stroke="{AppThemeBinding Light={StaticResource LatteLavender}, Dark={StaticResource MacchiatoLavender}}"
-                            StrokeThickness="15"
-                            StrokeShape="RoundRectangle 80,80,80,80"
-                            Margin="0,60,0,0">
+                <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="160,Auto">
+                    <BoxView
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust},
+                                                          Dark={StaticResource MacchiatoCrust}}"
+                        HeightRequest="160"
+                        HorizontalOptions="FillAndExpand" />
+                    <Border
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        Margin="0,60,0,0"
+                        HeightRequest="200"
+                        Stroke="{AppThemeBinding Light={StaticResource LatteLavender},
+                                                 Dark={StaticResource MacchiatoLavender}}"
+                        StrokeShape="RoundRectangle 80,80,80,80"
+                        StrokeThickness="15"
+                        WidthRequest="200">
 
-                        <Image Aspect="AspectFit"
-                               WidthRequest="200"
-                               HeightRequest="200"
-                               HorizontalOptions="Center"
-                               VerticalOptions="Center"
-                               Source="{Binding TrainSchedule.TrainName.ImageSource}"/>
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="200"
+                            HorizontalOptions="Center"
+                            Source="{Binding TrainSchedule.TrainName.ImageSource}"
+                            VerticalOptions="Center"
+                            WidthRequest="200" />
                     </Border>
                 </Grid>
-                <Label Text="{Binding TrainSchedule.TrainName.Name}"
-                       VerticalOptions="Center" 
-                       HorizontalOptions="Center" 
-                       Margin="0,0,0,20"
-                       FontSize="30"/>
-                <Label Text="{Binding TrainSchedule.TrainName.Description}"
-                           VerticalOptions="Center"
-                           HorizontalOptions="Center"
-                           Margin="0,0,0,20"
-                       />
+                <Label
+                    Margin="0,0,0,20"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    Text="{Binding TrainSchedule.TrainName.Name}"
+                    VerticalOptions="Center" />
+                <Label
+                    Margin="0,0,0,20"
+                    HorizontalOptions="Center"
+                    Text="{Binding TrainSchedule.TrainName.Description}"
+                    VerticalOptions="Center" />
                 <VerticalStackLayout Margin="20,0,20,0">
-                    <HorizontalStackLayout HorizontalOptions="Start" >
-                        <Label Text="Origin:  "/>
-                        <Label Text="{Binding TrainSchedule.Origin.Name}"
-                       VerticalOptions="Center" 
-                       HorizontalOptions="Center" />
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Origin:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TrainSchedule.Origin.Name}"
+                            VerticalOptions="Center" />
                     </HorizontalStackLayout>
-                    <HorizontalStackLayout HorizontalOptions="Start" >
-                        <Label Text="Destination:  "/>
-                        <Label Text="{Binding TrainSchedule.Destination.Name}"
-                       VerticalOptions="Center" 
-                       HorizontalOptions="Center" />
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Destination:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TrainSchedule.Destination.Name}"
+                            VerticalOptions="Center" />
                     </HorizontalStackLayout>
-                    <HorizontalStackLayout HorizontalOptions="Start" >
-                        <Label Text="Departure Time:  "/>
-                        <Label Text="{Binding TrainSchedule.DepartureTime}"
-                       VerticalOptions="Center" 
-                       HorizontalOptions="Center" />
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Departure Time:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TrainSchedule.DepartureTime}"
+                            VerticalOptions="Center" />
                     </HorizontalStackLayout>
-                    <Label Margin="0,20,0,0"
-                           Text="Enter Name:"
-                           />
-                    <Entry Text="{Binding PassengerName}"/>
-                    <HorizontalStackLayout HorizontalOptions="Start" >
-                        <CheckBox BindingContext="{Binding IsMale}"/>
-                        <Label Text="Are you a male?"/>
+                    <Label Margin="0,20,0,0" Text="Enter Name:" />
+                    <Entry Text="{Binding PassengerName}" />
+                    <Label Margin="0,20,0,0" Text="Enter Departure Date:" />
+                    <DatePicker
+                        Date="{Binding DepartureDate}"
+                        MaximumDate="{Binding MaximumDepartureDate}"
+                        MinimumDate="{Binding MinimumDepartureDate}" />
+                    <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Start">
+                        <CheckBox IsChecked="{Binding IsMale}" />
+                        <Label Text="Are you a male?" />
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
 
             </VerticalStackLayout>
         </ScrollView>
-        <Grid Grid.Row="1"
-              BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust}, Dark={StaticResource MacchiatoCrust}}"
-              ColumnDefinitions="*,*"
-              Padding="10">
-            <Button Grid.Column="0" 
-                    Text="Reserve"
-                    Margin="0,0,5,0"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource LatteBlue}, Dark={StaticResource MacchiatoBlue}}"
-                    TextColor="{AppThemeBinding Light={StaticResource MacchiatoText}, Dark={StaticResource LatteText}}"
-                    Command="{Binding ReserveTicketCommand}"
-                    />
-            <Button Grid.Column="1" 
-                    Margin="5,0,0,0"
-                    BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen}, Dark={StaticResource MacchiatoGreen}}"
-                    TextColor="{AppThemeBinding Light={StaticResource MacchiatoText}, Dark={StaticResource LatteText}}"
-                    Command="{Binding BookTicketCommand}"
-                    Text="Book"/>
+        <Grid
+            Grid.Row="1"
+            Padding="10"
+            BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust},
+                                              Dark={StaticResource MacchiatoCrust}}"
+            ColumnDefinitions="*,*">
+            <Button
+                Grid.Column="0"
+                Margin="0,0,5,0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteBlue},
+                                                  Dark={StaticResource MacchiatoBlue}}"
+                Command="{Binding ReserveTicketCommand}"
+                Text="Reserve"
+                TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
+                                            Dark={StaticResource LatteText}}" />
+            <Button
+                Grid.Column="1"
+                Margin="5,0,0,0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
+                                                  Dark={StaticResource MacchiatoGreen}}"
+                Command="{Binding BookTicketCommand}"
+                Text="Book"
+                TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
+                                            Dark={StaticResource LatteText}}" />
         </Grid>
     </Grid>
 </ContentPage>

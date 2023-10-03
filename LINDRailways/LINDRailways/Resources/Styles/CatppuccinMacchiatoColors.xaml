@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="LINDRailways.Resources.Styles.CatppuccinMacchiatoColors">
+<ResourceDictionary
+    x:Class="LINDRailways.Resources.Styles.CatppuccinMacchiatoColors"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <Color x:Key="MacchiatoRosewater">#f4dbd6</Color>
     <Color x:Key="MacchiatoFlamingo">#f0c6c6</Color>
     <Color x:Key="MacchiatoPink">#f5bde6</Color>
@@ -29,5 +30,5 @@
     <Color x:Key="MacchiatoMantle">#1e2030</Color>
     <Color x:Key="MacchiatoCrust">#181926</Color>
 
-   
+
 </ResourceDictionary>

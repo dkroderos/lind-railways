@@ -21,10 +21,6 @@ namespace LINDRailways.ViewModel
         [ObservableProperty]
         private Ticket ticket;
 
-        public string PassengerPhoto => Ticket.IsMale == 1 ? "male.jpg" : "female.jpg";
-        public string Gender => Ticket.IsMale == 1 ? "Male" : "Female";
-        public string IsPaid => Ticket.IsPaid == 1 ? "Yes" : "No";
-
         [RelayCommand]
         private async Task CancelTicketAsync()
         {

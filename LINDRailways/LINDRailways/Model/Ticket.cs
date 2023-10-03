@@ -12,6 +12,7 @@ namespace LINDRailways.Model
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         public string PassengerName { get; set; }
+        public string PassengerPhoto { get; set; }
         public int IsMale { get; set; }
         public int IsPaid { get; set; }
         public string DepartureDate { get; set; }
@@ -19,5 +20,7 @@ namespace LINDRailways.Model
         public string Origin { get; set; }
         public string Destination { get; set; }
         public string DepartureTime { get; set; }
+        public string Gender { get; set; }
+        public string IsPaidString { get; set; }
     }
 }
