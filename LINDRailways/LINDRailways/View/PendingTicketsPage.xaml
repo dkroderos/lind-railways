@@ -44,6 +44,7 @@
                                         <VerticalStackLayout Grid.Column="1">
                                             <Label Text="{Binding Id}" />
                                             <Label Text="{Binding PassengerName}" />
+                                            <Label Text="{Binding PassengerEmail}" />
                                             <Label Text="{Binding DepartureDate}" />
                                             <Label Text="{Binding IsMale}" />
                                             <Label Text="{Binding IsPaid}" />

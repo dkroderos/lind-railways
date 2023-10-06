@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace LINDRailways.ViewModel
@@ -20,6 +21,9 @@ namespace LINDRailways.ViewModel
 
         [ObservableProperty]
         private string passengerName;
+
+        [ObservableProperty]
+        public string passengerEmail;
 
         [ObservableProperty]
         private bool isMale;
@@ -47,6 +51,17 @@ namespace LINDRailways.ViewModel
                 return;
             }
 
+            string emailValidationPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            if (!Regex.IsMatch(PassengerEmail, emailValidationPattern))
+            {
+            
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Email", 
+                    "Please enter a valid email address", "OK");
+
+                return;
+            }
+
             if (DepartureDate < DateTime.Now)
             {
                 await Shell.Current.CurrentPage.DisplayAlert("Invalid Departure Date", 
@@ -63,13 +78,13 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                await TicketService.AddTicket(PassengerName, IsMale ? 1 : 0, 1,
+                await TicketService.AddTicket(PassengerName, PassengerEmail, IsMale ? 1 : 0, 1,
                     DateOnly.FromDateTime(DepartureDate).ToString(),
                     TrainSchedule.TrainName.Name, TrainSchedule.Origin.Name,
-                    TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString()); ;
+                    TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString());;
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
-                    "Ticket Booked", "OK");
+                    "Ticket Booked, Paid $80 from your balance", "OK");
             }
             catch (Exception ex)
             {
@@ -88,7 +103,19 @@ namespace LINDRailways.ViewModel
                     "Please enter your name", "OK");
 
                 return;
+            } 
+            
+            string emailValidationPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
+
+            if (!Regex.IsMatch(PassengerEmail, emailValidationPattern))
+            {
+            
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Email", 
+                    "Please enter a valid email address", "OK");
+
+                return;
             }
+
 
             if (DepartureDate < DateTime.Now)
             {
@@ -106,7 +133,7 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                await TicketService.AddTicket(PassengerName, IsMale ? 1 : 0, 0,
+                await TicketService.AddTicket(PassengerName, PassengerEmail, IsMale ? 1 : 0, 0,
                     DateOnly.FromDateTime(DateTime.Now).ToString(),
                     TrainSchedule.TrainName.Name, TrainSchedule.Origin.Name,
                     TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString()); ;
