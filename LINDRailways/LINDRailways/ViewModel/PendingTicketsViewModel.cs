@@ -93,10 +93,12 @@ namespace LINDRailways.ViewModel
                 foreach (Ticket pendingTicket in PendingTickets)
                     await TicketService.RemoveTicket(pendingTicket.Id);
 
+                int refundPrice = PendingTickets.Count * 60;
+
                 PendingTickets.Clear();
 
                 await Shell.Current.CurrentPage.DisplayAlert("Cancelled!",
-                                   "ALL pending tickets has been canceled", "OK");
+                                   "ALL pending tickets has been canceled, Added $" + refundPrice + " from your account", "OK");
             }
             catch (Exception ex)
             {
@@ -126,10 +128,12 @@ namespace LINDRailways.ViewModel
                 foreach (Ticket pendingTicket in PendingTickets)
                     await TicketService.PayTicket(pendingTicket);
 
+                int price = PendingTickets.Count * 100;
+
                 PendingTickets.Clear();
 
                 await Shell.Current.CurrentPage.DisplayAlert("Paid!",
-                                   "ALL pending tickets has been paid", "OK");
+                                   "ALL pending tickets has been paid, Removed" + price + " from your balance", "OK");
             }
             catch (Exception ex)
             {

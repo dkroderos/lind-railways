@@ -84,7 +84,7 @@ namespace LINDRailways.ViewModel
                     TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString());;
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
-                    "Ticket Booked, Paid $80 from your balance", "OK");
+                    "Ticket Booked, Removed $80 from your balance", "OK");
             }
             catch (Exception ex)
             {

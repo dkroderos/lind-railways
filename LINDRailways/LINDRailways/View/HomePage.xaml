@@ -9,6 +9,6 @@
 
     <HorizontalStackLayout>
         <Label Text="Balance: " />
-        <Label Text="{Binding Balance}" />
+        <Label Text=":)" />
     </HorizontalStackLayout>
 </ContentPage>
