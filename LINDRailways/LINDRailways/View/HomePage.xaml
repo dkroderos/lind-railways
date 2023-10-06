@@ -7,5 +7,8 @@
     Title="{Binding Title}"
     x:DataType="viewmodel:HomeViewModel">
 
-    <VerticalStackLayout />
+    <HorizontalStackLayout>
+        <Label Text="Balance: " />
+        <Label Text=":)" />
+    </HorizontalStackLayout>
 </ContentPage>
