@@ -36,7 +36,7 @@ namespace LINDRailways.ViewModel
                 await TicketService.RemoveTicket(Ticket.Id);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
-                    "Ticket Cancelled", "OK");
+                    "Ticket Cancelled, Added $60 from your account", "OK");
 
                 await Shell.Current.GoToAsync("..");
             }
@@ -72,7 +72,7 @@ namespace LINDRailways.ViewModel
                 await TicketService.PayTicket(Ticket);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
-                    "Ticket Paid", "OK");
+                    "Ticket Paid, Removed $100 from your balance", "OK");
 
                 await Shell.Current.GoToAsync("..");
             }

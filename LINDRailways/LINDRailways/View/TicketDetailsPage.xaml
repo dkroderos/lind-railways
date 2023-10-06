@@ -44,6 +44,13 @@
                     VerticalOptions="Center" />
                 <VerticalStackLayout Margin="20,0,20,0">
                     <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Email:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Ticket.PassengerEmail}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
                         <Label Text="Train Name:  " />
                         <Label
                             HorizontalOptions="Center"

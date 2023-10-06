@@ -30,7 +30,7 @@ namespace LINDRailways.Services
             var result = await Database.CreateTableAsync<Ticket>();
         }
 
-        public static async Task AddTicket(string passengerName, int isMale,
+        public static async Task AddTicket(string passengerName, string passengerEmail, int isMale,
             int isPaid, string departureDate, string trainName, string origin,
             string destination, string departureTime)
         {
@@ -39,6 +39,7 @@ namespace LINDRailways.Services
             var ticket = new Ticket
             {
                 PassengerName = passengerName,
+                PassengerEmail = passengerEmail,
                 IsMale = isMale,
                 IsPaid = isPaid,
                 DepartureDate = departureDate,
@@ -68,6 +69,7 @@ namespace LINDRailways.Services
             var newTicket = new Ticket
             {
                 PassengerName = ticket.PassengerName,
+                PassengerEmail = ticket.PassengerEmail,
                 IsMale = ticket.IsMale,
                 IsPaid = 1,
                 DepartureDate = ticket.DepartureDate,
