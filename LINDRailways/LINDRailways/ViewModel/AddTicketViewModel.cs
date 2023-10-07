@@ -45,7 +45,7 @@ namespace LINDRailways.ViewModel
         {
             if (PassengerName == null)
             {
-                await Shell.Current.CurrentPage.DisplayAlert("Empty Name", 
+                await Shell.Current.CurrentPage.DisplayAlert("Empty Name",
                     "Please enter your name", "OK");
 
                 return;
@@ -55,8 +55,8 @@ namespace LINDRailways.ViewModel
 
             if (!Regex.IsMatch(PassengerEmail, emailValidationPattern))
             {
-            
-                await Shell.Current.CurrentPage.DisplayAlert("Invalid Email", 
+
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Email",
                     "Please enter a valid email address", "OK");
 
                 return;
@@ -64,7 +64,7 @@ namespace LINDRailways.ViewModel
 
             if (DepartureDate < DateTime.Now)
             {
-                await Shell.Current.CurrentPage.DisplayAlert("Invalid Departure Date", 
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Departure Date",
                     "Please enter a valid departure date", "OK");
 
                 return;
@@ -81,7 +81,7 @@ namespace LINDRailways.ViewModel
                 await TicketService.AddTicket(PassengerName, PassengerEmail, IsMale ? 1 : 0, 1,
                     DateOnly.FromDateTime(DepartureDate).ToString(),
                     TrainSchedule.TrainName.Name, TrainSchedule.Origin.Name,
-                    TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString());;
+                    TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString()); ;
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     "Ticket Booked, Removed $80 from your balance", "OK");
@@ -99,18 +99,18 @@ namespace LINDRailways.ViewModel
         {
             if (PassengerName == null)
             {
-                await Shell.Current.CurrentPage.DisplayAlert("Empty Name", 
+                await Shell.Current.CurrentPage.DisplayAlert("Empty Name",
                     "Please enter your name", "OK");
 
                 return;
-            } 
-            
+            }
+
             string emailValidationPattern = @"^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$";
 
             if (!Regex.IsMatch(PassengerEmail, emailValidationPattern))
             {
-            
-                await Shell.Current.CurrentPage.DisplayAlert("Invalid Email", 
+
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Email",
                     "Please enter a valid email address", "OK");
 
                 return;
@@ -119,7 +119,7 @@ namespace LINDRailways.ViewModel
 
             if (DepartureDate < DateTime.Now)
             {
-                await Shell.Current.CurrentPage.DisplayAlert("Invalid Departure Date", 
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Departure Date",
                     "Please enter a valid departure date", "OK");
 
                 return;
@@ -133,18 +133,45 @@ namespace LINDRailways.ViewModel
 
             try
             {
+                List<Ticket> tickets = (List<Ticket>)await TicketService.GetAllTickets();
+
+                var sameScheduledTickets = from ticket in tickets
+                                           where ticket.DepartureTime == TrainSchedule.DepartureTime.ToString() &&
+                    ticket.DepartureDate == DateOnly.FromDateTime(DepartureDate).ToString()
+                                           select ticket;
+
+                int count = sameScheduledTickets.Count();
+
+                if (count > 50)
+                {
+                    await Shell.Current.CurrentPage.DisplayAlert("Full Capacity",
+                    "Train Capacity is full in this schedule", "OK");
+
+                    return;
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.CurrentPage.DisplayAlert("Error!",
+                    $"Unable to get tickets: {ex.Message}", "OK");
+            }
+
+
+            try
+            {
                 await TicketService.AddTicket(PassengerName, PassengerEmail, IsMale ? 1 : 0, 0,
                     DateOnly.FromDateTime(DateTime.Now).ToString(),
                     TrainSchedule.TrainName.Name, TrainSchedule.Origin.Name,
                     TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString()); ;
 
-                await Shell.Current.CurrentPage.DisplayAlert("Success!", 
+                await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     "Ticket Reserved", "OK");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                await Shell.Current.CurrentPage.DisplayAlert("Error!", 
+                await Shell.Current.CurrentPage.DisplayAlert("Error!",
                     $"Unable to reserve ticket: {ex.Message}", "OK");
             }
         }
