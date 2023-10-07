@@ -10,7 +10,7 @@ namespace LINDRailways
 
             Routing.RegisterRoute(nameof(AddTicketPage), typeof(AddTicketPage));
             Routing.RegisterRoute(nameof(TicketDetailsPage), typeof(TicketDetailsPage));
-            Routing.RegisterRoute(nameof(TrainSchedulesPage), typeof(TrainSchedulesPage));
+            Routing.RegisterRoute(nameof(TrainScheduleOldsPage), typeof(TrainScheduleOldsPage));
         }
     }
 }

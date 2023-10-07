@@ -13,34 +13,34 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.ViewModel
 {
-    public partial class TrainSchedulesViewModel : BaseViewModel
+    public partial class TrainScheduleOldsViewModel : BaseViewModel
     {
-        public ObservableCollection<TrainSchedule> TrainSchedules { get; } = new();
-        public TrainSchedulesViewModel()
+        public ObservableCollection<TrainScheduleOld> TrainScheduleOlds { get; } = new();
+        public TrainScheduleOldsViewModel()
         {
             Title = "Train Schedules";
 
-            AddTrainSchedules();
+            AddTrainScheduleOlds();
         }
 
         [ObservableProperty]
         private bool isRefreshing;
 
         [RelayCommand]
-        private async Task GoToAddTicketAsync(TrainSchedule trainSchedule)
+        private async Task GoToAddTicketAsync(TrainScheduleOld TrainScheduleOld)
         {
-            if (trainSchedule is null)
+            if (TrainScheduleOld is null)
                 return;
 
             await Shell.Current.GoToAsync($"{nameof(AddTicketPage)}",
                 true, new Dictionary<string, object>
                 {
-                    { "TrainSchedule", trainSchedule }
+                    { "TrainScheduleOld", TrainScheduleOld }
                 });
         }
 
         [RelayCommand]
-        private async Task GetTrainSchedulesAsync()
+        private async Task GetTrainScheduleOldsAsync()
         {
             if (IsBusy) 
                 return;
@@ -48,9 +48,9 @@ namespace LINDRailways.ViewModel
             try
             {
                 IsBusy = true;
-                TrainSchedules.Clear();
+                TrainScheduleOlds.Clear();
 
-                AddTrainSchedules();
+                AddTrainScheduleOlds();
             }
             catch (Exception ex)
             {
@@ -64,7 +64,7 @@ namespace LINDRailways.ViewModel
             }
         }
 
-        private void AddTrainSchedules()
+        private void AddTrainScheduleOlds()
         {
             TransportationEntity mugenTrain = new("Mugen Train",
                 "A train that is completely safe from demons.", 
@@ -89,12 +89,12 @@ namespace LINDRailways.ViewModel
             TransportationEntity eniesLobby = new("Enies Lobby",
                 ".", ".", ".");
 
-            TrainSchedules.Add(new TrainSchedule(mugenTrain, philippines, japan, new TimeOnly(18, 0)));
-            TrainSchedules.Add(new TrainSchedule(mugenTrain, japan, philippines, new TimeOnly(6, 0)));
-            TrainSchedules.Add(new TrainSchedule(capitolTrain, district12, capitol, new TimeOnly(10, 0)));
-            TrainSchedules.Add(new TrainSchedule(capitolTrain, capitol, district12, new TimeOnly(22, 0)));
-            TrainSchedules.Add(new TrainSchedule(seaTrain, water7, eniesLobby, new TimeOnly(23, 0)));
-            TrainSchedules.Add(new TrainSchedule(seaTrain, eniesLobby, water7, new TimeOnly(11, 0)));
+            TrainScheduleOlds.Add(new TrainScheduleOld(mugenTrain, philippines, japan, new TimeOnly(18, 0)));
+            TrainScheduleOlds.Add(new TrainScheduleOld(mugenTrain, japan, philippines, new TimeOnly(6, 0)));
+            TrainScheduleOlds.Add(new TrainScheduleOld(capitolTrain, district12, capitol, new TimeOnly(10, 0)));
+            TrainScheduleOlds.Add(new TrainScheduleOld(capitolTrain, capitol, district12, new TimeOnly(22, 0)));
+            TrainScheduleOlds.Add(new TrainScheduleOld(seaTrain, water7, eniesLobby, new TimeOnly(23, 0)));
+            TrainScheduleOlds.Add(new TrainScheduleOld(seaTrain, eniesLobby, water7, new TimeOnly(11, 0)));
         }
     }
 }

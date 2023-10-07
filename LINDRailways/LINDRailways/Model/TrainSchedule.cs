@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.Model
 {
-    public class TrainSchedule
+    public class TrainScheduleOld
     {
         public TransportationEntity TrainName { get; set; }
         public TransportationEntity Origin { get; set; }
         public TransportationEntity Destination { get; set; }
         public TimeOnly DepartureTime { get; set; }
 
-        public TrainSchedule(TransportationEntity trainName, 
+        public TrainScheduleOld(TransportationEntity trainName, 
             TransportationEntity origin, TransportationEntity destination, 
             TimeOnly departuretime)
         {

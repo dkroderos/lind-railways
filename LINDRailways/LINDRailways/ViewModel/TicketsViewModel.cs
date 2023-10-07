@@ -40,9 +40,9 @@ namespace LINDRailways.ViewModel
         }
 
         [RelayCommand]
-        private async Task GoToTrainSchedulesAsync()
+        private async Task GoToTrainScheduleOldsAsync()
         {
-            await Shell.Current.GoToAsync(nameof(TrainSchedulesPage), true);
+            await Shell.Current.GoToAsync(nameof(TrainScheduleOldsPage), true);
         }
 
         [RelayCommand]

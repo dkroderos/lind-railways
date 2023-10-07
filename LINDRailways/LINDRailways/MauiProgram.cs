@@ -22,7 +22,7 @@ namespace LINDRailways
 #endif
 
             builder.Services.AddSingleton<HomeViewModel>();
-            builder.Services.AddSingleton<TrainSchedulesViewModel>();
+            builder.Services.AddSingleton<TrainScheduleOldsViewModel>();
             builder.Services.AddSingleton<PendingTicketsViewModel>();
             builder.Services.AddSingleton<TicketsViewModel>();
 
@@ -30,7 +30,7 @@ namespace LINDRailways
             builder.Services.AddTransient<TicketDetailsViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
-            builder.Services.AddSingleton<TrainSchedulesPage>();
+            builder.Services.AddSingleton<TrainScheduleOldsPage>();
             builder.Services.AddSingleton<PendingTicketsPage>();
             builder.Services.AddSingleton<TicketsPage>();
 

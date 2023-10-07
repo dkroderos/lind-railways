@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="LINDRailways.View.TrainSchedulesPage"
+    x:Class="LINDRailways.View.TrainScheduleOldsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:LINDRailways.Model"
     xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
     Title="{Binding Title}"
-    x:DataType="viewmodel:TrainSchedulesViewModel">
+    x:DataType="viewmodel:TrainScheduleOldsViewModel">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding GetTrainSchedulesCommand}" Text="REFRESH" />
+        <ToolbarItem Command="{Binding GetTrainScheduleOldsCommand}" Text="REFRESH" />
     </ContentPage.ToolbarItems>
 
     <Grid Padding="5">
-        <RefreshView Command="{Binding GetTrainSchedulesCommand}" IsRefreshing="{Binding IsRefreshing}">
-            <CollectionView ItemsSource="{Binding TrainSchedules}" SelectionMode="None">
+        <RefreshView Command="{Binding GetTrainScheduleOldsCommand}" IsRefreshing="{Binding IsRefreshing}">
+            <CollectionView ItemsSource="{Binding TrainScheduleOlds}" SelectionMode="None">
 
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:TrainSchedule">
+                    <DataTemplate x:DataType="model:TrainScheduleOld">
                         <Border
                             Padding="0"
                             HeightRequest="125"
@@ -34,7 +34,7 @@
                             </Border.Shadow>
                             <Frame Padding="20" BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainSchedulesViewModel}}, Path=GoToAddTicketCommand}" CommandParameter="{Binding .}" />
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainScheduleOldsViewModel}}, Path=GoToAddTicketCommand}" CommandParameter="{Binding .}" />
                                 </Frame.GestureRecognizers>
                                 <Grid
                                     Margin="0"

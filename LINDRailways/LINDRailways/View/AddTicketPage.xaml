@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
-    Title="{Binding TrainSchedule.TrainName.Name}"
+    Title="{Binding TrainScheduleOld.TrainName.Name}"
     x:DataType="viewmodel:AddTicketViewModel">
     <Grid RowDefinitions="*,Auto">
         <ScrollView>
@@ -31,7 +31,7 @@
                             Aspect="AspectFit"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="{Binding TrainSchedule.TrainName.ImageSource}"
+                            Source="{Binding TrainScheduleOld.TrainName.ImageSource}"
                             VerticalOptions="Center"
                             WidthRequest="200" />
                     </Border>
@@ -40,33 +40,33 @@
                     Margin="0,0,0,20"
                     FontSize="30"
                     HorizontalOptions="Center"
-                    Text="{Binding TrainSchedule.TrainName.Name}"
+                    Text="{Binding TrainScheduleOld.TrainName.Name}"
                     VerticalOptions="Center" />
                 <Label
                     Margin="0,0,0,20"
                     HorizontalOptions="Center"
-                    Text="{Binding TrainSchedule.TrainName.Description}"
+                    Text="{Binding TrainScheduleOld.TrainName.Description}"
                     VerticalOptions="Center" />
                 <VerticalStackLayout Margin="20,0,20,0">
                     <HorizontalStackLayout HorizontalOptions="Start">
                         <Label Text="Origin:  " />
                         <Label
                             HorizontalOptions="Center"
-                            Text="{Binding TrainSchedule.Origin.Name}"
+                            Text="{Binding TrainScheduleOld.Origin.Name}"
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout HorizontalOptions="Start">
                         <Label Text="Destination:  " />
                         <Label
                             HorizontalOptions="Center"
-                            Text="{Binding TrainSchedule.Destination.Name}"
+                            Text="{Binding TrainScheduleOld.Destination.Name}"
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout HorizontalOptions="Start">
                         <Label Text="Departure Time:  " />
                         <Label
                             HorizontalOptions="Center"
-                            Text="{Binding TrainSchedule.DepartureTime}"
+                            Text="{Binding TrainScheduleOld.DepartureTime}"
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
                     <Label Margin="0,20,0,0" Text="Enter Name:" />

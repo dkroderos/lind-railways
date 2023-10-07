@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.ViewModel
 {
-    [QueryProperty("TrainSchedule", "TrainSchedule")]
+    [QueryProperty("TrainScheduleOld", "TrainScheduleOld")]
     public partial class AddTicketViewModel : BaseViewModel
     {
         public AddTicketViewModel()
@@ -29,7 +29,7 @@ namespace LINDRailways.ViewModel
         private bool isMale;
 
         [ObservableProperty]
-        private TrainSchedule trainSchedule;
+        private TrainScheduleOld trainScheduleOld;
 
         [ObservableProperty]
         private DateTime departureDate = DateTime.Now.AddDays(1);
@@ -80,8 +80,8 @@ namespace LINDRailways.ViewModel
             {
                 await TicketService.AddTicket(PassengerName, PassengerEmail, IsMale ? 1 : 0, 1,
                     DateOnly.FromDateTime(DepartureDate).ToString(),
-                    TrainSchedule.TrainName.Name, TrainSchedule.Origin.Name,
-                    TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString()); ;
+                    TrainScheduleOld.TrainName.Name, TrainScheduleOld.Origin.Name,
+                    TrainScheduleOld.Destination.Name, TrainScheduleOld.DepartureTime.ToString()); ;
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     "Ticket Booked, Removed $80 from your balance", "OK");
@@ -136,7 +136,7 @@ namespace LINDRailways.ViewModel
                 List<Ticket> tickets = (List<Ticket>)await TicketService.GetAllTickets();
 
                 var sameScheduledTickets = from ticket in tickets
-                                           where ticket.DepartureTime == TrainSchedule.DepartureTime.ToString() &&
+                                           where ticket.DepartureTime == TrainScheduleOld.DepartureTime.ToString() &&
                     ticket.DepartureDate == DateOnly.FromDateTime(DepartureDate).ToString()
                                            select ticket;
 
@@ -162,8 +162,8 @@ namespace LINDRailways.ViewModel
             {
                 await TicketService.AddTicket(PassengerName, PassengerEmail, IsMale ? 1 : 0, 0,
                     DateOnly.FromDateTime(DateTime.Now).ToString(),
-                    TrainSchedule.TrainName.Name, TrainSchedule.Origin.Name,
-                    TrainSchedule.Destination.Name, TrainSchedule.DepartureTime.ToString()); ;
+                    TrainScheduleOld.TrainName.Name, TrainScheduleOld.Origin.Name,
+                    TrainScheduleOld.Destination.Name, TrainScheduleOld.DepartureTime.ToString()); ;
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     "Ticket Reserved", "OK");

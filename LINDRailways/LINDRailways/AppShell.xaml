@@ -18,7 +18,7 @@
     </FlyoutItem>
     <FlyoutItem Title="Train Shedules">
         <Tab>
-            <ShellContent ContentTemplate="{DataTemplate view:TrainSchedulesPage}" />
+            <ShellContent ContentTemplate="{DataTemplate view:TrainScheduleOldsPage}" />
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Tickets">
