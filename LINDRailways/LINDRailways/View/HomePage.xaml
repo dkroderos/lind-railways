@@ -7,8 +7,42 @@
     Title="{Binding Title}"
     x:DataType="viewmodel:HomeViewModel">
 
-    <HorizontalStackLayout>
-        <Label Text="Balance: " />
-        <Label Text=":)" />
-    </HorizontalStackLayout>
+    <VerticalStackLayout>
+        <Label
+            FontSize="30"
+            HorizontalOptions="Center"
+            Text="Meet The Team" />
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto">
+            <Frame
+                Grid.Row="0"
+                Margin="10"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
+                                                  Dark={StaticResource MacchiatoSurface0}}"
+                CornerRadius="20">
+                <Image Source="https://avatars.githubusercontent.com/u/75028710?v=4" />
+            </Frame>
+            <Frame
+                Grid.Row="1"
+                Margin="10"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
+                                                  Dark={StaticResource MacchiatoSurface0}}"
+                CornerRadius="20">
+                <Image Source="https://avatars.githubusercontent.com/u/126074199?v=4" />
+            </Frame>
+            <Frame
+                Grid.Row="2"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
+                                                  Dark={StaticResource MacchiatoSurface0}}"
+                CornerRadius="20">
+                <Image Source="https://avatars.githubusercontent.com/u/142376663?v=4" />
+            </Frame>
+            <Frame
+                Grid.Row="3"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
+                                                  Dark={StaticResource MacchiatoSurface0}}"
+                CornerRadius="20">
+                <Image Source="https://avatars.githubusercontent.com/u/142380105?v=4" />
+            </Frame>
+        </Grid>
+    </VerticalStackLayout>
 </ContentPage>
