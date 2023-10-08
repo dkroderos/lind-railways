@@ -79,6 +79,9 @@
 	  <Compile Update="View\TrainScheduleOldsPage.xaml.cs">
 	    <DependentUpon>TrainScheduleOldsPage.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="View\TrainSchedulesPage.xaml.cs">
+	    <DependentUpon>TrainSchedulesPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -103,6 +106,9 @@
 	  <MauiXaml Update="View\AddTicketOldPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\AddTrainSchedulePage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -116,6 +122,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\TrainScheduleOldsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\TrainSchedulesPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
