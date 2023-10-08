@@ -40,8 +40,9 @@ namespace LINDRailways.Services
         {
             await Init();
 
-            await Database.DeleteAsync(id);
+            await Database.DeleteAsync<Account>(id);
         } 
+
         public static async Task<Account> GetAccountAsync(int id)
         {
             await Init();
@@ -60,5 +61,11 @@ namespace LINDRailways.Services
             return account;
         }
 
+        public static async Task UpdateAccount(Account account)
+        {
+            await Init();
+
+            await Database.UpdateAsync(account);
+        }
     }
 }

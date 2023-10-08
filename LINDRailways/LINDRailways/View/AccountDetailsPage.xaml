@@ -4,7 +4,7 @@
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
-    Title="AccountDetailsPage"
+    Title="{Binding Account.Name}"
     x:DataType="viewmodel:AccountDetailsViewModel">
 
     <Grid RowDefinitions="*,Auto">
@@ -45,6 +45,13 @@
                     VerticalOptions="Center" />
                 <VerticalStackLayout Margin="20,0,20,0">
                     <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Id:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Account.Id}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
                         <Label Text="Username:  " />
                         <Label
                             HorizontalOptions="Center"
@@ -66,7 +73,7 @@
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout>
-                        <Label Text="Balance: " />
+                        <Label Text="Balance: $" />
                         <Label
                             HorizontalOptions="Center"
                             Text="{Binding Account.Balance}"
@@ -80,12 +87,24 @@
             Grid.Row="1"
             Padding="10"
             BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust},
-                                              Dark={StaticResource MacchiatoCrust}}">
+                                              Dark={StaticResource MacchiatoCrust}}"
+            ColumnDefinitions="*,*">
             <Button
+                Grid.Column="0"
                 Margin="0,0,5,0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteRed},
                                                   Dark={StaticResource MacchiatoRed}}"
+                Command="{Binding DeleteAccountCommand}"
                 Text="Delete Account"
+                TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
+                                            Dark={StaticResource LatteText}}" />
+            <Button
+                Grid.Column="1"
+                Margin="0,0,5,0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
+                                                  Dark={StaticResource MacchiatoGreen}}"
+                Command="{Binding Add500ToBalanceCommand}"
+                Text="Add $500"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
         </Grid>

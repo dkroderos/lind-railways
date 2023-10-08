@@ -16,7 +16,6 @@ namespace LINDRailways.ViewModel
     {
         public AccountDetailsViewModel()
         {
-            Title = Account.Name;
         }
 
         [ObservableProperty]
@@ -33,15 +32,52 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                
+                await AccountService.RemoveAccountAsync(Account.Id);
+
+                await Shell.Current.CurrentPage.DisplayAlert("Success!",
+                    $"Account removed", "OK");
+
+                await Shell.Current.GoToAsync("..");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
-                    $"Unable to cancel TicketOld: {ex.Message}", "OK");
+                    $"Unable to delete account: {ex.Message}", "OK");
+            }
+        } 
+
+        [RelayCommand]
+        private async Task Add500ToBalance()
+        {
+            bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert("Add $500 to balance", "I don't even think you don't want to",
+                "Add", "Don't Add");
+
+            if (!isConfirmed)
+                return;
+
+            try
+            {
+                var account = await AccountService.GetAccountAsync(Account.Id);
+
+                account.Balance += 500;
+
+                await AccountService.UpdateAccount(account);
+
+                await Shell.Current.CurrentPage.DisplayAlert("Success!",
+                    $"Added $500 to balance", "OK");
+
+                await Shell.Current.GoToAsync("..");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+
+                await Shell.Current.CurrentPage.DisplayAlert("Error!",
+                    $"Unable to add balance: {ex.Message}", "OK");
             }
         }
+
     }
 }
