@@ -19,6 +19,8 @@ namespace LINDRailways.ViewModel
         public AccountsViewModel()
         {
             Title = "Accounts";
+
+            _ = GetAccountsAsync();
         }
 
         [ObservableProperty]
