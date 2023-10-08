@@ -39,6 +39,10 @@
                                         CornerRadius="75"
                                         HeightRequest="150"
                                         WidthRequest="150">
+
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AccountsViewModel}}, Path=GoToAccountDetailsCommand}" CommandParameter="{Binding .}" />
+                                        </Frame.GestureRecognizers>
                                         <Image
                                             HeightRequest="150"
                                             Source="{Binding Photo}"
