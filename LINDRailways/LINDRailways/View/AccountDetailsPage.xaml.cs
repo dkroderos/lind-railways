@@ -1,9 +1,12 @@
+using LINDRailways.ViewModel;
+
 namespace LINDRailways.View;
 
 public partial class AccountDetailsPage : ContentPage
 {
-	public AccountDetailsPage()
+	public AccountDetailsPage(AccountDetailsViewModel viewModel)
 	{
 		InitializeComponent();
+		BindingContext = viewModel;
 	}
 }
