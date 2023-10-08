@@ -11,11 +11,11 @@ namespace LINDRailways.Model
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
-        public string Name { get; set; }
+        public string TrainName { get; set; }
         public string TrainClass { get; set; }
         public int Price { get; set; }
         public string Description { get; set; }
-        public string TrainImage { get; set; }
+        public string Photo { get; set; }
         public string Origin { get; set; }
         public string Destination { get; set; }
         public string DepartureTime { get; set; }

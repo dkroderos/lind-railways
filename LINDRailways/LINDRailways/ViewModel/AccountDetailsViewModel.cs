@@ -78,6 +78,5 @@ namespace LINDRailways.ViewModel
                     $"Unable to add balance: {ex.Message}", "OK");
             }
         }
-
     }
 }

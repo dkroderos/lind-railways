@@ -70,6 +70,15 @@
 	  <Compile Update="Resources\Styles\CatppuccinMacchiatoColors.xaml.cs">
 	    <DependentUpon>CatppuccinMacchiatoColors.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="View\TicketOldDetailsPage.xaml.cs">
+	    <DependentUpon>TicketOldDetailsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\TicketOldsPage.xaml.cs">
+	    <DependentUpon>TicketOldsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\TrainScheduleOldsPage.xaml.cs">
+	    <DependentUpon>TrainScheduleOldsPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
