@@ -16,6 +16,11 @@
             <ShellContent ContentTemplate="{DataTemplate view:HomePage}" />
         </Tab>
     </FlyoutItem>
+    <FlyoutItem Title="Accounts">
+        <Tab>
+            <ShellContent ContentTemplate="{DataTemplate view:AccountsPage}" />
+        </Tab>
+    </FlyoutItem>
     <FlyoutItem Title="Train Shedules">
         <Tab>
             <ShellContent ContentTemplate="{DataTemplate view:TrainScheduleOldsPage}" />
