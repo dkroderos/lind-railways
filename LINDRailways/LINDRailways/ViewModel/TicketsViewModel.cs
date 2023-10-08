@@ -13,40 +13,40 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.ViewModel
 {
-    public partial class TicketsViewModel : BaseViewModel
+    public partial class TicketOldsViewModel : BaseViewModel
     {
-        public ObservableCollection<Ticket> Tickets { get; } = new();
-        public TicketsViewModel()
+        public ObservableCollection<TicketOld> TicketOlds { get; } = new();
+        public TicketOldsViewModel()
         {
-            Title = "Tickets";
+            Title = "TicketOlds";
 
-            _ = GetTicketsAsync();
+            _ = GetTicketOldsAsync();
         }
 
         [ObservableProperty]
         private bool isRefreshing;
 
         [RelayCommand]
-        private async Task GoToTicketDetailsAsync(Ticket ticket)
+        private async Task GoToTicketOldDetailsAsync(TicketOld TicketOld)
         {
-            if (ticket is null)
+            if (TicketOld is null)
                 return;
 
-            await Shell.Current.GoToAsync($"{nameof(TicketDetailsPage)}",
+            await Shell.Current.GoToAsync($"{nameof(TicketOldDetailsPage)}",
                 true, new Dictionary<string, object>
                 {
-                    { "Ticket", ticket }
+                    { "TicketOld", TicketOld }
                 });
         }
 
         [RelayCommand]
-        private async Task GoToTrainSchedulesAsync()
+        private async Task GoToTrainScheduleOldsAsync()
         {
-            await Shell.Current.GoToAsync(nameof(TrainSchedulesPage), true);
+            await Shell.Current.GoToAsync(nameof(TrainScheduleOldsPage), true);
         }
 
         [RelayCommand]
-        private async Task GetTicketsAsync()
+        private async Task GetTicketOldsAsync()
         {
             if (IsBusy)
                 return;
@@ -54,23 +54,23 @@ namespace LINDRailways.ViewModel
             try
             {
                 IsBusy = true;
-                Tickets.Clear();
+                TicketOlds.Clear();
 
-                IEnumerable<Ticket> allTickets = await TicketService.GetAllTickets();
+                IEnumerable<TicketOld> allTicketOlds = await TicketOldService.GetAllTicketOlds();
 
-                var paidTickets = from ticket in allTickets
-                                  where ticket.IsPaid == 1 
-                                  select ticket;
+                var paidTicketOlds = from TicketOld in allTicketOlds
+                                  where TicketOld.IsPaid == 1 
+                                  select TicketOld;
 
-                foreach (Ticket ticket in paidTickets)
+                foreach (TicketOld TicketOld in paidTicketOlds)
                 {
-                    Tickets.Add(ticket);
+                    TicketOlds.Add(TicketOld);
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("Error!", $"Unable to get tickets: {ex.Message}", "OK");
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get TicketOlds: {ex.Message}", "OK");
             }
             finally
             {

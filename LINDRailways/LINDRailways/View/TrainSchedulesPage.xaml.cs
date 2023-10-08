@@ -2,9 +2,9 @@ using LINDRailways.ViewModel;
 
 namespace LINDRailways.View;
 
-public partial class TrainSchedulesPage : ContentPage
+public partial class TrainScheduleOldsPage : ContentPage
 {
-	public TrainSchedulesPage(TrainSchedulesViewModel viewModel)
+	public TrainScheduleOldsPage(TrainScheduleOldsViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;

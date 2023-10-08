@@ -11,21 +11,21 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.ViewModel
 {
-    [QueryProperty("Ticket", "Ticket")]
-    public partial class TicketDetailsViewModel : BaseViewModel
+    [QueryProperty("TicketOld", "TicketOld")]
+    public partial class TicketOldDetailsViewModel : BaseViewModel
     {
-        public TicketDetailsViewModel()
+        public TicketOldDetailsViewModel()
         {
         }
 
         [ObservableProperty]
-        private Ticket ticket;
+        private TicketOld ticketOld;
 
         [RelayCommand]
-        private async Task CancelTicketAsync()
+        private async Task CancelTicketOldAsync()
         {
             bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
-                "Cancel Ticket", "Are you sure you want to cancel this ticket?",
+                "Cancel TicketOld", "Are you sure you want to cancel this TicketOld?",
                 "Yes", "No");
 
             if (!isConfirmed)
@@ -33,10 +33,10 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                await TicketService.RemoveTicket(Ticket.Id);
+                await TicketOldService.RemoveTicketOld(TicketOld.Id);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
-                    "Ticket Cancelled, Added $60 from your account", "OK");
+                    "TicketOld Cancelled, Added $60 from your account", "OK");
 
                 await Shell.Current.GoToAsync("..");
             }
@@ -45,23 +45,23 @@ namespace LINDRailways.ViewModel
                 Debug.WriteLine(ex);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
-                    $"Unable to cancel ticket: {ex.Message}", "OK");
+                    $"Unable to cancel TicketOld: {ex.Message}", "OK");
             }
         }
 
         [RelayCommand]
-        private async Task PayTicketAsync()
+        private async Task PayTicketOldAsync()
         {
-            if (this.Ticket.IsPaid == 1)
+            if (this.TicketOld.IsPaid == 1)
             {
                 await Shell.Current.CurrentPage.DisplayAlert("Already Paid!",
-                    "Ticket is already paid", "OK");
+                    "TicketOld is already paid", "OK");
 
                 return;
             }
 
             bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
-                "Pay Ticket", "Are you sure you want to pay this ticket?",
+                "Pay TicketOld", "Are you sure you want to pay this TicketOld?",
                 "Yes", "No");
 
             if (!isConfirmed)
@@ -69,10 +69,10 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                await TicketService.PayTicket(Ticket);
+                await TicketOldService.PayTicketOld(TicketOld);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
-                    "Ticket Paid, Removed $100 from your balance", "OK");
+                    "TicketOld Paid, Removed $100 from your balance", "OK");
 
                 await Shell.Current.GoToAsync("..");
             }
@@ -81,7 +81,7 @@ namespace LINDRailways.ViewModel
                 Debug.WriteLine(ex);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
-                    $"Unable to pay ticket: {ex.Message}", "OK");
+                    $"Unable to pay TicketOld: {ex.Message}", "OK");
             }
         }
     }

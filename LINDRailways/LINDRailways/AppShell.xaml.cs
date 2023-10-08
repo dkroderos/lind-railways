@@ -8,9 +8,11 @@ namespace LINDRailways
         {
             InitializeComponent();
 
-            Routing.RegisterRoute(nameof(AddTicketPage), typeof(AddTicketPage));
-            Routing.RegisterRoute(nameof(TicketDetailsPage), typeof(TicketDetailsPage));
-            Routing.RegisterRoute(nameof(TrainSchedulesPage), typeof(TrainSchedulesPage));
+            Routing.RegisterRoute(nameof(AddTicketOldPage), typeof(AddTicketOldPage));
+            Routing.RegisterRoute(nameof(TicketOldDetailsPage), typeof(TicketOldDetailsPage));
+            Routing.RegisterRoute(nameof(TrainScheduleOldsPage), typeof(TrainScheduleOldsPage));
+            Routing.RegisterRoute(nameof(AccountDetailsPage), typeof(AccountDetailsPage));
+            Routing.RegisterRoute(nameof(AddAccountPage), typeof(AddAccountPage));
         }
     }
 }
