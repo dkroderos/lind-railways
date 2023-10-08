@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.Services
 {
-    public static class TicketService
+    public static class TicketOldService
     {
         private static SQLiteAsyncConnection Database;
         private static async Task Init()
@@ -17,7 +17,7 @@ namespace LINDRailways.Services
             if (Database is not null)
                 return;
 
-            string databaseFilename = "Tickets";
+            string databaseFilename = "TicketOlds";
             string databasePath = Path.Combine(FileSystem.AppDataDirectory, databaseFilename);
 
             SQLite.SQLiteOpenFlags flags =
@@ -27,16 +27,16 @@ namespace LINDRailways.Services
 
             Database = new SQLiteAsyncConnection(databasePath, flags);
 
-            var result = await Database.CreateTableAsync<Ticket>();
+            var result = await Database.CreateTableAsync<TicketOld>();
         }
 
-        public static async Task AddTicket(string passengerName, string passengerEmail, int isMale,
+        public static async Task AddTicketOld(string passengerName, string passengerEmail, int isMale,
             int isPaid, string departureDate, string trainName, string origin,
             string destination, string departureTime)
         {
             await Init();
 
-            var ticket = new Ticket
+            var TicketOld = new TicketOld
             {
                 PassengerName = passengerName,
                 PassengerEmail = passengerEmail,
@@ -52,48 +52,48 @@ namespace LINDRailways.Services
                 PassengerPhoto = isMale == 1 ? "male.jpg" : "female.jpg"
             };
 
-            await Database.InsertAsync(ticket);
+            await Database.InsertAsync(TicketOld);
         }
 
-        public static async Task RemoveTicket(int id)
+        public static async Task RemoveTicketOld(int id)
         {
             await Init();
 
-            await Database.DeleteAsync<Ticket>(id);
+            await Database.DeleteAsync<TicketOld>(id);
         }
 
-        public static async Task PayTicket(Ticket ticket)
+        public static async Task PayTicketOld(TicketOld TicketOld)
         {
             await Init();
 
-            var newTicket = new Ticket
+            var newTicketOld = new TicketOld
             {
-                PassengerName = ticket.PassengerName,
-                PassengerEmail = ticket.PassengerEmail,
-                IsMale = ticket.IsMale,
+                PassengerName = TicketOld.PassengerName,
+                PassengerEmail = TicketOld.PassengerEmail,
+                IsMale = TicketOld.IsMale,
                 IsPaid = 1,
-                DepartureDate = ticket.DepartureDate,
-                TrainName = ticket.TrainName,
-                Origin = ticket.Origin,
-                Destination = ticket.Destination,
-                DepartureTime = ticket.DepartureTime,
+                DepartureDate = TicketOld.DepartureDate,
+                TrainName = TicketOld.TrainName,
+                Origin = TicketOld.Origin,
+                Destination = TicketOld.Destination,
+                DepartureTime = TicketOld.DepartureTime,
                 IsPaidString = "Yes",
-                Gender = ticket.IsMale == 1 ? "Male" : "Female",
-                PassengerPhoto = ticket.IsMale == 1 ? "male.jpg" : "female.jpg"
+                Gender = TicketOld.IsMale == 1 ? "Male" : "Female",
+                PassengerPhoto = TicketOld.IsMale == 1 ? "male.jpg" : "female.jpg"
             };
 
-            await Database.InsertAsync(newTicket);
+            await Database.InsertAsync(newTicketOld);
 
-            await Database.DeleteAsync<Ticket>(ticket.Id);
+            await Database.DeleteAsync<TicketOld>(TicketOld.Id);
         }
 
-        public static async Task<IEnumerable<Ticket>> GetAllTickets()
+        public static async Task<IEnumerable<TicketOld>> GetAllTicketOlds()
         {
             await Init();
 
-            var ticket = await Database.Table<Ticket>().ToListAsync();
+            var TicketOld = await Database.Table<TicketOld>().ToListAsync();
 
-            return ticket;
+            return TicketOld;
         }
     }
 }

@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="LINDRailways.View.AddTicketPage"
+    x:Class="LINDRailways.View.AddTicketOldPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
     Title="{Binding TrainScheduleOld.TrainName.Name}"
-    x:DataType="viewmodel:AddTicketViewModel">
+    x:DataType="viewmodel:AddTicketOldViewModel">
     <Grid RowDefinitions="*,Auto">
         <ScrollView>
             <VerticalStackLayout Grid.Row="0">
@@ -97,7 +97,7 @@
                 Margin="0,0,5,0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteBlue},
                                                   Dark={StaticResource MacchiatoBlue}}"
-                Command="{Binding ReserveTicketCommand}"
+                Command="{Binding ReserveTicketOldCommand}"
                 Text="Reserve"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
@@ -106,7 +106,7 @@
                 Margin="5,0,0,0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
                                                   Dark={StaticResource MacchiatoGreen}}"
-                Command="{Binding BookTicketCommand}"
+                Command="{Binding BookTicketOldCommand}"
                 Text="Book"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />

@@ -21,14 +21,14 @@
             <ShellContent ContentTemplate="{DataTemplate view:TrainScheduleOldsPage}" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Tickets">
+    <FlyoutItem Title="TicketOlds">
         <Tab>
-            <ShellContent ContentTemplate="{DataTemplate view:TicketsPage}" />
+            <ShellContent ContentTemplate="{DataTemplate view:TicketOldsPage}" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Pending Tickets">
+    <FlyoutItem Title="Pending TicketOlds">
         <Tab>
-            <ShellContent ContentTemplate="{DataTemplate view:PendingTicketsPage}" />
+            <ShellContent ContentTemplate="{DataTemplate view:PendingTicketOldsPage}" />
         </Tab>
     </FlyoutItem>
 </Shell>

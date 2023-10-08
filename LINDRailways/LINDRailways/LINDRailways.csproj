@@ -82,19 +82,19 @@
 	  <MauiXaml Update="Resources\Styles\CatppuccinStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\AddTicketPage.xaml">
+	  <MauiXaml Update="View\AddTicketOldPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\PendingTicketsPage.xaml">
+	  <MauiXaml Update="View\PendingTicketOldsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\TicketDetailsPage.xaml">
+	  <MauiXaml Update="View\TicketOldDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\TicketsPage.xaml">
+	  <MauiXaml Update="View\TicketOldsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\TrainScheduleOldsPage.xaml">

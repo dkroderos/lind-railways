@@ -34,7 +34,7 @@
                             </Border.Shadow>
                             <Frame Padding="20" BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainScheduleOldsViewModel}}, Path=GoToAddTicketCommand}" CommandParameter="{Binding .}" />
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainScheduleOldsViewModel}}, Path=GoToAddTicketOldCommand}" CommandParameter="{Binding .}" />
                                 </Frame.GestureRecognizers>
                                 <Grid
                                     Margin="0"

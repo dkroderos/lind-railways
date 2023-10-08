@@ -27,12 +27,12 @@ namespace LINDRailways.ViewModel
         private bool isRefreshing;
 
         [RelayCommand]
-        private async Task GoToAddTicketAsync(TrainScheduleOld TrainScheduleOld)
+        private async Task GoToAddTicketOldAsync(TrainScheduleOld TrainScheduleOld)
         {
             if (TrainScheduleOld is null)
                 return;
 
-            await Shell.Current.GoToAsync($"{nameof(AddTicketPage)}",
+            await Shell.Current.GoToAsync($"{nameof(AddTicketOldPage)}",
                 true, new Dictionary<string, object>
                 {
                     { "TrainScheduleOld", TrainScheduleOld }

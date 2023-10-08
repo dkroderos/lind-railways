@@ -13,9 +13,9 @@ using System.Threading.Tasks;
 namespace LINDRailways.ViewModel
 {
     [QueryProperty("TrainScheduleOld", "TrainScheduleOld")]
-    public partial class AddTicketViewModel : BaseViewModel
+    public partial class AddTicketOldViewModel : BaseViewModel
     {
-        public AddTicketViewModel()
+        public AddTicketOldViewModel()
         {
         }
 
@@ -41,7 +41,7 @@ namespace LINDRailways.ViewModel
         private DateTime maximumDepartureDate = DateTime.Now.AddDays(14);
 
         [RelayCommand]
-        private async Task BookTicketAsync()
+        private async Task BookTicketOldAsync()
         {
             if (PassengerName == null)
             {
@@ -71,31 +71,31 @@ namespace LINDRailways.ViewModel
             }
 
             bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
-                "Book Ticket", "Are you sure you want to book?", "Yes", "No");
+                "Book TicketOld", "Are you sure you want to book?", "Yes", "No");
 
             if (!isConfirmed)
                 return;
 
             try
             {
-                await TicketService.AddTicket(PassengerName, PassengerEmail, IsMale ? 1 : 0, 1,
+                await TicketOldService.AddTicketOld(PassengerName, PassengerEmail, IsMale ? 1 : 0, 1,
                     DateOnly.FromDateTime(DepartureDate).ToString(),
                     TrainScheduleOld.TrainName.Name, TrainScheduleOld.Origin.Name,
                     TrainScheduleOld.Destination.Name, TrainScheduleOld.DepartureTime.ToString()); ;
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
-                    "Ticket Booked, Removed $80 from your balance", "OK");
+                    "TicketOld Booked, Removed $80 from your balance", "OK");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
-                    $"Unable to book ticket: {ex.Message}", "OK");
+                    $"Unable to book TicketOld: {ex.Message}", "OK");
             }
         }
 
         [RelayCommand]
-        private async Task ReserveTicketAsync()
+        private async Task ReserveTicketOldAsync()
         {
             if (PassengerName == null)
             {
@@ -126,21 +126,21 @@ namespace LINDRailways.ViewModel
             }
 
             bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
-                "Reserve Ticket", "Are you sure you want to reserve?", "Yes", "No");
+                "Reserve TicketOld", "Are you sure you want to reserve?", "Yes", "No");
 
             if (!isConfirmed)
                 return;
 
             try
             {
-                List<Ticket> tickets = (List<Ticket>)await TicketService.GetAllTickets();
+                List<TicketOld> TicketOlds = (List<TicketOld>)await TicketOldService.GetAllTicketOlds();
 
-                var sameScheduledTickets = from ticket in tickets
-                                           where ticket.DepartureTime == TrainScheduleOld.DepartureTime.ToString() &&
-                    ticket.DepartureDate == DateOnly.FromDateTime(DepartureDate).ToString()
-                                           select ticket;
+                var sameScheduledTicketOlds = from TicketOld in TicketOlds
+                                           where TicketOld.DepartureTime == TrainScheduleOld.DepartureTime.ToString() &&
+                    TicketOld.DepartureDate == DateOnly.FromDateTime(DepartureDate).ToString()
+                                           select TicketOld;
 
-                int count = sameScheduledTickets.Count();
+                int count = sameScheduledTicketOlds.Count();
 
                 if (count > 50)
                 {
@@ -154,25 +154,25 @@ namespace LINDRailways.ViewModel
             {
                 Debug.WriteLine(ex);
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
-                    $"Unable to get tickets: {ex.Message}", "OK");
+                    $"Unable to get TicketOlds: {ex.Message}", "OK");
             }
 
 
             try
             {
-                await TicketService.AddTicket(PassengerName, PassengerEmail, IsMale ? 1 : 0, 0,
+                await TicketOldService.AddTicketOld(PassengerName, PassengerEmail, IsMale ? 1 : 0, 0,
                     DateOnly.FromDateTime(DateTime.Now).ToString(),
                     TrainScheduleOld.TrainName.Name, TrainScheduleOld.Origin.Name,
                     TrainScheduleOld.Destination.Name, TrainScheduleOld.DepartureTime.ToString()); ;
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
-                    "Ticket Reserved", "OK");
+                    "TicketOld Reserved", "OK");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
-                    $"Unable to reserve ticket: {ex.Message}", "OK");
+                    $"Unable to reserve TicketOld: {ex.Message}", "OK");
             }
         }
     }

@@ -2,9 +2,9 @@ using LINDRailways.ViewModel;
 
 namespace LINDRailways.View;
 
-public partial class TicketDetailsPage : ContentPage
+public partial class TicketOldDetailsPage : ContentPage
 {
-	public TicketDetailsPage(TicketDetailsViewModel viewModel)
+	public TicketOldDetailsPage(TicketOldDetailsViewModel viewModel)
 	{
 		InitializeComponent();
 		BindingContext = viewModel;
