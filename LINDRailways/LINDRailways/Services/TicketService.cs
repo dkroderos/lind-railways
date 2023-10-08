@@ -27,7 +27,7 @@ namespace LINDRailways.Services
 
             Database = new SQLiteAsyncConnection(databasePath, flags);
 
-            var result = await Database.CreateTableAsync<TicketOld>();
+            await Database.CreateTableAsync<TicketOld>();
         }
 
         public static async Task AddTicketOld(string passengerName, string passengerEmail, int isMale,

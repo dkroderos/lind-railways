@@ -8,5 +8,9 @@ namespace LINDRailways.ViewModel
 {
     public class AccountDetailsViewModel : BaseViewModel
     {
+        public AccountDetailsViewModel()
+        {
+            Title = "Accounts";
+        }
     }
 }

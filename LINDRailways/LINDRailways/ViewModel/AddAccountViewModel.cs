@@ -8,5 +8,9 @@ namespace LINDRailways.ViewModel
 {
     public class AddAccountViewModel : BaseViewModel
     {
+        public AddAccountViewModel()
+        {
+            Title = "Add Account";
+        }
     }
 }
