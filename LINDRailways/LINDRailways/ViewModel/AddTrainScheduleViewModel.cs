@@ -55,6 +55,62 @@ namespace LINDRailways.ViewModel
         [RelayCommand]
         private async Task AddTrainScheduleAsync()
         {
+            if (TrainName is null || TrainName.Equals(""))
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Train Name",
+                    "Please enter a valid train name", "OK");
+
+                return;
+            }
+
+            if (TrainClass is null || TrainClass.Equals(""))
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Train Class",
+                    "Please enter a valid train class", "OK");
+
+                return;
+            }
+
+            if (Price is null || Price.Equals("") || !int.TryParse(Price, out _))
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Price",
+                    "Please enter a valid price", "OK");
+
+                return;
+            }
+
+            if (Photo is null || Photo.Equals(""))
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Train Photo",
+                    "Please enter a valid train photo", "OK");
+
+                return;
+            }
+
+            if (Origin is null || Origin.Equals(""))
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Train Origin",
+                    "Please enter a valid train origin", "OK");
+
+                return;
+            }
+
+            if (Destination is null || Destination.Equals(""))
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Train Destination",
+                    "Please enter a valid train destination", "OK");
+
+                return;
+            }
+
+            if (DepartureDate < DateTime.Now)
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Departure Date",
+                    "Please enter a valid departure date", "OK");
+
+                return;
+            }
+
             bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
                 "Create Train Schedule", "Are you sure you want to add this schedule?", "Yes", "No");
 
