@@ -29,21 +29,29 @@ namespace LINDRailways.Services
             await Database.CreateTableAsync<Account>();
         }
 
-        public static async Task AddTicketAsync(Account account)
+        public static async Task AddAccountAsync(Account account)
         {
             await Init();
 
             await Database.InsertAsync(account);
         }
 
-        public static async Task RemoveTicketAsync(int id)
+        public static async Task RemoveAccountAsync(int id)
         {
             await Init();
 
             await Database.DeleteAsync(id);
         } 
-        
-        public static async Task<IEnumerable<Account>> GetAllAccountsAsync()
+        public static async Task<Account> GetAccountAsync(int id)
+        {
+            await Init();
+
+            var account = await Database.GetAsync<Account>(id);
+
+            return account;
+        }
+
+        public static async Task<IEnumerable<Account>> GetAccountsAsync()
         {
             await Init();
 

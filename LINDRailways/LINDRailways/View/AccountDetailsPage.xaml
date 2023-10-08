@@ -7,50 +7,87 @@
     Title="AccountDetailsPage"
     x:DataType="viewmodel:AccountDetailsViewModel">
 
-    <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding GetTrainScheduleOldsCommand}" Text="REFRESH" />
-    </ContentPage.ToolbarItems>
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView>
+            <VerticalStackLayout Grid.Row="0">
+                <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="160,Auto">
+                    <BoxView
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust},
+                                                          Dark={StaticResource MacchiatoCrust}}"
+                        HeightRequest="160"
+                        HorizontalOptions="FillAndExpand" />
+                    <Border
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        Margin="0,60,0,0"
+                        HeightRequest="200"
+                        Stroke="{AppThemeBinding Light={StaticResource LatteLavender},
+                                                 Dark={StaticResource MacchiatoLavender}}"
+                        StrokeShape="RoundRectangle 80,80,80,80"
+                        StrokeThickness="15"
+                        WidthRequest="200">
 
-    <Grid Padding="5">
-        <RefreshView Command="{Binding GetTrainScheduleOldsCommand}" IsRefreshing="{Binding IsRefreshing}">
-            <CollectionView ItemsSource="{Binding TrainScheduleOlds}" SelectionMode="None">
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="200"
+                            HorizontalOptions="Center"
+                            Source="{Binding Account.Photo}"
+                            VerticalOptions="Center"
+                            WidthRequest="200" />
+                    </Border>
+                </Grid>
+                <Label
+                    Margin="0,0,0,20"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    Text="{Binding Account.Name}"
+                    VerticalOptions="Center" />
+                <VerticalStackLayout Margin="20,0,20,0">
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Username:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Account.Username}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Email:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Account.Email}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Gender:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Account.Gender}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Label Text="Balance: " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Account.Balance}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
 
-                <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="model:TrainScheduleOld">
-                        <Border
-                            Padding="0"
-                            HeightRequest="125"
-                            Stroke="{AppThemeBinding Light={StaticResource LatteText},
-                                                     Dark={StaticResource MacchiatoText}}"
-                            StrokeShape="RoundRectangle 10 40 40 10"
-                            StrokeThickness="4">
-                            <Border.Shadow>
-                                <Shadow
-                                    Brush="{AppThemeBinding Light={StaticResource LatteCrust},
-                                                            Dark={StaticResource MacchiatoCrust}}"
-                                    Opacity="0.8"
-                                    Offset="10, 10" />
-                            </Border.Shadow>
-                            <Frame Padding="20" BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}">
-                                <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainScheduleOldsViewModel}}, Path=GoToAddTicketOldCommand}" CommandParameter="{Binding .}" />
-                                </Frame.GestureRecognizers>
-                                <Grid
-                                    Margin="0"
-                                    Padding="0"
-                                    ColumnDefinitions="*">
-                                    <VerticalStackLayout Grid.Column="1">
-                                        <Label Text="{Binding TrainName.Name}" />
-                                        <Label Text="{Binding Origin.Name}" />
-                                        <Label Text="{Binding Destination.Name}" />
-                                        <Label Text="{Binding DepartureTime}" />
-                                    </VerticalStackLayout>
-                                </Grid>
-                            </Frame>
-                        </Border>
-                    </DataTemplate>
-                </CollectionView.ItemTemplate>
-            </CollectionView>
-        </RefreshView>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Grid
+            Grid.Row="1"
+            Padding="10"
+            BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust},
+                                              Dark={StaticResource MacchiatoCrust}}">
+            <Button
+                Margin="0,0,5,0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteRed},
+                                                  Dark={StaticResource MacchiatoRed}}"
+                Text="Delete Account"
+                TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
+                                            Dark={StaticResource LatteText}}" />
+        </Grid>
     </Grid>
 </ContentPage>

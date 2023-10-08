@@ -15,7 +15,7 @@ namespace LINDRailways.Model
         public string Username { get; set; }
         public string Name { get; set; }
         public string Email { get; set; }
-        public int IsMale { get; set; }
+        public string Photo { get; set; }
         public string Gender { get; set; }
         public int Balance { get; set; }
     }

@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using LINDRailways.Model;
 using LINDRailways.Services;
+using LINDRailways.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -14,7 +15,7 @@ namespace LINDRailways.ViewModel
 {
     public partial class AccountsViewModel : BaseViewModel
     {
-        private ObservableCollection<Account> Accounts = new();
+        public ObservableCollection<Account> Accounts { get; } = new();
         public AccountsViewModel()
         {
             Title = "Accounts";
@@ -25,7 +26,7 @@ namespace LINDRailways.ViewModel
 
 
         [RelayCommand]
-        private async Task GetTrainScheduleOldsAsync()
+        private async Task GetAccountsAsync()
         {
             if (IsBusy)
                 return;
@@ -35,7 +36,7 @@ namespace LINDRailways.ViewModel
                 IsBusy = true;
 
                 Accounts.Clear();
-                var accounts = await AccountService.GetAllAccountsAsync();
+                var accounts = await AccountService.GetAccountsAsync();
 
                 foreach (Account account in accounts)
                 {
@@ -52,6 +53,25 @@ namespace LINDRailways.ViewModel
                 IsBusy = false;
                 IsRefreshing = false;
             }
+        }
+        
+        [RelayCommand]
+        private async Task GoToAccountDetails(Account account)
+        {
+            if (account is null)
+                return;
+
+            await Shell.Current.GoToAsync($"{nameof(AccountDetailsPage)}",
+                true, new Dictionary<string, object>
+                {
+                    { "Account", account }
+                });
+        }
+
+        [RelayCommand]
+        private async Task GoToAddAccountAsync()
+        {
+            await Shell.Current.GoToAsync($"{nameof(AddAccountPage)}");
         }
     }
 }
