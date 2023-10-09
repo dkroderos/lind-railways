@@ -16,7 +16,6 @@ namespace LINDRailways.ViewModel
     {
         public TrainScheduleDetailsViewModel()
         {
-            Title = TrainSchedule.TrainName;
         }
 
         [ObservableProperty]

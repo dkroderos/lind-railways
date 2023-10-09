@@ -19,5 +19,7 @@ namespace LINDRailways.Model
         public string Destination { get; set; }
         public string DepartureTime { get; set; }
         public string DepartureDate { get; set; }
+        public int Capacity { get; set; }
+        public int NumberOfPassengers { get; set; }
     }
 }

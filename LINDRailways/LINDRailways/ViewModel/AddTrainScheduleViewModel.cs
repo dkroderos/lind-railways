@@ -37,6 +37,9 @@ namespace LINDRailways.ViewModel
         public string destination;
 
         [ObservableProperty]
+        public string capacity;
+
+        [ObservableProperty]
         private DateTime departureDate = DateTime.Now.AddDays(1);
 
         [ObservableProperty]
@@ -71,6 +74,14 @@ namespace LINDRailways.ViewModel
             {
                 await Shell.Current.CurrentPage.DisplayAlert("Invalid Price",
                     "Please enter a valid price", "OK");
+
+                return;
+            }
+
+            if (Capacity is null || Capacity.Equals("") || !int.TryParse(Capacity, out _))
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Maximum Capacity",
+                    "Please enter a valid capacity", "OK");
 
                 return;
             }
@@ -126,6 +137,8 @@ namespace LINDRailways.ViewModel
                     Destination = Destination,
                     DepartureDate = DateOnly.FromDateTime(DepartureDate).ToString(),
                     DepartureTime = TimeOnly.FromDateTime(DepartureTime).ToString(),
+                    Capacity = int.Parse(Capacity),
+                    NumberOfPassengers = 0
                 });
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",

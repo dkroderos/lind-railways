@@ -38,9 +38,9 @@ namespace LINDRailways.ViewModel
                 IsBusy = true;
 
                 TrainSchedules.Clear();
-                var accounts = await TrainScheduleService.GetTrainSchedulesAsync();
+                var trainSchedules = await TrainScheduleService.GetTrainSchedulesAsync();
 
-                foreach (TrainSchedule trainSchedule in TrainSchedules)
+                foreach (TrainSchedule trainSchedule in trainSchedules)
                 {
                     TrainSchedules.Add(trainSchedule);
                 }
@@ -63,7 +63,7 @@ namespace LINDRailways.ViewModel
             if (trainSchedule is null)
                 return;
 
-            await Shell.Current.GoToAsync($"{nameof(AccountDetailsPage)}",
+            await Shell.Current.GoToAsync($"{nameof(TrainScheduleDetailsPage)}",
                 true, new Dictionary<string, object>
                 {
                     { "TrainSchedule", trainSchedule }
