@@ -34,6 +34,12 @@
         <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LatteSubtext1}, Dark={StaticResource MacchiatoSubtext1}}" />
     </Style>
 
+    <Style ApplyToDerivedTypes="True" TargetType="TimePicker">
+        <Setter Property="BackgroundColor" Value="{AppThemeBinding Light={StaticResource LatteSurface2}, Dark={StaticResource MacchiatoSurface2}}" />
+        <Setter Property="TextColor" Value="{AppThemeBinding Light={StaticResource LatteSubtext1}, Dark={StaticResource MacchiatoSubtext1}}" />
+    </Style>
+
+
     <Style ApplyToDerivedTypes="True" TargetType="CheckBox">
         <Setter Property="Color" Value="{AppThemeBinding Light={StaticResource LatteSubtext1}, Dark={StaticResource MacchiatoSubtext1}}" />
     </Style>

@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
+using LINDRailways.Model;
 using LINDRailways.Services;
 using System;
 using System.Collections.Generic;
@@ -81,7 +82,7 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                await AccountService.AddAccountAsync(new Model.Account
+                await AccountService.AddAccountAsync(new Account
                 {
                     Username = Username,
                     Name = Name,

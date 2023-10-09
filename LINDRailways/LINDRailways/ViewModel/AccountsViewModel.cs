@@ -26,7 +26,6 @@ namespace LINDRailways.ViewModel
         [ObservableProperty]
         private bool isRefreshing;
 
-
         [RelayCommand]
         private async Task GetAccountsAsync()
         {
@@ -56,9 +55,9 @@ namespace LINDRailways.ViewModel
                 IsRefreshing = false;
             }
         }
-        
+
         [RelayCommand]
-        private async Task GoToAccountDetails(Account account)
+        private async Task GoToAccountDetailsAsync(Account account)
         {
             if (account is null)
                 return;
@@ -73,7 +72,7 @@ namespace LINDRailways.ViewModel
         [RelayCommand]
         private async Task GoToAddAccountAsync()
         {
-            await Shell.Current.GoToAsync($"{nameof(AddAccountPage)}");
+            await Shell.Current.GoToAsync($"{nameof(AddAccountPage)}", true);
         }
     }
 }
