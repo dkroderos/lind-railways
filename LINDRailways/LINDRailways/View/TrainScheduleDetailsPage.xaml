@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LINDRailways.View.TrainScheduleDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
+    Title="{Binding Title}"
+    x:DataType="viewmodel:TrainScheduleDetailsViewModel">
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView>
+            <VerticalStackLayout Grid.Row="0">
+                <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="160,Auto">
+                    <BoxView
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust},
+                                                          Dark={StaticResource MacchiatoCrust}}"
+                        HeightRequest="160"
+                        HorizontalOptions="FillAndExpand" />
+                    <Border
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        Margin="0,60,0,0"
+                        HeightRequest="200"
+                        Stroke="{AppThemeBinding Light={StaticResource LatteLavender},
+                                                 Dark={StaticResource MacchiatoLavender}}"
+                        StrokeShape="RoundRectangle 80,80,80,80"
+                        StrokeThickness="15"
+                        WidthRequest="200">
+
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="200"
+                            HorizontalOptions="Center"
+                            Source="{Binding TrainSchedule.Photo}"
+                            VerticalOptions="Center"
+                            WidthRequest="200" />
+                    </Border>
+                </Grid>
+                <Label
+                    Margin="0,0,0,20"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    Text="{Binding TrainSchedule.TrainName}"
+                    VerticalOptions="Center" />
+                <VerticalStackLayout Margin="20,0,20,0">
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Schedule Id:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TrainSchedule.Id}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Train Class:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TrainSchedule.TrainClass}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Origin:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TrainSchedule.Origin}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Destination:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TrainSchedule.Destination}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Departure Date:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TrainSchedule.DepartureDate}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Departure Time:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TrainSchedule.DepartureTime}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Price:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TrainSchedule.Price}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+
+                </VerticalStackLayout>
+            </VerticalStackLayout>
+        </ScrollView>
+        <Grid
+            Grid.Row="1"
+            Padding="10"
+            BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust},
+                                              Dark={StaticResource MacchiatoCrust}}"
+            ColumnDefinitions="*">
+            <Button
+                Grid.Column="0"
+                Margin="0,0,5,0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteBlue},
+                                                  Dark={StaticResource MacchiatoBlue}}"
+                Command="{Binding CancelTrainScheduleCommand}"
+                Text="Cancel Schedule"
+                TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
+                                            Dark={StaticResource LatteText}}" />
+        </Grid>
+    </Grid>
+</ContentPage>

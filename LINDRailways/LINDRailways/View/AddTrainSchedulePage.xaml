@@ -13,10 +13,11 @@
             <Label Margin="0,20,0,0" Text="Train Class:" />
             <Entry Text="{Binding TrainClass}" />
             <Label Margin="0,20,0,0" Text="Photo:" />
+            <Entry Text="{Binding Photo}" />
             <Label Margin="0,20,0,0" Text="Origin:" />
-            <Entry Text="{Binding Description}" />
+            <Entry Text="{Binding Origin}" />
             <Label Margin="0,20,0,0" Text="Destination:" />
-            <Entry Text="{Binding Description}" />
+            <Entry Text="{Binding Destination}" />
             <Label Margin="0,20,0,0" Text="Enter Departure Date:" />
             <DatePicker
                 Date="{Binding DepartureDate}"

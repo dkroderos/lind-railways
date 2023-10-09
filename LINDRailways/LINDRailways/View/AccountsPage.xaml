@@ -23,6 +23,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:Account">
                             <Frame
+                                Margin="5"
                                 Padding="20"
                                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
                                                                   Dark={StaticResource MacchiatoSurface0}}"
@@ -36,9 +37,9 @@
                                     RowDefinitions="Auto,*">
                                     <Frame
                                         Grid.Row="0"
-                                        CornerRadius="75"
-                                        HeightRequest="150"
-                                        WidthRequest="150">
+                                        CornerRadius="70"
+                                        HeightRequest="140"
+                                        WidthRequest="140">
 
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AccountsViewModel}}, Path=GoToAccountDetailsCommand}" CommandParameter="{Binding .}" />
@@ -49,7 +50,7 @@
                                             WidthRequest="150" />
                                     </Frame>
                                     <VerticalStackLayout Grid.Row="1" Padding="0,20,0,0">
-                                        <Label Text="{Binding Id}" />
+                                        <Label Text="{Binding Username}" />
                                         <Label Text="{Binding Name}" />
                                         <Label Text="{Binding Gender}" />
                                     </VerticalStackLayout>

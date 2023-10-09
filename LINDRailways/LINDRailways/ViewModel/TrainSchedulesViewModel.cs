@@ -58,6 +58,19 @@ namespace LINDRailways.ViewModel
         }
 
         [RelayCommand]
+        private async Task GoToTrainScheduleDetailsAsync(TrainSchedule trainSchedule)
+        {
+            if (trainSchedule is null)
+                return;
+
+            await Shell.Current.GoToAsync($"{nameof(AccountDetailsPage)}",
+                true, new Dictionary<string, object>
+                {
+                    { "TrainSchedule", trainSchedule }
+                });
+        }
+
+        [RelayCommand]
         private async Task GoToAddTrainScheduleAsync()
         {
             await Shell.Current.GoToAsync($"{nameof(AddTrainSchedulePage)}", true);

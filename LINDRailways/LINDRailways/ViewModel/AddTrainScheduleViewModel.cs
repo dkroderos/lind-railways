@@ -28,9 +28,6 @@ namespace LINDRailways.ViewModel
         public string price;
 
         [ObservableProperty]
-        public string description;
-
-        [ObservableProperty]
         public string photo;
 
         [ObservableProperty]
@@ -102,6 +99,7 @@ namespace LINDRailways.ViewModel
                 return;
             }
 
+            // This condition can't be true
             if (DepartureDate < DateTime.Now)
             {
                 await Shell.Current.CurrentPage.DisplayAlert("Invalid Departure Date",
@@ -123,7 +121,7 @@ namespace LINDRailways.ViewModel
                     TrainName = TrainName,
                     TrainClass = TrainClass,
                     Price = int.Parse(Price),
-                    Photo = Photo,
+                    Photo = Photo == "mugen_train.jpg" || Photo == "capitol_train.jpg" || Photo == "sea_train.jpg" ? Photo : "default_train.jpg",
                     Origin = Origin,
                     Destination = Destination,
                     DepartureDate = DateOnly.FromDateTime(DepartureDate).ToString(),

@@ -28,7 +28,7 @@
                                                                   Dark={StaticResource MacchiatoSurface0}}"
                                 CornerRadius="10">
                                 <Frame.GestureRecognizers>
-                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AccountsViewModel}}, Path=GoToAccountDetailsCommand}" CommandParameter="{Binding .}" />
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainSchedulesViewModel}}, Path=GoToTrainScheduleDetailsCommand}" CommandParameter="{Binding .}" />
                                 </Frame.GestureRecognizers>
                                 <Grid
                                     Margin="0"
@@ -41,7 +41,7 @@
                                         WidthRequest="150">
 
                                         <Frame.GestureRecognizers>
-                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AccountsViewModel}}, Path=GoToAccountDetailsCommand}" CommandParameter="{Binding .}" />
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TrainSchedulesViewModel}}, Path=GoToTrainScheduleDetailsCommand}" CommandParameter="{Binding .}" />
                                         </Frame.GestureRecognizers>
                                         <Image
                                             HeightRequest="150"

@@ -57,7 +57,7 @@ namespace LINDRailways.ViewModel
         }
 
         [RelayCommand]
-        private async Task GoToAccountDetails(Account account)
+        private async Task GoToAccountDetailsAsync(Account account)
         {
             if (account is null)
                 return;

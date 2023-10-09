@@ -50,6 +50,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\capitol_train.jpg" />
+	  <None Remove="Resources\Images\default_train.jpg" />
 	  <None Remove="Resources\Images\female.jpg" />
 	  <None Remove="Resources\Images\male.jpg" />
 	  <None Remove="Resources\Images\mugen_train.jpg" />
@@ -119,6 +120,9 @@
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\TicketOldsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\TrainScheduleDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\TrainScheduleOldsPage.xaml">
