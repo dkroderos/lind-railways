@@ -12,6 +12,7 @@
             <Entry Text="{Binding TrainName}" />
             <Label Margin="0,20,0,0" Text="Train Class:" />
             <Entry Text="{Binding TrainClass}" />
+            <Label Margin="0,20,0,0" Text="Photo:" />
             <Label Margin="0,20,0,0" Text="Origin:" />
             <Entry Text="{Binding Description}" />
             <Label Margin="0,20,0,0" Text="Destination:" />

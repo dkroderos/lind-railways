@@ -1,6 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using LINDRailways.Model;
+using LINDRailways.Services;
+using LINDRailways.View;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -13,27 +15,53 @@ namespace LINDRailways.ViewModel
 {
     public partial class TrainSchedulesViewModel : BaseViewModel
     {
-        public ObservableCollection<TrainSchedule> TrainSchedule { get; } = new();
+        public ObservableCollection<TrainSchedule> TrainSchedules { get; } = new();
         public TrainSchedulesViewModel()
         {
             Title = "Train Schedules";
 
+            _ = GetTrainSchedulesAsync();
         }
 
         [ObservableProperty]
         private bool isRefreshing;
 
-        //private async Task GoToAddTicketOldAsync(TrainScheduleOld TrainScheduleOld)
-        //{
-        //    if (TrainScheduleOld is null)
-        //        return;
 
-        //    await Shell.Current.GoToAsync($"{nameof(AddTicketOldPage)}",
-        //        true, new Dictionary<string, object>
-        //        {
-        //            { "TrainScheduleOld", TrainScheduleOld }
-        //        });
-        //}
+        [RelayCommand]
+        private async Task GetTrainSchedulesAsync()
+        {
+            if (IsBusy)
+                return;
+
+            try
+            {
+                IsBusy = true;
+
+                TrainSchedules.Clear();
+                var accounts = await TrainScheduleService.GetTrainSchedulesAsync();
+
+                foreach (TrainSchedule trainSchedule in TrainSchedules)
+                {
+                    TrainSchedules.Add(trainSchedule);
+                }
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get accounts: {ex.Message}", "OK");
+            }
+            finally
+            {
+                IsBusy = false;
+                IsRefreshing = false;
+            }
+        }
+
+        [RelayCommand]
+        private async Task GoToAddTrainScheduleAsync()
+        {
+            await Shell.Current.GoToAsync($"{nameof(AddTrainSchedulePage)}", true);
+        }
+
     }
-
 }

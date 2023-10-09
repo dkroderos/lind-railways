@@ -72,7 +72,7 @@ namespace LINDRailways.ViewModel
         [RelayCommand]
         private async Task GoToAddAccountAsync()
         {
-            await Shell.Current.GoToAsync($"{nameof(AddAccountPage)}");
+            await Shell.Current.GoToAsync($"{nameof(AddAccountPage)}", true);
         }
     }
 }
