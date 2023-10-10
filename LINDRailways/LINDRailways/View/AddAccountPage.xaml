@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LINDRailways.View.AddAccountPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
+    Title="{Binding Title}"
+    x:DataType="viewmodel:AddAccountViewModel">
+    <Grid RowDefinitions="*,Auto">
+        <VerticalStackLayout Grid.Row="0">
+            <Label Margin="0,20,0,0" Text="Username:" />
+            <Entry Text="{Binding Username}" />
+            <Label Margin="0,20,0,0" Text="Name:" />
+            <Entry Text="{Binding Name}" />
+            <Label Margin="0,20,0,0" Text="Email:" />
+            <Entry Text="{Binding Email}" />
+            <Label Margin="0,20,0,0" Text="Gender:" />
+            <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Start">
+                <CheckBox IsChecked="{Binding IsMale}" />
+                <Label Text="Are you a male?" />
+            </HorizontalStackLayout>
+        </VerticalStackLayout>
+        <Grid
+            Grid.Row="1"
+            Padding="10"
+            BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust},
+                                              Dark={StaticResource MacchiatoCrust}}">
+            <Button
+                Margin="0,0,5,0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
+                                                  Dark={StaticResource MacchiatoGreen}}"
+                Command="{Binding AddAccountCommand}"
+                Text="Create"
+                TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
+                                            Dark={StaticResource LatteText}}" />
+        </Grid>
+    </Grid>
+</ContentPage>

@@ -7,19 +7,21 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.Model
 {
-    public class TrainSchedule
+    public class TicketOld
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+        public string PassengerName { get; set; }
+        public string PassengerEmail { get; set; }
+        public string PassengerPhoto { get; set; }
+        public int IsMale { get; set; }
+        public int IsPaid { get; set; }
+        public string DepartureDate { get; set; }
         public string TrainName { get; set; }
-        public string TrainClass { get; set; }
-        public int Price { get; set; }
-        public string Photo { get; set; }
         public string Origin { get; set; }
         public string Destination { get; set; }
         public string DepartureTime { get; set; }
-        public string DepartureDate { get; set; }
-        public int Capacity { get; set; }
-        public int NumberOfPassengers { get; set; }
+        public string Gender { get; set; }
+        public string IsPaidString { get; set; }
     }
 }

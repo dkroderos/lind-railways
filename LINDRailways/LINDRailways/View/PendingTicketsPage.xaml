@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="LINDRailways.View.PendingTicketsPage"
+    x:Class="LINDRailways.View.PendingTicketOldsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:model="clr-namespace:LINDRailways.Model"
     xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
     Title="{Binding Title}"
-    x:DataType="viewmodel:PendingTicketsViewModel">
+    x:DataType="viewmodel:PendingTicketOldsViewModel">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Command="{Binding GetPendingTicketsCommand}" Text="REFRESH" />
+        <ToolbarItem Command="{Binding GetPendingTicketOldsCommand}" Text="REFRESH" />
     </ContentPage.ToolbarItems>
 
     <Grid RowDefinitions="*,Auto">
         <Grid Grid.Row="0" Padding="5">
-            <RefreshView Command="{Binding GetPendingTicketsCommand}" IsRefreshing="{Binding IsRefreshing}">
-                <CollectionView ItemsSource="{Binding PendingTickets}" SelectionMode="None">
+            <RefreshView Command="{Binding GetPendingTicketOldsCommand}" IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView ItemsSource="{Binding PendingTicketOlds}" SelectionMode="None">
 
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="model:Ticket">
+                        <DataTemplate x:DataType="model:TicketOld">
                             <Border
                                 Padding="0"
                                 HeightRequest="125"
@@ -35,7 +35,7 @@
                                 </Border.Shadow>
                                 <Frame Padding="20" BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0}, Dark={StaticResource MacchiatoSurface0}}">
                                     <Frame.GestureRecognizers>
-                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PendingTicketsViewModel}}, Path=GoToTicketDetailsCommand}" CommandParameter="{Binding .}" />
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:PendingTicketOldsViewModel}}, Path=GoToTicketOldDetailsCommand}" CommandParameter="{Binding .}" />
                                     </Frame.GestureRecognizers>
                                     <Grid
                                         Margin="0"
@@ -75,8 +75,8 @@
                 Margin="0,0,5,0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteRed},
                                                   Dark={StaticResource MacchiatoRed}}"
-                Command="{Binding CancelAllTicketsCommand}"
-                Text="Cancel All Tickets"
+                Command="{Binding CancelAllTicketOldsCommand}"
+                Text="Cancel All TicketOlds"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
             <Button
@@ -84,8 +84,8 @@
                 Margin="5,0,0,0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
                                                   Dark={StaticResource MacchiatoGreen}}"
-                Command="{Binding PayAllTicketsCommand}"
-                Text="Pay All Tickets"
+                Command="{Binding PayAllTicketOldsCommand}"
+                Text="Pay All TicketOlds"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
         </Grid>

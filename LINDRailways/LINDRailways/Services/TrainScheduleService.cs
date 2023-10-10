@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.Services
 {
-    public class TicketService
+    public class TrainScheduleService
     {
         private static SQLiteAsyncConnection Database;
 
@@ -17,7 +17,7 @@ namespace LINDRailways.Services
             if (Database is not null)
                 return;
 
-            string databaseFilename = "Tickets";
+            string databaseFilename = "TrainSchedules";
             string databasePath = Path.Combine(FileSystem.AppDataDirectory, databaseFilename);
 
             SQLite.SQLiteOpenFlags flags =
@@ -27,47 +27,46 @@ namespace LINDRailways.Services
 
             Database = new SQLiteAsyncConnection(databasePath, flags);
 
-            await Database.CreateTableAsync<Ticket>();
+            await Database.CreateTableAsync<TrainSchedule>();
         }
 
-        public static async Task AddTicketAsync(Ticket ticket)
+        public static async Task AddTrainSchedule(TrainSchedule trainSchedule)
         {
             await Init();
 
-            await Database.InsertAsync(ticket);
+            await Database.InsertAsync(trainSchedule);
         }
 
-        public static async Task RemoveTicketAsync(int id)
+        public static async Task RemoveTrainScheduleAsync(int id)
         {
             await Init();
 
-            await Database.DeleteAsync<Ticket>(id);
+            await Database.DeleteAsync<TrainSchedule>(id);
         }
 
-        public static async Task<Ticket> GetTicketAsync(int id)
+        public static async Task<TrainSchedule> GetTrainScheduleAsync(int id)
         {
             await Init();
 
-            var ticket = await Database.GetAsync<Ticket>(id);
+            var trainSchedule = await Database.GetAsync<TrainSchedule>(id);
 
-            return ticket;
+            return trainSchedule;
         }
 
-        public static async Task<IEnumerable<Ticket>> GetTicketsAsync()
+        public static async Task<IEnumerable<TrainSchedule>> GetTrainSchedulesAsync()
         {
             await Init();
 
-            var ticket = await Database.Table<Ticket>().ToListAsync();
+            var trainSchedule = await Database.Table<TrainSchedule>().ToListAsync();
 
-            return ticket;
+            return trainSchedule;
         }
 
-        public static async Task UpdateTicketAsync(Ticket ticket)
+        public static async Task UpdateTrainSchedule(TrainSchedule trainSchedule)
         {
             await Init();
 
-            await Database.UpdateAsync(ticket);
+            await Database.UpdateAsync(trainSchedule);
         }
-
     }
 }

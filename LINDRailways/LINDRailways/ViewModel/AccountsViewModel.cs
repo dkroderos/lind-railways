@@ -13,21 +13,21 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.ViewModel
 {
-    public partial class TrainSchedulesViewModel : BaseViewModel
+    public partial class AccountsViewModel : BaseViewModel
     {
-        public ObservableCollection<TrainSchedule> TrainSchedules { get; } = new();
-        public TrainSchedulesViewModel()
+        public ObservableCollection<Account> Accounts { get; } = new();
+        public AccountsViewModel()
         {
-            Title = "Train Schedules";
+            Title = "Accounts";
 
-            _ = GetTrainSchedulesAsync();
+            _ = GetAccountsAsync();
         }
 
         [ObservableProperty]
         private bool isRefreshing;
 
         [RelayCommand]
-        private async Task GetTrainSchedulesAsync()
+        private async Task GetAccountsAsync()
         {
             if (IsBusy)
                 return;
@@ -36,12 +36,12 @@ namespace LINDRailways.ViewModel
             {
                 IsBusy = true;
 
-                TrainSchedules.Clear();
-                var trainSchedules = await TrainScheduleService.GetTrainSchedulesAsync();
+                Accounts.Clear();
+                var accounts = await AccountService.GetAccountsAsync();
 
-                foreach (TrainSchedule trainSchedule in trainSchedules)
+                foreach (Account account in accounts)
                 {
-                    TrainSchedules.Add(trainSchedule);
+                    Accounts.Add(account);
                 }
             }
             catch (Exception ex)
@@ -57,23 +57,22 @@ namespace LINDRailways.ViewModel
         }
 
         [RelayCommand]
-        private async Task GoToTrainScheduleDetailsAsync(TrainSchedule trainSchedule)
+        private async Task GoToAccountDetailsAsync(Account account)
         {
-            if (trainSchedule is null)
+            if (account is null)
                 return;
 
-            await Shell.Current.GoToAsync($"{nameof(TrainScheduleDetailsPage)}",
+            await Shell.Current.GoToAsync($"{nameof(AccountDetailsPage)}",
                 true, new Dictionary<string, object>
                 {
-                    { "TrainSchedule", trainSchedule }
+                    { "Account", account }
                 });
         }
 
         [RelayCommand]
-        private async Task GoToAddTrainScheduleAsync()
+        private async Task GoToAddAccountAsync()
         {
-            await Shell.Current.GoToAsync($"{nameof(AddTrainSchedulePage)}", true);
+            await Shell.Current.GoToAsync($"{nameof(AddAccountPage)}", true);
         }
-
     }
 }

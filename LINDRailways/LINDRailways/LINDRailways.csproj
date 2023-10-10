@@ -50,6 +50,7 @@
 
 	<ItemGroup>
 	  <None Remove="Resources\Images\capitol_train.jpg" />
+	  <None Remove="Resources\Images\default_train.jpg" />
 	  <None Remove="Resources\Images\female.jpg" />
 	  <None Remove="Resources\Images\male.jpg" />
 	  <None Remove="Resources\Images\mugen_train.jpg" />
@@ -70,6 +71,21 @@
 	  <Compile Update="Resources\Styles\CatppuccinMacchiatoColors.xaml.cs">
 	    <DependentUpon>CatppuccinMacchiatoColors.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="View\AddTicketOldPage.xaml.cs">
+	    <DependentUpon>AddTicketOldPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\TicketOldDetailsPage.xaml.cs">
+	    <DependentUpon>TicketOldDetailsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\TicketOldsPage.xaml.cs">
+	    <DependentUpon>TicketOldsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\TrainScheduleOldsPage.xaml.cs">
+	    <DependentUpon>TrainScheduleOldsPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="View\TrainSchedulesPage.xaml.cs">
+	    <DependentUpon>TrainSchedulesPage.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -82,19 +98,40 @@
 	  <MauiXaml Update="Resources\Styles\CatppuccinStyles.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\AccountDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AccountsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AddAccountPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AddTicketOldPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\AddTicketPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\AddTrainSchedulePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\HomePage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\PendingTicketsPage.xaml">
+	  <MauiXaml Update="View\PendingTicketOldsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\TicketDetailsPage.xaml">
+	  <MauiXaml Update="View\TicketOldDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\TicketsPage.xaml">
+	  <MauiXaml Update="View\TicketOldsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\TrainScheduleDetailsPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="View\TrainScheduleOldsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\TrainSchedulesPage.xaml">

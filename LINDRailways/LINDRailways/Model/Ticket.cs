@@ -11,17 +11,13 @@ namespace LINDRailways.Model
     {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
+        [Indexed]
+        public string AccountUsername { get; set; }
+        [Indexed]
+        public int ScheduleId { get; set; }
+        public string IsPaid { get; set; }
+        public int InitialPaymentMethod { get; set; }
         public string PassengerName { get; set; }
-        public string PassengerEmail { get; set; }
-        public string PassengerPhoto { get; set; }
-        public int IsMale { get; set; }
-        public int IsPaid { get; set; }
-        public string DepartureDate { get; set; }
-        public string TrainName { get; set; }
-        public string Origin { get; set; }
-        public string Destination { get; set; }
-        public string DepartureTime { get; set; }
         public string Gender { get; set; }
-        public string IsPaidString { get; set; }
     }
 }

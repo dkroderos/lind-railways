@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="LINDRailways.View.TicketDetailsPage"
+    x:Class="LINDRailways.View.AccountDetailsPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
-    Title="{Binding Ticket.TrainName}"
-    x:DataType="viewmodel:TicketDetailsViewModel">
+    Title="{Binding Account.Name}"
+    x:DataType="viewmodel:AccountDetailsViewModel">
+
     <Grid RowDefinitions="*,Auto">
         <ScrollView>
             <VerticalStackLayout Grid.Row="0">
@@ -31,7 +32,7 @@
                             Aspect="AspectFit"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="{Binding Ticket.PassengerPhoto}"
+                            Source="{Binding Account.Photo}"
                             VerticalOptions="Center"
                             WidthRequest="200" />
                     </Border>
@@ -40,63 +41,35 @@
                     Margin="0,0,0,20"
                     FontSize="30"
                     HorizontalOptions="Center"
-                    Text="{Binding Ticket.PassengerName}"
+                    Text="{Binding Account.Name}"
                     VerticalOptions="Center" />
                 <VerticalStackLayout Margin="20,0,20,0">
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Username:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding Account.Username}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
                     <HorizontalStackLayout HorizontalOptions="Start">
                         <Label Text="Email:  " />
                         <Label
                             HorizontalOptions="Center"
-                            Text="{Binding Ticket.PassengerEmail}"
-                            VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Train Name:  " />
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="{Binding Ticket.TrainName}"
-                            VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Origin:  " />
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="{Binding Ticket.Origin}"
-                            VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout>
-                        <Label Text="Destination:  " />
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="{Binding Ticket.Destination}"
-                            VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Departure Date:  " />
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="{Binding Ticket.DepartureDate}"
-                            VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Departure Time:  " />
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="{Binding Ticket.DepartureTime}"
+                            Text="{Binding Account.Email}"
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout HorizontalOptions="Start">
                         <Label Text="Gender:  " />
                         <Label
                             HorizontalOptions="Center"
-                            Text="{Binding Ticket.Gender}"
+                            Text="{Binding Account.Gender}"
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
-                    <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Is Paid:  " />
+                    <HorizontalStackLayout>
+                        <Label Text="Balance: $" />
                         <Label
                             HorizontalOptions="Center"
-                            Text="{Binding Ticket.IsPaidString}"
+                            Text="{Binding Account.Balance}"
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
@@ -114,17 +87,17 @@
                 Margin="0,0,5,0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteRed},
                                                   Dark={StaticResource MacchiatoRed}}"
-                Command="{Binding CancelTicketCommand}"
-                Text="Cancel Ticket"
+                Command="{Binding DeleteAccountCommand}"
+                Text="Delete Account"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
             <Button
                 Grid.Column="1"
-                Margin="5,0,0,0"
+                Margin="0,0,5,0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
                                                   Dark={StaticResource MacchiatoGreen}}"
-                Command="{Binding PayTicketCommand}"
-                Text="Pay Ticket"
+                Command="{Binding Add500ToBalanceCommand}"
+                Text="Add $500"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
         </Grid>

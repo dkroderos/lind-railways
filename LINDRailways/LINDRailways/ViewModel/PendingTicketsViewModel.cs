@@ -13,34 +13,34 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.ViewModel
 {
-    public partial class PendingTicketsViewModel : BaseViewModel
+    public partial class PendingTicketOldsViewModel : BaseViewModel
     {
-        public ObservableCollection<Ticket> PendingTickets { get; } = new();
-        public PendingTicketsViewModel()
+        public ObservableCollection<TicketOld> PendingTicketOlds { get; } = new();
+        public PendingTicketOldsViewModel()
         {
-            Title = "Pending Tickets";
+            Title = "Pending TicketOlds";
 
-            _ = GetPendingTicketsAsync();
+            _ = GetPendingTicketOldsAsync();
         }
 
         [ObservableProperty]
         private bool isRefreshing;
 
         [RelayCommand]
-        private async Task GoToTicketDetailsAsync(Ticket ticket)
+        private async Task GoToTicketOldDetailsAsync(TicketOld TicketOld)
         {
-            if (ticket is null)
+            if (TicketOld is null)
                 return;
 
-            await Shell.Current.GoToAsync($"{nameof(TicketDetailsPage)}",
+            await Shell.Current.GoToAsync($"{nameof(TicketOldDetailsPage)}",
                 true, new Dictionary<string, object>
                 {
-                    { "Ticket", ticket }
+                    { "TicketOld", TicketOld }
                 });
         }
 
         [RelayCommand]
-        private async Task GetPendingTicketsAsync()
+        private async Task GetPendingTicketOldsAsync()
         {
             if (IsBusy)
                 return;
@@ -48,23 +48,23 @@ namespace LINDRailways.ViewModel
             try
             {
                 IsBusy = true;
-                PendingTickets.Clear();
+                PendingTicketOlds.Clear();
 
-                IEnumerable<Ticket> allTickets = await TicketService.GetAllTickets();
+                IEnumerable<TicketOld> allTicketOlds = await TicketOldService.GetAllTicketOlds();
 
-                var pendingTickets = from ticket in allTickets
-                                     where ticket.IsPaid == 0
-                                     select ticket;
+                var pendingTicketOlds = from TicketOld in allTicketOlds
+                                     where TicketOld.IsPaid == 0
+                                     select TicketOld;
 
-                foreach (Ticket ticket in pendingTickets)
+                foreach (TicketOld TicketOld in pendingTicketOlds)
                 {
-                    PendingTickets.Add(ticket);
+                    PendingTicketOlds.Add(TicketOld);
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("Error!", $"Unable to get tickets: {ex.Message}", "OK");
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get TicketOlds: {ex.Message}", "OK");
             }
             finally
             {
@@ -74,72 +74,72 @@ namespace LINDRailways.ViewModel
         }
 
         [RelayCommand]
-        private async Task CancelAllTicketsAsync()
+        private async Task CancelAllTicketOldsAsync()
         {
             bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
-                            "Cancel ALL Tickets", "Are you sure you want to cancel ALL tickets", "Yes", "No");
+                            "Cancel ALL TicketOlds", "Are you sure you want to cancel ALL TicketOlds", "Yes", "No");
 
             if (!isConfirmed)
                 return;
 
             bool isConfirmedTwiceReversed = await Shell.Current.CurrentPage.DisplayAlert(
-                            "DOUBLE CHECK", "Are you sure you want to cancel ALL tickets", "No", "Yes");
+                            "DOUBLE CHECK", "Are you sure you want to cancel ALL TicketOlds", "No", "Yes");
 
             if (isConfirmedTwiceReversed)
                 return;
 
             try
             {
-                foreach (Ticket pendingTicket in PendingTickets)
-                    await TicketService.RemoveTicket(pendingTicket.Id);
+                foreach (TicketOld pendingTicketOld in PendingTicketOlds)
+                    await TicketOldService.RemoveTicketOld(pendingTicketOld.Id);
 
-                int refundPrice = PendingTickets.Count * 60;
+                int refundPrice = PendingTicketOlds.Count * 60;
 
-                PendingTickets.Clear();
+                PendingTicketOlds.Clear();
 
                 await Shell.Current.CurrentPage.DisplayAlert("Cancelled!",
-                                   "ALL pending tickets has been canceled, Added $" + refundPrice + " from your account", "OK");
+                                   "ALL pending TicketOlds has been canceled, Added $" + refundPrice + " from your account", "OK");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
-                    $"Unable to cancel all pending tickets: {ex.Message}", "OK");
+                    $"Unable to cancel all pending TicketOlds: {ex.Message}", "OK");
             }
         }
 
         [RelayCommand]
-        private async Task PayAllTicketsAsync()
+        private async Task PayAllTicketOldsAsync()
         {
             bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
-                            "Pay ALL Tickets", "Are you sure you want to pay ALL tickets", "Yes", "No");
+                            "Pay ALL TicketOlds", "Are you sure you want to pay ALL TicketOlds", "Yes", "No");
 
             if (!isConfirmed)
                 return;
 
             bool isConfirmedTwiceReversed = await Shell.Current.CurrentPage.DisplayAlert(
-                            "DOUBLE CHECK", "Are you sure you want to pay ALL tickets", "No", "Yes");
+                            "DOUBLE CHECK", "Are you sure you want to pay ALL TicketOlds", "No", "Yes");
 
             if (isConfirmedTwiceReversed)
                 return;
 
             try
             {
-                foreach (Ticket pendingTicket in PendingTickets)
-                    await TicketService.PayTicket(pendingTicket);
+                foreach (TicketOld pendingTicketOld in PendingTicketOlds)
+                    await TicketOldService.PayTicketOld(pendingTicketOld);
 
-                int price = PendingTickets.Count * 100;
+                int price = PendingTicketOlds.Count * 100;
 
-                PendingTickets.Clear();
+                PendingTicketOlds.Clear();
 
                 await Shell.Current.CurrentPage.DisplayAlert("Paid!",
-                                   "ALL pending tickets has been paid, Removed" + price + " from your balance", "OK");
+                                   "ALL pending TicketOlds has been paid, Removed" + price + " from your balance", "OK");
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
-                    $"Unable to pay all pending tickets: {ex.Message}", "OK");
+                    $"Unable to pay all pending TicketOlds: {ex.Message}", "OK");
             }
         }
     }

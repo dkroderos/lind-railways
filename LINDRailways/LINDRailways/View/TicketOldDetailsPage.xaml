@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LINDRailways.View.TicketOldDetailsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
+    Title="{Binding TicketOld.TrainName}"
+    x:DataType="viewmodel:TicketOldDetailsViewModel">
+    <Grid RowDefinitions="*,Auto">
+        <ScrollView>
+            <VerticalStackLayout Grid.Row="0">
+                <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="160,Auto">
+                    <BoxView
+                        Grid.ColumnSpan="3"
+                        BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust},
+                                                          Dark={StaticResource MacchiatoCrust}}"
+                        HeightRequest="160"
+                        HorizontalOptions="FillAndExpand" />
+                    <Border
+                        Grid.RowSpan="2"
+                        Grid.Column="1"
+                        Margin="0,60,0,0"
+                        HeightRequest="200"
+                        Stroke="{AppThemeBinding Light={StaticResource LatteLavender},
+                                                 Dark={StaticResource MacchiatoLavender}}"
+                        StrokeShape="RoundRectangle 80,80,80,80"
+                        StrokeThickness="15"
+                        WidthRequest="200">
+
+                        <Image
+                            Aspect="AspectFit"
+                            HeightRequest="200"
+                            HorizontalOptions="Center"
+                            Source="{Binding TicketOld.PassengerPhoto}"
+                            VerticalOptions="Center"
+                            WidthRequest="200" />
+                    </Border>
+                </Grid>
+                <Label
+                    Margin="0,0,0,20"
+                    FontSize="30"
+                    HorizontalOptions="Center"
+                    Text="{Binding TicketOld.PassengerName}"
+                    VerticalOptions="Center" />
+                <VerticalStackLayout Margin="20,0,20,0">
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Email:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TicketOld.PassengerEmail}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Train Name:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TicketOld.TrainName}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Origin:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TicketOld.Origin}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout>
+                        <Label Text="Destination:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TicketOld.Destination}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Departure Date:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TicketOld.DepartureDate}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Departure Time:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TicketOld.DepartureTime}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Gender:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TicketOld.Gender}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                    <HorizontalStackLayout HorizontalOptions="Start">
+                        <Label Text="Is Paid:  " />
+                        <Label
+                            HorizontalOptions="Center"
+                            Text="{Binding TicketOld.IsPaidString}"
+                            VerticalOptions="Center" />
+                    </HorizontalStackLayout>
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+        <Grid
+            Grid.Row="1"
+            Padding="10"
+            BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust},
+                                              Dark={StaticResource MacchiatoCrust}}"
+            ColumnDefinitions="*,*">
+            <Button
+                Grid.Column="0"
+                Margin="0,0,5,0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteRed},
+                                                  Dark={StaticResource MacchiatoRed}}"
+                Command="{Binding CancelTicketOldCommand}"
+                Text="Cancel TicketOld"
+                TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
+                                            Dark={StaticResource LatteText}}" />
+            <Button
+                Grid.Column="1"
+                Margin="5,0,0,0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
+                                                  Dark={StaticResource MacchiatoGreen}}"
+                Command="{Binding PayTicketOldCommand}"
+                Text="Pay TicketOld"
+                TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
+                                            Dark={StaticResource LatteText}}" />
+        </Grid>
+    </Grid>
+</ContentPage>

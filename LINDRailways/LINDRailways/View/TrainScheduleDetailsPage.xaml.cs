@@ -2,17 +2,17 @@ using LINDRailways.ViewModel;
 
 namespace LINDRailways.View;
 
-public partial class TrainSchedulesPage : ContentPage
+public partial class TrainScheduleDetailsPage : ContentPage
 {
-	public TrainSchedulesPage()
+	public TrainScheduleDetailsPage(TrainScheduleDetailsViewModel viewModel)
 	{
 		InitializeComponent();
+
+		BindingContext = viewModel;
 	}
 
 	protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
-
-        BindingContext = new TrainSchedulesViewModel();
     }
 }
