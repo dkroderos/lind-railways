@@ -10,24 +10,11 @@
         <ScrollView>
             <VerticalStackLayout Grid.Row="0">
                 <Label Margin="0,20,0,0" Text="Train Schedule Id:" />
-                <Entry Text="{Binding scheduleId}" />
+                <Entry Text="{Binding ScheduleId}" />
                 <Label Margin="0,20,0,0" Text="Account Username:" />
-                <Entry Text="{Binding}" />
-                <Label Margin="0,20,0,0" Text="Origin:" />
-                <Entry Text="{Binding Origin}" />
-                <Label Margin="0,20,0,0" Text="Destination:" />
-                <Entry Text="{Binding Destination}" />
-                <Label Margin="0,20,0,0" Text="Enter Departure Date:" />
-                <DatePicker
-                    Date="{Binding DepartureDate}"
-                    MaximumDate="{Binding MaximumDepartureDate}"
-                    MinimumDate="{Binding MinimumDepartureDate}" />
-                <Label Margin="0,20,0,0" Text="Departure Date:" />
-                <TimePicker Time="{Binding DepartureTime}" />
-                <Label Margin="0,20,0,0" Text="Capacity:" />
-                <Entry Text="{Binding Capacity}" />
-                <Label Margin="0,20,0,0" Text="Price:" />
-                <Entry Text="{Binding Price}" />
+                <Entry Text="{Binding AccountUsername}" />
+                <Label Margin="0,20,0,0" Text="Passenger Name:" />
+                <Entry Text="{Binding PassengerName}" />
             </VerticalStackLayout>
         </ScrollView>
         <Grid
@@ -39,18 +26,18 @@
             <Button
                 Grid.Column="0"
                 Margin="0,0,5,0"
-                BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
-                                                  Dark={StaticResource MacchiatoGreen}}"
-                Command="{Binding AddTrainScheduleCommand}"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteBlue},
+                                                  Dark={StaticResource MacchiatoBlue}}"
+                Command="{Binding ReserveTicketCommand}"
                 Text="Reserve"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
             <Button
-                Grid.Column="0"
-                Margin="0,0,5,0"
+                Grid.Column="1"
+                Margin="5,0,0,0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
                                                   Dark={StaticResource MacchiatoGreen}}"
-                Command="{Binding AddTrainScheduleCommand}"
+                Command="{Binding BookTicketCommand}"
                 Text="Book"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />

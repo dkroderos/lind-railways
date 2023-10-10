@@ -37,18 +37,18 @@ namespace LINDRailways.Services
             await Database.InsertAsync(account);
         }
 
-        public static async Task RemoveAccountAsync(int id)
+        public static async Task RemoveAccountAsync(string username)
         {
             await Init();
 
-            await Database.DeleteAsync<Account>(id);
+            await Database.DeleteAsync<Account>(username);
         } 
 
         public static async Task<Account> GetAccountAsync(string username)
         {
             await Init();
 
-            var account = await Database.GetAsync<Account>(id);
+            var account = await Database.GetAsync<Account>(username);
 
             return account;
         }

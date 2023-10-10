@@ -1,4 +1,5 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,13 +16,10 @@ namespace LINDRailways.ViewModel
         }
 
         [ObservableProperty]
-        public string accountId;
+        public string accountUsername;
 
         [ObservableProperty]
-        public int scheduleId;
-
-        [ObservableProperty]
-        public string isPaid;
+        public string scheduleId;
 
         [ObservableProperty]
         public int initialPaymentMethod;
@@ -31,5 +29,17 @@ namespace LINDRailways.ViewModel
 
         [ObservableProperty]
         public string gender;
+
+        [RelayCommand]
+        private async Task BookTicketAsync()
+        {
+            
+        }
+
+        [RelayCommand]
+        private async Task ReserveTicketAsync()
+        {
+            
+        }
     }
 }
