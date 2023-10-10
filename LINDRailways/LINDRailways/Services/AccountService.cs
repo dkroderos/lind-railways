@@ -44,7 +44,7 @@ namespace LINDRailways.Services
             await Database.DeleteAsync<Account>(id);
         } 
 
-        public static async Task<Account> GetAccountAsync(int id)
+        public static async Task<Account> GetAccountAsync(string username)
         {
             await Init();
 

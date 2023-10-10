@@ -45,13 +45,6 @@
                     VerticalOptions="Center" />
                 <VerticalStackLayout Margin="20,0,20,0">
                     <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Id:  " />
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="{Binding Account.Id}"
-                            VerticalOptions="Center" />
-                    </HorizontalStackLayout>
-                    <HorizontalStackLayout HorizontalOptions="Start">
                         <Label Text="Username:  " />
                         <Label
                             HorizontalOptions="Center"
