@@ -32,7 +32,7 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                await AccountService.RemoveAccountAsync(Account.Id);
+                await AccountService.RemoveAccountAsync(Account.Username);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     $"Account removed", "OK");
@@ -59,7 +59,7 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                var account = await AccountService.GetAccountAsync(Account.Id);
+                var account = await AccountService.GetAccountAsync(Account.Username);
 
                 account.Balance += 500;
 

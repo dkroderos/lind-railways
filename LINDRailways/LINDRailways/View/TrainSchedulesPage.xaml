@@ -23,6 +23,7 @@
                     <CollectionView.ItemTemplate>
                         <DataTemplate x:DataType="model:TrainSchedule">
                             <Frame
+                                Margin="5"
                                 Padding="20"
                                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
                                                                   Dark={StaticResource MacchiatoSurface0}}"
@@ -49,9 +50,9 @@
                                             WidthRequest="150" />
                                     </Frame>
                                     <VerticalStackLayout Grid.Row="1" Padding="0,20,0,0">
-                                        <Label Text="{Binding Id}" />
                                         <Label Text="{Binding TrainName}" />
-                                        <Label Text="{Binding TrainClass}" />
+                                        <Label Text="{Binding Origin}" />
+                                        <Label Text="{Binding Destination}" />
                                     </VerticalStackLayout>
                                 </Grid>
                             </Frame>

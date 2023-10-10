@@ -26,7 +26,6 @@ namespace LINDRailways.ViewModel
         [ObservableProperty]
         private bool isRefreshing;
 
-
         [RelayCommand]
         private async Task GetTrainSchedulesAsync()
         {

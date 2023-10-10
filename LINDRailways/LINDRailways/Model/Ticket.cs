@@ -12,10 +12,12 @@ namespace LINDRailways.Model
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
         [Indexed]
-        public string AccountId { get; set; }
+        public string AccountUsername { get; set; }
         [Indexed]
         public int ScheduleId { get; set; }
         public string IsPaid { get; set; }
         public int InitialPaymentMethod { get; set; }
+        public string PassengerName { get; set; }
+        public string Gender { get; set; }
     }
 }

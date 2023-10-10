@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.Services
 {
-    public class AccountService
+    public class TicketService
     {
         private static SQLiteAsyncConnection Database;
 
@@ -17,7 +17,7 @@ namespace LINDRailways.Services
             if (Database is not null)
                 return;
 
-            string databaseFilename = "Accounts";
+            string databaseFilename = "Tickets";
             string databasePath = Path.Combine(FileSystem.AppDataDirectory, databaseFilename);
 
             SQLite.SQLiteOpenFlags flags =
@@ -27,46 +27,47 @@ namespace LINDRailways.Services
 
             Database = new SQLiteAsyncConnection(databasePath, flags);
 
-            await Database.CreateTableAsync<Account>();
+            await Database.CreateTableAsync<Ticket>();
         }
 
-        public static async Task AddAccountAsync(Account account)
+        public static async Task AddTicketAsync(Ticket ticket)
         {
             await Init();
 
-            await Database.InsertAsync(account);
+            await Database.InsertAsync(ticket);
         }
 
-        public static async Task RemoveAccountAsync(string username)
+        public static async Task RemoveTicketAsync(int id)
         {
             await Init();
 
-            await Database.DeleteAsync<Account>(username);
-        } 
+            await Database.DeleteAsync<Ticket>(id);
+        }
 
-        public static async Task<Account> GetAccountAsync(string username)
+        public static async Task<Ticket> GetTicketAsync(int id)
         {
             await Init();
 
-            var account = await Database.GetAsync<Account>(username);
+            var ticket = await Database.GetAsync<Ticket>(id);
 
-            return account;
+            return ticket;
         }
 
-        public static async Task<IEnumerable<Account>> GetAccountsAsync()
+        public static async Task<IEnumerable<Ticket>> GetTicketsAsync()
         {
             await Init();
 
-            var account = await Database.Table<Account>().ToListAsync();
+            var ticket = await Database.Table<Ticket>().ToListAsync();
 
-            return account;
+            return ticket;
         }
 
-        public static async Task UpdateAccount(Account account)
+        public static async Task UpdateTicketAsync(Ticket ticket)
         {
             await Init();
 
-            await Database.UpdateAsync(account);
+            await Database.UpdateAsync(ticket);
         }
+
     }
 }

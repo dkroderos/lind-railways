@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="LINDRailways.View.AccountDetailsPage"
+    x:Class="LINDRailways.View.AddTicketOldPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
-    Title="{Binding Account.Name}"
-    x:DataType="viewmodel:AccountDetailsViewModel">
-
+    Title="{Binding TrainScheduleOld.TrainName.Name}"
+    x:DataType="viewmodel:AddTicketOldViewModel">
     <Grid RowDefinitions="*,Auto">
         <ScrollView>
             <VerticalStackLayout Grid.Row="0">
@@ -32,7 +31,7 @@
                             Aspect="AspectFit"
                             HeightRequest="200"
                             HorizontalOptions="Center"
-                            Source="{Binding Account.Photo}"
+                            Source="{Binding TrainScheduleOld.TrainName.ImageSource}"
                             VerticalOptions="Center"
                             WidthRequest="200" />
                     </Border>
@@ -41,36 +40,47 @@
                     Margin="0,0,0,20"
                     FontSize="30"
                     HorizontalOptions="Center"
-                    Text="{Binding Account.Name}"
+                    Text="{Binding TrainScheduleOld.TrainName.Name}"
+                    VerticalOptions="Center" />
+                <Label
+                    Margin="0,0,0,20"
+                    HorizontalOptions="Center"
+                    Text="{Binding TrainScheduleOld.TrainName.Description}"
                     VerticalOptions="Center" />
                 <VerticalStackLayout Margin="20,0,20,0">
                     <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Username:  " />
+                        <Label Text="Origin:  " />
                         <Label
                             HorizontalOptions="Center"
-                            Text="{Binding Account.Username}"
+                            Text="{Binding TrainScheduleOld.Origin.Name}"
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Email:  " />
+                        <Label Text="Destination:  " />
                         <Label
                             HorizontalOptions="Center"
-                            Text="{Binding Account.Email}"
+                            Text="{Binding TrainScheduleOld.Destination.Name}"
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Gender:  " />
+                        <Label Text="Departure Time:  " />
                         <Label
                             HorizontalOptions="Center"
-                            Text="{Binding Account.Gender}"
+                            Text="{Binding TrainScheduleOld.DepartureTime}"
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
-                    <HorizontalStackLayout>
-                        <Label Text="Balance: $" />
-                        <Label
-                            HorizontalOptions="Center"
-                            Text="{Binding Account.Balance}"
-                            VerticalOptions="Center" />
+                    <Label Margin="0,20,0,0" Text="Enter Name:" />
+                    <Entry Text="{Binding PassengerName}" />
+                    <Label Margin="0,20,0,0" Text="Enter Email:" />
+                    <Entry Text="{Binding PassengerEmail}" />
+                    <Label Margin="0,20,0,0" Text="Enter Departure Date:" />
+                    <DatePicker
+                        Date="{Binding DepartureDate}"
+                        MaximumDate="{Binding MaximumDepartureDate}"
+                        MinimumDate="{Binding MinimumDepartureDate}" />
+                    <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Start">
+                        <CheckBox IsChecked="{Binding IsMale}" />
+                        <Label Text="Are you a male?" />
                     </HorizontalStackLayout>
                 </VerticalStackLayout>
 
@@ -85,19 +95,19 @@
             <Button
                 Grid.Column="0"
                 Margin="0,0,5,0"
-                BackgroundColor="{AppThemeBinding Light={StaticResource LatteRed},
-                                                  Dark={StaticResource MacchiatoRed}}"
-                Command="{Binding DeleteAccountCommand}"
-                Text="Delete Account"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteBlue},
+                                                  Dark={StaticResource MacchiatoBlue}}"
+                Command="{Binding ReserveTicketOldCommand}"
+                Text="Reserve"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
             <Button
                 Grid.Column="1"
-                Margin="0,0,5,0"
+                Margin="5,0,0,0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
                                                   Dark={StaticResource MacchiatoGreen}}"
-                Command="{Binding Add500ToBalanceCommand}"
-                Text="Add $500"
+                Command="{Binding BookTicketOldCommand}"
+                Text="Book"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
         </Grid>
