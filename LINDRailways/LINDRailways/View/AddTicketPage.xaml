@@ -10,11 +10,16 @@
         <ScrollView>
             <VerticalStackLayout Grid.Row="0">
                 <Label Margin="0,20,0,0" Text="Train Schedule Id:" />
-                <Entry Text="{Binding ScheduleId}" />
+                <Entry Placeholder="@" Text="{Binding ScheduleId}" />
                 <Label Margin="0,20,0,0" Text="Account Username:" />
                 <Entry Text="{Binding AccountUsername}" />
                 <Label Margin="0,20,0,0" Text="Passenger Name:" />
                 <Entry Text="{Binding PassengerName}" />
+                <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Start">
+                    <CheckBox IsChecked="{Binding IsMale}" />
+                    <Label Text="Are you a male?" />
+                </HorizontalStackLayout>
+
             </VerticalStackLayout>
         </ScrollView>
         <Grid

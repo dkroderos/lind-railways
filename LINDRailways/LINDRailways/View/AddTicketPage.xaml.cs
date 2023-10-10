@@ -4,10 +4,16 @@ namespace LINDRailways.View;
 
 public partial class AddTicketPage : ContentPage
 {
-	public AddTicketPage(AddTicketViewModel viewModel)
-	{
-		InitializeComponent();
+    public AddTicketPage(AddTicketViewModel viewModel)
+    {
+        InitializeComponent();
 
-		BindingContext = viewModel;
-	}
+        BindingContext = viewModel;
+    }
+
+    protected override void OnNavigatedTo(NavigatedToEventArgs args)
+    {
+        base.OnNavigatedTo(args);
+    }
+
 }
