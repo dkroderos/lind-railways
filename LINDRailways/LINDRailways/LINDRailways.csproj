@@ -71,6 +71,9 @@
 	  <Compile Update="Resources\Styles\CatppuccinMacchiatoColors.xaml.cs">
 	    <DependentUpon>CatppuccinMacchiatoColors.xaml</DependentUpon>
 	  </Compile>
+	  <Compile Update="View\AddTicketOldPage.xaml.cs">
+	    <DependentUpon>AddTicketOldPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="View\TicketOldDetailsPage.xaml.cs">
 	    <DependentUpon>TicketOldDetailsPage.xaml</DependentUpon>
 	  </Compile>

@@ -17,5 +17,7 @@ namespace LINDRailways.Model
         public int ScheduleId { get; set; }
         public string IsPaid { get; set; }
         public int InitialPaymentMethod { get; set; }
+        public string PassengerName { get; set; }
+        public string Gender { get; set; }
     }
 }

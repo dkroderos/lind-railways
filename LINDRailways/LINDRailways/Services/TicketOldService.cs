@@ -12,6 +12,7 @@ namespace LINDRailways.Services
     public static class TicketOldService
     {
         private static SQLiteAsyncConnection Database;
+
         private static async Task Init()
         {
             if (Database is not null)

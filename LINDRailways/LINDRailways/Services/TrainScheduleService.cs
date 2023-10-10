@@ -11,6 +11,7 @@ namespace LINDRailways.Services
     public class TrainScheduleService
     {
         private static SQLiteAsyncConnection Database;
+
         private static async Task Init()
         {
             if (Database is not null)
