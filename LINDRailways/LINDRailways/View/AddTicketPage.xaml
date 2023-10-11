@@ -12,7 +12,7 @@
                 <Label Margin="0,20,0,0" Text="Train Schedule Id:" />
                 <Entry Text="{Binding ScheduleId}" />
                 <Label Margin="0,20,0,0" Text="Account Username:" />
-                <Entry Placeholder="@" Text="{Binding AccountUsername}" />
+                <Entry Text="{Binding AccountUsername}" />
                 <Label Margin="0,20,0,0" Text="Passenger Name:" />
                 <Entry Text="{Binding PassengerName}" />
                 <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Start">

@@ -44,6 +44,14 @@ namespace LINDRailways.ViewModel
                 return;
             }
 
+            if (AccountUsername[0] != '@')
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Username",
+                    "Username must start with @", "OK");
+
+                return;
+            }
+
             var usernames = from account in await AccountService.GetAccountsAsync()
                             select account.Username;
 
