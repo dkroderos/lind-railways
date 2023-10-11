@@ -77,7 +77,6 @@ namespace LINDRailways.ViewModel
             var ticketAccount = await AccountService.GetAccountAsync(AccountUsername);
             var ticketSchedule = await TrainScheduleService.GetTrainScheduleAsync(int.Parse(ScheduleId));
 
-
             if (ticketSchedule.NumberOfPassengers >= ticketSchedule.Capacity)
             {
                 await Shell.Current.CurrentPage.DisplayAlert("Insufficient Funds",
@@ -130,6 +129,12 @@ namespace LINDRailways.ViewModel
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
                     $"Unable to add account: {ex.Message}", "OK");
             }
+        }
+
+        [RelayCommand]
+        private async Task ReserveTicketAsync()
+        {
+
         }
     }
 }

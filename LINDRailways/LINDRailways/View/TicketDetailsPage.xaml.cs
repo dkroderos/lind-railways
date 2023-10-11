@@ -2,15 +2,14 @@ using LINDRailways.ViewModel;
 
 namespace LINDRailways.View;
 
-public partial class AccountDetailsPage : ContentPage
+public partial class TicketDetailsPage : ContentPage
 {
-	public AccountDetailsPage(AccountDetailsViewModel viewModel)
+	public TicketDetailsPage(TicketDetailsViewModel viewModel)
 	{
 		InitializeComponent();
 
 		BindingContext = viewModel;
 	}
-
 	protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);

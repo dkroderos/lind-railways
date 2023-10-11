@@ -13,40 +13,20 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.ViewModel
 {
-    public partial class TicketOldsViewModel : BaseViewModel
+    public partial class TicketsViewModel : BaseViewModel
     {
-        public ObservableCollection<TicketOld> TicketOlds { get; } = new();
-        public TicketOldsViewModel()
-        {
-            Title = "TicketOlds";
+        public ObservableCollection<Ticket> Tickets { get; } = new();
 
-            _ = GetTicketOldsAsync();
+        public TicketsViewModel()
+        {
+            Title = "Tickets";
         }
 
         [ObservableProperty]
         private bool isRefreshing;
 
         [RelayCommand]
-        private async Task GoToTicketOldDetailsAsync(TicketOld TicketOld)
-        {
-            if (TicketOld is null)
-                return;
-
-            await Shell.Current.GoToAsync($"{nameof(TicketOldDetailsPage)}",
-                true, new Dictionary<string, object>
-                {
-                    { "TicketOld", TicketOld }
-                });
-        }
-
-        [RelayCommand]
-        private async Task GoToTrainScheduleOldsAsync()
-        {
-            await Shell.Current.GoToAsync(nameof(TrainScheduleOldsPage), true);
-        }
-
-        [RelayCommand]
-        private async Task GetTicketOldsAsync()
+        private async Task GetTicketsAsync()
         {
             if (IsBusy)
                 return;
@@ -54,29 +34,44 @@ namespace LINDRailways.ViewModel
             try
             {
                 IsBusy = true;
-                TicketOlds.Clear();
 
-                IEnumerable<TicketOld> allTicketOlds = await TicketOldService.GetAllTicketOlds();
+                Tickets.Clear();
+                var accounts = await TicketService.GetTicketsAsync();
 
-                var paidTicketOlds = from TicketOld in allTicketOlds
-                                  where TicketOld.IsPaid == 1 
-                                  select TicketOld;
-
-                foreach (TicketOld TicketOld in paidTicketOlds)
+                foreach (Ticket ticket in Tickets)
                 {
-                    TicketOlds.Add(TicketOld);
+                    Tickets.Add(ticket);
                 }
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex);
-                await Shell.Current.DisplayAlert("Error!", $"Unable to get TicketOlds: {ex.Message}", "OK");
+                await Shell.Current.DisplayAlert("Error!", $"Unable to get tickets: {ex.Message}", "OK");
             }
             finally
             {
                 IsBusy = false;
                 IsRefreshing = false;
             }
+        }
+
+        [RelayCommand]
+        private async Task GoToTicketDetailsAsync(Ticket ticket)
+        {
+            if (ticket is null)
+                return;
+
+            await Shell.Current.GoToAsync($"{nameof(TicketDetailsPage)}",
+                true, new Dictionary<string, object>
+                {
+                    { "Ticket", ticket }
+                });
+        }
+
+        [RelayCommand]
+        private async Task GoToAddTicketAsync()
+        {
+            await Shell.Current.GoToAsync($"{nameof(AddTicketPage)}", true);
         }
     }
 }
