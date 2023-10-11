@@ -98,11 +98,11 @@
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
             <Button
-                Grid.Column="0"
+                Grid.Column="1"
                 Margin="0,0,5,0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
                                                   Dark={StaticResource MacchiatoGreen}}"
-                Text="Pay Schedule"
+                Text="Pay Ticket"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
         </Grid>

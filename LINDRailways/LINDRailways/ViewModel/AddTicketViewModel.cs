@@ -127,14 +127,94 @@ namespace LINDRailways.ViewModel
             {
                 Debug.WriteLine(ex);
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
-                    $"Unable to add account: {ex.Message}", "OK");
+                    $"Unable to add ticket: {ex.Message}", "OK");
             }
         }
 
         [RelayCommand]
         private async Task ReserveTicketAsync()
         {
+            if (AccountUsername is null || AccountUsername.Equals(""))
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Username",
+                    "Please enter your username", "OK");
 
+                return;
+            }
+
+            var usernames = from account in await AccountService.GetAccountsAsync()
+                            select account.Username;
+
+            if (!usernames.Contains(AccountUsername))
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Username",
+                    "Username not found", "OK");
+
+                return;
+            }
+
+            if (ScheduleId is null || ScheduleId.Equals("") || !int.TryParse(ScheduleId, out _))
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Schedule Id",
+                    "Please enter a valid schedule id", "OK");
+
+                return;
+            }
+
+            var scheduleIds = from schedule in await TrainScheduleService.GetTrainSchedulesAsync()
+                              select schedule.Id;
+
+            if (!scheduleIds.Contains(int.Parse(ScheduleId)))
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Invalid Schdeule Id",
+                    "Train schedule not found", "OK");
+
+                return;
+            }
+
+            var ticketAccount = await AccountService.GetAccountAsync(AccountUsername);
+            var ticketSchedule = await TrainScheduleService.GetTrainScheduleAsync(int.Parse(ScheduleId));
+
+            if (ticketSchedule.NumberOfPassengers >= ticketSchedule.Capacity)
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Insufficient Funds",
+                    $"Ticket costs ${ticketSchedule.Price} the the account only has a balance of ${ticketAccount.Balance}", "OK");
+
+                return;
+            }
+
+            bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
+                "Book Ticket", $"Are you sure you want to reserve in this ticket?", "Yes", "No");
+
+            if (!isConfirmed)
+                return;
+
+            try
+            {
+                await TicketService.AddTicketAsync(new Ticket
+                {
+                    ScheduleId = int.Parse(ScheduleId),
+                    AccountUsername = AccountUsername,
+                    PassengerName = PassengerName,
+                    Gender = IsMale == 1 ? "Male" : "Female",
+                    Photo = IsMale == 1 ? "male.jpg" : "female.jpg",
+                    IsPaid = 0,
+                    IsBook = 0 
+                });
+
+                ticketSchedule.NumberOfPassengers += 1;
+
+                await TrainScheduleService.UpdateTrainSchedule(ticketSchedule);
+
+                await Shell.Current.CurrentPage.DisplayAlert("Success!",
+                    $"Ticket Reserved!", "OK");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex);
+                await Shell.Current.CurrentPage.DisplayAlert("Error!",
+                    $"Unable to reserve ticket: {ex.Message}", "OK");
+            }
         }
     }
 }

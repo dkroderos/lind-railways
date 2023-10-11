@@ -35,7 +35,7 @@ namespace LINDRailways
             builder.Services.AddTransient<AddAccountViewModel>();
             builder.Services.AddTransient<TrainScheduleDetailsViewModel>();
             builder.Services.AddTransient<AddTicketViewModel>();
-            builder.Services.AddSingleton<TicketDetailsViewModel>();
+            builder.Services.AddTransient<TicketDetailsViewModel>();
 
             builder.Services.AddSingleton<HomePage>();
             builder.Services.AddSingleton<TrainScheduleOldsPage>();
@@ -51,7 +51,7 @@ namespace LINDRailways
             builder.Services.AddTransient<AddAccountPage>();
             builder.Services.AddTransient<TrainScheduleDetailsPage>();
             builder.Services.AddTransient<AddTicketPage>();
-            builder.Services.AddTransient<TicketDetailsViewModel>();
+            builder.Services.AddTransient<TicketDetailsPage>();
 
             return builder.Build();
         }

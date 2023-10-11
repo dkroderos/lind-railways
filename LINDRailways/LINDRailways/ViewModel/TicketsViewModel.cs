@@ -20,6 +20,8 @@ namespace LINDRailways.ViewModel
         public TicketsViewModel()
         {
             Title = "Tickets";
+
+            _ = GetTicketsAsync();
         }
 
         [ObservableProperty]
@@ -36,9 +38,9 @@ namespace LINDRailways.ViewModel
                 IsBusy = true;
 
                 Tickets.Clear();
-                var accounts = await TicketService.GetTicketsAsync();
+                var tickets = await TicketService.GetTicketsAsync();
 
-                foreach (Ticket ticket in Tickets)
+                foreach (Ticket ticket in tickets)
                 {
                     Tickets.Add(ticket);
                 }
