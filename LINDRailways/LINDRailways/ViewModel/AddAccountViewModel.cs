@@ -84,7 +84,7 @@ namespace LINDRailways.ViewModel
             {
                 await AccountService.AddAccountAsync(new Account
                 {
-                    Username = Username,
+                    Username = "@" + Username,
                     Name = Name,
                     Email = Email,
                     Photo = IsMale == 1 ? "male.jpg" : "female.jpg",

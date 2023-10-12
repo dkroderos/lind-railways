@@ -63,7 +63,7 @@ namespace LINDRailways.ViewModel
 
                 account.Balance += 500;
 
-                await AccountService.UpdateAccount(account);
+                await AccountService.UpdateAccountAsync(account);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     $"Added $500 to balance", "OK");

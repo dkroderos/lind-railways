@@ -9,12 +9,11 @@
     <Grid RowDefinitions="*,Auto">
         <VerticalStackLayout Grid.Row="0">
             <Label Margin="0,20,0,0" Text="Username:" />
-            <Entry Text="{Binding Username}" />
+            <Entry Placeholder="Must start with @" Text="{Binding Username}" />
             <Label Margin="0,20,0,0" Text="Name:" />
             <Entry Text="{Binding Name}" />
             <Label Margin="0,20,0,0" Text="Email:" />
             <Entry Text="{Binding Email}" />
-            <Label Margin="0,20,0,0" Text="Gender:" />
             <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Start">
                 <CheckBox IsChecked="{Binding IsMale}" />
                 <Label Text="Are you a male?" />

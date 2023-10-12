@@ -62,7 +62,7 @@ namespace LINDRailways.Services
             return trainSchedule;
         }
 
-        public static async Task UpdateTrainSchedule(TrainSchedule trainSchedule)
+        public static async Task UpdateTrainScheduleAsync(TrainSchedule trainSchedule)
         {
             await Init();
 

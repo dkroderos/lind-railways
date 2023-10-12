@@ -15,6 +15,11 @@
                 <Entry Text="{Binding AccountUsername}" />
                 <Label Margin="0,20,0,0" Text="Passenger Name:" />
                 <Entry Text="{Binding PassengerName}" />
+                <HorizontalStackLayout Margin="0,20,0,0" HorizontalOptions="Start">
+                    <CheckBox IsChecked="{Binding IsMale}" />
+                    <Label Text="Are you a male?" />
+                </HorizontalStackLayout>
+
             </VerticalStackLayout>
         </ScrollView>
         <Grid
