@@ -87,8 +87,8 @@ namespace LINDRailways.ViewModel
 
             if (ticketSchedule.NumberOfPassengers >= ticketSchedule.Capacity)
             {
-                await Shell.Current.CurrentPage.DisplayAlert("Insufficient Funds",
-                    $"Ticket costs ${ticketSchedule.Price} the the account only has a balance of ${ticketAccount.Balance}", "OK");
+                await Shell.Current.CurrentPage.DisplayAlert("Full Capacity",
+                    $"The train is already full", "OK");
 
                 return;
             }
@@ -125,8 +125,8 @@ namespace LINDRailways.ViewModel
                 ticketAccount.Balance -= bookingPrice;
                 ticketSchedule.NumberOfPassengers += 1;
 
-                await AccountService.UpdateAccount(ticketAccount);
-                await TrainScheduleService.UpdateTrainSchedule(ticketSchedule);
+                await AccountService.UpdateAccountAsync(ticketAccount);
+                await TrainScheduleService.UpdateTrainScheduleAsync(ticketSchedule);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     $"Ticket Booked! Spent ${ticketSchedule.Price * 0.8} to {ticketAccount.Username}", "OK");
@@ -212,7 +212,7 @@ namespace LINDRailways.ViewModel
 
                 ticketSchedule.NumberOfPassengers += 1;
 
-                await TrainScheduleService.UpdateTrainSchedule(ticketSchedule);
+                await TrainScheduleService.UpdateTrainScheduleAsync(ticketSchedule);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     $"Ticket Reserved!", "OK");

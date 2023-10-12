@@ -62,7 +62,7 @@ namespace LINDRailways.Services
             return account;
         }
 
-        public static async Task UpdateAccount(Account account)
+        public static async Task UpdateAccountAsync(Account account)
         {
             await Init();
 

@@ -53,28 +53,28 @@
                     </HorizontalStackLayout>
 
                     <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Train Class:  " />
+                        <Label Text="Gender:  " />
                         <Label
                             HorizontalOptions="Center"
                             Text="{Binding Ticket.Gender}"
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Origin:  " />
+                        <Label Text="Is Book:  " />
                         <Label
                             HorizontalOptions="Center"
                             Text="{Binding Ticket.IsBook}"
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Destination:  " />
+                        <Label Text="Is Paid:  " />
                         <Label
                             HorizontalOptions="Center"
                             Text="{Binding Ticket.IsPaid}"
                             VerticalOptions="Center" />
                     </HorizontalStackLayout>
                     <HorizontalStackLayout HorizontalOptions="Start">
-                        <Label Text="Departure Date:  " />
+                        <Label Text="Schedule Id:  " />
                         <Label
                             HorizontalOptions="Center"
                             Text="{Binding Ticket.ScheduleId}"
@@ -94,6 +94,7 @@
                 Margin="0,0,5,0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteRed},
                                                   Dark={StaticResource MacchiatoRed}}"
+                Command="{Binding CancelTicketCommand}"
                 Text="Cancel Ticket"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
@@ -102,6 +103,7 @@
                 Margin="0,0,5,0"
                 BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
                                                   Dark={StaticResource MacchiatoGreen}}"
+                Command="{Binding PayTicketCommand}"
                 Text="Pay Ticket"
                 TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
                                             Dark={StaticResource LatteText}}" />
