@@ -36,19 +36,4 @@
             <ShellContent ContentTemplate="{DataTemplate view:TicketsPage}" />
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Train Shedules (Old)">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate view:TrainScheduleOldsPage}" />
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Tickets (Old)">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate view:TicketOldsPage}" />
-        </Tab>
-    </FlyoutItem>
-    <FlyoutItem Title="Pending Tickets (Old)">
-        <Tab>
-            <ShellContent ContentTemplate="{DataTemplate view:PendingTicketOldsPage}" />
-        </Tab>
-    </FlyoutItem>
 </Shell>
