@@ -38,6 +38,23 @@ namespace LINDRailways.ViewModel
 
             try
             {
+                var tickets = await TicketService.GetTicketsAsync();
+                var trainTickets = from ticket in tickets
+                                   where ticket.ScheduleId == TrainSchedule.Id
+                                   select ticket;
+
+                foreach (Ticket trainTicket in trainTickets)
+                {
+                    if (trainTicket.IsPaid == 1)
+                    {
+                        var ticketAccount = await AccountService.GetAccountAsync(trainTicket.AccountUsername);
+
+                        ticketAccount.Balance += (int)(trainTicket.IsBook == 1 ? TrainSchedule.Price * 0.8 : TrainSchedule.Price);
+                    }
+
+                    await TicketService.RemoveTicketAsync(trainTicket.Id);
+                }
+
                 await TrainScheduleService.RemoveTrainScheduleAsync(TrainSchedule.Id);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",

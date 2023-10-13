@@ -32,6 +32,20 @@ namespace LINDRailways.ViewModel
 
             try
             {
+                var tickets = await TicketService.GetTicketsAsync();
+
+                var accountTickets = from ticket in tickets
+                                     where ticket.AccountUsername == Account.Username
+                                     select ticket;
+
+                foreach (Ticket accountTicket in accountTickets)
+                {
+                    TrainSchedule ticketSchedule = await TrainScheduleService.GetTrainScheduleAsync(accountTicket.ScheduleId);
+                    ticketSchedule.NumberOfPassengers -= 1;
+
+                    await TrainScheduleService.UpdateTrainScheduleAsync(ticketSchedule);
+                }
+
                 await AccountService.RemoveAccountAsync(Account.Username);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
@@ -46,7 +60,7 @@ namespace LINDRailways.ViewModel
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
                     $"Unable to delete account: {ex.Message}", "OK");
             }
-        } 
+        }
 
         [RelayCommand]
         private async Task Add500ToBalance()
