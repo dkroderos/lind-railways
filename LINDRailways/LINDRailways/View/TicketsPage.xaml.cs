@@ -2,18 +2,18 @@ using LINDRailways.ViewModel;
 
 namespace LINDRailways.View;
 
-public partial class AddTicketPage : ContentPage
+public partial class TicketsPage : ContentPage
 {
-    public AddTicketPage(AddTicketViewModel viewModel)
+    public TicketsPage()
     {
         InitializeComponent();
-
-        BindingContext = viewModel;
     }
 
     protected override void OnNavigatedTo(NavigatedToEventArgs args)
     {
         base.OnNavigatedTo(args);
+
+        BindingContext = new TicketsViewModel();
     }
 
 }

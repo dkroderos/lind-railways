@@ -11,32 +11,43 @@ using System.Threading.Tasks;
 
 namespace LINDRailways.ViewModel
 {
-    [QueryProperty("TicketOld", "TicketOld")]
-    public partial class TicketOldDetailsViewModel : BaseViewModel
+    [QueryProperty("Ticket", "Ticket")]
+    public partial class TicketDetailsViewModel : BaseViewModel
     {
-        public TicketOldDetailsViewModel()
+        public TicketDetailsViewModel()
         {
         }
 
         [ObservableProperty]
-        private TicketOld ticketOld;
+        private Ticket ticket;
 
         [RelayCommand]
-        private async Task CancelTicketOldAsync()
+        private async Task CancelTicketAsync()
         {
-            bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
-                "Cancel TicketOld", "Are you sure you want to cancel this TicketOld?",
-                "Yes", "No");
+            Account account = await AccountService.GetAccountAsync(Ticket.AccountUsername);
+            TrainSchedule trainSchedule = await TrainScheduleService.GetTrainScheduleAsync(Ticket.ScheduleId);
+
+            bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert("Cancel Ticket", "Are you sure you want to cancel this ticket?",
+                            "Yes", "No");
 
             if (!isConfirmed)
                 return;
 
             try
             {
-                await TicketOldService.RemoveTicketOld(TicketOld.Id);
+                if (Ticket.IsPaid == 1)
+                {
+                    account.Balance += (int)(Ticket.IsBook == 1 ? trainSchedule.Price * 0.8 : trainSchedule.Price);
+                }
+                trainSchedule.NumberOfPassengers -= 1;
+
+                await AccountService.UpdateAccountAsync(account);
+                await TrainScheduleService.UpdateTrainScheduleAsync(trainSchedule);
+
+                await TicketService.RemoveTicketAsync(Ticket.Id);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
-                    "TicketOld Cancelled, Added $60 from your account", "OK");
+                    $"Ticket cancelled", "OK");
 
                 await Shell.Current.GoToAsync("..");
             }
@@ -45,34 +56,37 @@ namespace LINDRailways.ViewModel
                 Debug.WriteLine(ex);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
-                    $"Unable to cancel TicketOld: {ex.Message}", "OK");
+                    $"Unable to add balance: {ex.Message}", "OK");
             }
         }
 
         [RelayCommand]
-        private async Task PayTicketOldAsync()
+        private async Task PayTicketAsync()
         {
-            if (this.TicketOld.IsPaid == 1)
+            if (Ticket.IsPaid == 1)
             {
-                await Shell.Current.CurrentPage.DisplayAlert("Already Paid!",
-                    "TicketOld is already paid", "OK");
-
-                return;
+                await Shell.Current.CurrentPage.DisplayAlert("Already Paid", "Ticket already paid", "OK");
             }
 
-            bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert(
-                "Pay TicketOld", "Are you sure you want to pay this TicketOld?",
-                "Yes", "No");
+            Account account = await AccountService.GetAccountAsync(Ticket.AccountUsername);
+            TrainSchedule trainSchedule = await TrainScheduleService.GetTrainScheduleAsync(Ticket.ScheduleId);
+
+            bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert("Pay Ticket", $"Pay ${trainSchedule.Price} to {account.Username}?",
+                            "Pay", "Don't Pay");
 
             if (!isConfirmed)
                 return;
 
             try
             {
-                await TicketOldService.PayTicketOld(TicketOld);
+                account.Balance -= trainSchedule.Price;
+
+                await AccountService.UpdateAccountAsync(account);
+
+                Ticket.IsPaid = 1;
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
-                    "TicketOld Paid, Removed $100 from your balance", "OK");
+                    $"Paid ${trainSchedule.Price} to {account.Username}", "OK");
 
                 await Shell.Current.GoToAsync("..");
             }
@@ -81,7 +95,7 @@ namespace LINDRailways.ViewModel
                 Debug.WriteLine(ex);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Error!",
-                    $"Unable to pay TicketOld: {ex.Message}", "OK");
+                    $"Unable to add balance: {ex.Message}", "OK");
             }
         }
     }

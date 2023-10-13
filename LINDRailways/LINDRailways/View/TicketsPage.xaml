@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="LINDRailways.View.TicketsPage"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:model="clr-namespace:LINDRailways.Model"
+    xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
+    Title="{Binding Title}"
+    x:DataType="viewmodel:TicketsViewModel">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Command="{Binding GetTicketsCommand}" Text="REFRESH" />
+    </ContentPage.ToolbarItems>
+
+    <Grid RowDefinitions="*,Auto">
+        <Grid Grid.Row="0" Padding="5">
+            <RefreshView Command="{Binding GetTicketsCommand}" IsRefreshing="{Binding IsRefreshing}">
+                <CollectionView ItemsSource="{Binding Tickets}" SelectionMode="None">
+
+                    <CollectionView.ItemsLayout>
+                        <GridItemsLayout Orientation="Vertical" Span="2" />
+                    </CollectionView.ItemsLayout>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="model:Ticket">
+                            <Frame
+                                Margin="5"
+                                Padding="20"
+                                BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
+                                                                  Dark={StaticResource MacchiatoSurface0}}"
+                                CornerRadius="10">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TicketsViewModel}}, Path=GoToTicketDetailsCommand}" CommandParameter="{Binding .}" />
+                                </Frame.GestureRecognizers>
+                                <Grid
+                                    Margin="0"
+                                    Padding="0"
+                                    RowDefinitions="Auto,*">
+                                    <Frame
+                                        Grid.Row="0"
+                                        CornerRadius="70"
+                                        HeightRequest="140"
+                                        WidthRequest="140">
+
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:TicketsViewModel}}, Path=GoToTicketDetailsCommand}" CommandParameter="{Binding .}" />
+                                        </Frame.GestureRecognizers>
+                                        <Image
+                                            HeightRequest="150"
+                                            Source="{Binding Photo}"
+                                            WidthRequest="150" />
+                                    </Frame>
+                                    <VerticalStackLayout Grid.Row="1" Padding="0,20,0,0">
+                                        <Label Text="{Binding AccountUsername}" />
+                                        <Label Text="{Binding ScheduleId}" />
+                                        <Label Text="{Binding PassengerName}" />
+                                    </VerticalStackLayout>
+                                </Grid>
+                            </Frame>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+
+                </CollectionView>
+
+            </RefreshView>
+        </Grid>
+        <Grid
+            Grid.Row="1"
+            Padding="10"
+            BackgroundColor="{AppThemeBinding Light={StaticResource LatteCrust},
+                                              Dark={StaticResource MacchiatoCrust}}">
+            <Button
+                Grid.Column="0"
+                BackgroundColor="{AppThemeBinding Light={StaticResource LatteGreen},
+                                                  Dark={StaticResource MacchiatoGreen}}"
+                Command="{Binding GoToAddTicketCommand}"
+                Text="Add Ticket"
+                TextColor="{AppThemeBinding Light={StaticResource MacchiatoText},
+                                            Dark={StaticResource LatteText}}" />
+        </Grid>
+    </Grid>
+</ContentPage>
