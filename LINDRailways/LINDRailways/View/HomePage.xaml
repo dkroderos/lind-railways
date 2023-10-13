@@ -7,42 +7,98 @@
     Title="{Binding Title}"
     x:DataType="viewmodel:HomeViewModel">
 
-    <VerticalStackLayout>
-        <Label
-            FontSize="30"
-            HorizontalOptions="Center"
-            Text="Meet The Team" />
-        <Grid RowDefinitions="Auto,Auto,Auto,Auto">
-            <Frame
-                Grid.Row="0"
-                Margin="10"
-                BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
-                                                  Dark={StaticResource MacchiatoSurface0}}"
-                CornerRadius="20">
-                <Image Source="https://avatars.githubusercontent.com/u/75028710?v=4" />
-            </Frame>
-            <Frame
-                Grid.Row="1"
-                Margin="10"
-                BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
-                                                  Dark={StaticResource MacchiatoSurface0}}"
-                CornerRadius="20">
-                <Image Source="https://avatars.githubusercontent.com/u/126074199?v=4" />
-            </Frame>
-            <Frame
-                Grid.Row="2"
-                BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
-                                                  Dark={StaticResource MacchiatoSurface0}}"
-                CornerRadius="20">
-                <Image Source="https://avatars.githubusercontent.com/u/142376663?v=4" />
-            </Frame>
-            <Frame
-                Grid.Row="3"
-                BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
-                                                  Dark={StaticResource MacchiatoSurface0}}"
-                CornerRadius="20">
-                <Image Source="https://avatars.githubusercontent.com/u/142380105?v=4" />
-            </Frame>
-        </Grid>
-    </VerticalStackLayout>
+    <ScrollView>
+        <VerticalStackLayout>
+            <Label
+                FontSize="30"
+                HorizontalOptions="Center"
+                Text="Meet The Team" />
+            <Grid ColumnDefinitions="*,*" RowDefinitions="*,*">
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="0"
+                    Margin="10"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
+                                                      Dark={StaticResource MacchiatoSurface0}}"
+                    CornerRadius="20">
+                    <VerticalStackLayout>
+                        <Frame HeightRequest="150" WidthRequest="150">
+                            <Image
+                                HeightRequest="150"
+                                Source="dabid.jpg"
+                                WidthRequest="150" />
+                        </Frame>
+                        <Label
+                            Margin="0,10,0,0"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="David" />
+                    </VerticalStackLayout>
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="0"
+                    Margin="10"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
+                                                      Dark={StaticResource MacchiatoSurface0}}"
+                    CornerRadius="20">
+                    <VerticalStackLayout>
+                        <Frame HeightRequest="150" WidthRequest="150">
+                            <Image
+                                HeightRequest="150"
+                                Source="izaya.jpg"
+                                WidthRequest="150" />
+                        </Frame>
+                        <Label
+                            Margin="0,10,0,0"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="Izaya" />
+                    </VerticalStackLayout>
+                </Frame>
+                <Frame
+                    Grid.Row="0"
+                    Grid.Column="1"
+                    Margin="10"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
+                                                      Dark={StaticResource MacchiatoSurface0}}"
+                    CornerRadius="20">
+                    <VerticalStackLayout>
+                        <Frame HeightRequest="150" WidthRequest="150">
+                            <Image
+                                HeightRequest="150"
+                                Source="neo.jpg"
+                                WidthRequest="150" />
+                        </Frame>
+                        <Label
+                            Margin="0,10,0,0"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="Neo" />
+                    </VerticalStackLayout>
+                </Frame>
+                <Frame
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Margin="10"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LatteSurface0},
+                                                      Dark={StaticResource MacchiatoSurface0}}"
+                    CornerRadius="20">
+                    <VerticalStackLayout>
+                        <Frame HeightRequest="150" WidthRequest="150">
+                            <Image
+                                HeightRequest="150"
+                                Source="lloyd.jpg"
+                                WidthRequest="150" />
+                        </Frame>
+                        <Label
+                            Margin="0,10,0,0"
+                            FontSize="20"
+                            HorizontalOptions="Center"
+                            Text="Lloyd" />
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
 </ContentPage>
