@@ -80,15 +80,13 @@ namespace LINDRailways.ViewModel
             try
             {
                 account.Balance -= trainSchedule.Price;
+                Ticket.IsPaid = 1;
 
                 await AccountService.UpdateAccountAsync(account);
-
-                Ticket.IsPaid = 1;
+                await TicketService.UpdateTicketAsync(Ticket);
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     $"Paid ${trainSchedule.Price} to {account.Username}", "OK");
-
-                await Shell.Current.GoToAsync("..");
             }
             catch (Exception ex)
             {

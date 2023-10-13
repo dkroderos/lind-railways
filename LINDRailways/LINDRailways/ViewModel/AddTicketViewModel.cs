@@ -185,8 +185,8 @@ namespace LINDRailways.ViewModel
 
             if (ticketSchedule.NumberOfPassengers >= ticketSchedule.Capacity)
             {
-                await Shell.Current.CurrentPage.DisplayAlert("Insufficient Funds",
-                    $"Ticket costs ${ticketSchedule.Price} the the account only has a balance of ${ticketAccount.Balance}", "OK");
+                await Shell.Current.CurrentPage.DisplayAlert("Full Capacity",
+                    $"The train is already full", "OK");
 
                 return;
             }

@@ -71,18 +71,6 @@
 	  <Compile Update="Resources\Styles\CatppuccinMacchiatoColors.xaml.cs">
 	    <DependentUpon>CatppuccinMacchiatoColors.xaml</DependentUpon>
 	  </Compile>
-	  <Compile Update="View\AddTicketOldPage.xaml.cs">
-	    <DependentUpon>AddTicketOldPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="View\TicketOldDetailsPage.xaml.cs">
-	    <DependentUpon>TicketOldDetailsPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="View\TicketOldsPage.xaml.cs">
-	    <DependentUpon>TicketOldsPage.xaml</DependentUpon>
-	  </Compile>
-	  <Compile Update="View\TrainScheduleOldsPage.xaml.cs">
-	    <DependentUpon>TrainScheduleOldsPage.xaml</DependentUpon>
-	  </Compile>
 	  <Compile Update="View\TrainSchedulesPage.xaml.cs">
 	    <DependentUpon>TrainSchedulesPage.xaml</DependentUpon>
 	  </Compile>
@@ -107,9 +95,6 @@
 	  <MauiXaml Update="View\AddAccountPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\AddTicketOldPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="View\AddTicketPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -125,19 +110,10 @@
 	  <MauiXaml Update="View\TicketDetailsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\TicketOldDetailsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="View\TicketOldsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="View\TicketsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\TrainScheduleDetailsPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
-	  <MauiXaml Update="View\TrainScheduleOldsPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="View\TrainSchedulesPage.xaml">
