@@ -37,7 +37,11 @@ namespace LINDRailways.ViewModel
             {
                 if (Ticket.IsPaid == 1)
                 {
-                    account.Balance += (int)(Ticket.IsBook == 1 ? trainSchedule.Price * 0.8 : trainSchedule.Price);
+                    DateTime departureDateTime = DateTime.Parse(trainSchedule.DepartureDate).Add(DateTime.Parse(trainSchedule.DepartureTime).TimeOfDay);
+                    if (DateTime.Now < departureDateTime)
+                    {
+                        account.Balance += (int)(Ticket.IsBook == 1 ? trainSchedule.Price * 0.7 : trainSchedule.Price * 0.8);
+                    }
                 }
                 trainSchedule.NumberOfPassengers -= 1;
 
@@ -63,13 +67,24 @@ namespace LINDRailways.ViewModel
         [RelayCommand]
         private async Task PayTicketAsync()
         {
+            TrainSchedule trainSchedule = await TrainScheduleService.GetTrainScheduleAsync(Ticket.ScheduleId);
+            DateTime departureDateTime = DateTime.Parse(trainSchedule.DepartureDate).Add(DateTime.Parse(trainSchedule.DepartureTime).TimeOfDay);
+
+            if (DateTime.Now > departureDateTime)
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Ticket Expired", "Train already departured", "OK");
+
+                return;
+            }
+
             if (Ticket.IsPaid == 1)
             {
                 await Shell.Current.CurrentPage.DisplayAlert("Already Paid", "Ticket already paid", "OK");
+
+                return;
             }
 
             Account account = await AccountService.GetAccountAsync(Ticket.AccountUsername);
-            TrainSchedule trainSchedule = await TrainScheduleService.GetTrainScheduleAsync(Ticket.ScheduleId);
 
             bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert("Pay Ticket", $"Pay ${trainSchedule.Price} to {account.Username}?",
                             "Pay", "Don't Pay");
