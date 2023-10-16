@@ -43,11 +43,11 @@ namespace LINDRailways.ViewModel
                                    where ticket.ScheduleId == TrainSchedule.Id
                                    select ticket;
 
-                DateTime departureDateTime = DateTime.Parse(TrainSchedule.DepartureDate).Add(DateTime.Parse(TrainSchedule.DepartureTime).TimeOfDay);
+                //DateTime departureDateTime = DateTime.Parse(TrainSchedule.DepartureDate).Add(DateTime.Parse(TrainSchedule.DepartureTime).TimeOfDay);
 
                 foreach (Ticket trainTicket in trainTickets)
                 {
-                    if (trainTicket.IsPaid == 1 && DateTime.Now < departureDateTime)
+                    if (trainTicket.IsPaid == 1)
                     {
                         var ticketAccount = await AccountService.GetAccountAsync(trainTicket.AccountUsername);
 
