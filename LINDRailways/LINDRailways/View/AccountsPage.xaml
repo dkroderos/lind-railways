@@ -38,16 +38,16 @@
                                     <Frame
                                         Grid.Row="0"
                                         CornerRadius="70"
-                                        HeightRequest="140"
-                                        WidthRequest="140">
+                                        HeightRequest="120"
+                                        WidthRequest="120">
 
                                         <Frame.GestureRecognizers>
                                             <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:AccountsViewModel}}, Path=GoToAccountDetailsCommand}" CommandParameter="{Binding .}" />
                                         </Frame.GestureRecognizers>
                                         <Image
-                                            HeightRequest="150"
+                                            HeightRequest="120"
                                             Source="{Binding Photo}"
-                                            WidthRequest="150" />
+                                            WidthRequest="120" />
                                     </Frame>
                                     <VerticalStackLayout Grid.Row="1" Padding="0,20,0,0">
                                         <Label Text="{Binding Username}" />

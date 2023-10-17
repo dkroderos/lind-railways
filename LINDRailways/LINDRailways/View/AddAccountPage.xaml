@@ -6,8 +6,8 @@
     xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
     Title="{Binding Title}"
     x:DataType="viewmodel:AddAccountViewModel">
-    <Grid Margin="10" RowDefinitions="*,Auto">
-        <VerticalStackLayout Grid.Row="0">
+    <Grid RowDefinitions="*,Auto">
+        <VerticalStackLayout Grid.Row="0" Margin="10">
             <Label Margin="0,20,0,0" Text="Username:" />
             <Entry Placeholder="Must start with @" Text="{Binding Username}" />
             <Label Margin="0,20,0,0" Text="Name:" />

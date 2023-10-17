@@ -6,9 +6,9 @@
     xmlns:viewmodel="clr-namespace:LINDRailways.ViewModel"
     Title="{Binding Title}"
     x:DataType="viewmodel:AddTicketViewModel">
-    <Grid Margin="10" RowDefinitions="*,Auto">
+    <Grid RowDefinitions="*,Auto">
         <ScrollView>
-            <VerticalStackLayout Grid.Row="0">
+            <VerticalStackLayout Grid.Row="0" Margin="10">
                 <Label Margin="0,20,0,0" Text="Train Schedule Id:" />
                 <Entry Text="{Binding ScheduleId}" />
                 <Label Margin="0,20,0,0" Text="Account Username:" />
