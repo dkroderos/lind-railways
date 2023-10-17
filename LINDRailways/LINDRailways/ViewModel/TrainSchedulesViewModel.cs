@@ -75,6 +75,5 @@ namespace LINDRailways.ViewModel
         {
             await Shell.Current.GoToAsync($"{nameof(AddTrainSchedulePage)}", true);
         }
-
     }
 }
