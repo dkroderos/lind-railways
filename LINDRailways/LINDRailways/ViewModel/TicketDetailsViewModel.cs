@@ -36,12 +36,12 @@ namespace LINDRailways.ViewModel
 
             try
             {
-                if (Ticket.IsPaid == 1)
+                if (Ticket.IsPaid.Equals("Yes"))
                 {
                     //DateTime departureDateTime = DateTime.Parse(trainSchedule.DepartureDate).Add(DateTime.Parse(trainSchedule.DepartureTime).TimeOfDay);
                     //if (DateTime.Now < departureDateTime)
                     //{
-                        account.Balance += (int)(Ticket.IsBook == 1 ? trainSchedule.Price * 0.7 : trainSchedule.Price * 0.8);
+                        account.Balance += (int)(Ticket.IsBook.Equals("Yes") ? trainSchedule.Price * 0.7 : trainSchedule.Price * 0.8);
                     //}
                 }
                 trainSchedule.NumberOfPassengers -= 1;
@@ -82,7 +82,7 @@ namespace LINDRailways.ViewModel
             //    return;
             //}
 
-            if (Ticket.IsPaid == 1)
+            if (Ticket.IsPaid.Equals("Yes"))
             {
                 await Shell.Current.CurrentPage.DisplayAlert("Already Paid", "Ticket already paid", "OK");
 
@@ -100,7 +100,7 @@ namespace LINDRailways.ViewModel
             try
             {
                 account.Balance -= trainSchedule.Price;
-                Ticket.IsPaid = 1;
+                Ticket.IsPaid = "Yes";
 
                 await AccountService.UpdateAccountAsync(account);
                 await TicketService.UpdateTicketAsync(Ticket);
