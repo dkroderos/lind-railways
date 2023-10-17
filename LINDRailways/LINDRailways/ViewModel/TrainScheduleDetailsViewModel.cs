@@ -47,11 +47,11 @@ namespace LINDRailways.ViewModel
 
                 foreach (Ticket trainTicket in trainTickets)
                 {
-                    if (trainTicket.IsPaid == 1)
+                    if (trainTicket.IsPaid.Equals("Yes"))
                     {
                         var ticketAccount = await AccountService.GetAccountAsync(trainTicket.AccountUsername);
 
-                        ticketAccount.Balance += (int)(trainTicket.IsBook == 1 ? TrainSchedule.Price * 0.8 : TrainSchedule.Price);
+                        ticketAccount.Balance += (int)(trainTicket.IsBook.Equals("Yes") ? TrainSchedule.Price * 0.8 : TrainSchedule.Price);
                     } 
 
                     await TicketService.RemoveTicketAsync(trainTicket.Id);

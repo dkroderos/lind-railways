@@ -15,8 +15,8 @@ namespace LINDRailways.Model
         public string AccountUsername { get; set; }
         [Indexed]
         public int ScheduleId { get; set; }
-        public int IsPaid { get; set; }
-        public int IsBook { get; set; }
+        public string IsPaid { get; set; }
+        public string IsBook { get; set; }
         public string PassengerName { get; set; }
         public string Gender { get; set; }
         public string Photo { get; set; }

@@ -118,8 +118,8 @@ namespace LINDRailways.ViewModel
                     PassengerName = PassengerName,
                     Gender = IsMale == 1 ? "Male" : "Female",
                     Photo = IsMale == 1 ? "male.jpg" : "female.jpg",
-                    IsPaid = 1,
-                    IsBook = 1
+                    IsPaid = "Yes",
+                    IsBook = "Yes"
                 });
 
                 ticketAccount.Balance -= bookingPrice;
@@ -206,8 +206,8 @@ namespace LINDRailways.ViewModel
                     PassengerName = PassengerName,
                     Gender = IsMale == 1 ? "Male" : "Female",
                     Photo = IsMale == 1 ? "male.jpg" : "female.jpg",
-                    IsPaid = 0,
-                    IsBook = 0 
+                    IsPaid = "No",
+                    IsBook = "No" 
                 });
 
                 ticketSchedule.NumberOfPassengers += 1;
