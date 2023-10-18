@@ -52,6 +52,8 @@ namespace LINDRailways.ViewModel
                         var ticketAccount = await AccountService.GetAccountAsync(trainTicket.AccountUsername);
 
                         ticketAccount.Balance += (int)(trainTicket.IsBook.Equals("Yes") ? TrainSchedule.Price * 0.8 : TrainSchedule.Price);
+
+                        await AccountService.UpdateAccountAsync(ticketAccount);
                     } 
 
                     await TicketService.RemoveTicketAsync(trainTicket.Id);

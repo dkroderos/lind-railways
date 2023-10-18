@@ -7,7 +7,7 @@
     Title="{Binding Title}"
     x:DataType="viewmodel:AddAccountViewModel">
     <Grid RowDefinitions="*,Auto">
-        <VerticalStackLayout Grid.Row="0">
+        <VerticalStackLayout Grid.Row="0" Margin="10">
             <Label Margin="0,20,0,0" Text="Username:" />
             <Entry Placeholder="Must start with @" Text="{Binding Username}" />
             <Label Margin="0,20,0,0" Text="Name:" />
