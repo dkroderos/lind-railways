@@ -41,7 +41,7 @@ namespace LINDRailways.ViewModel
                     //DateTime departureDateTime = DateTime.Parse(trainSchedule.DepartureDate).Add(DateTime.Parse(trainSchedule.DepartureTime).TimeOfDay);
                     //if (DateTime.Now < departureDateTime)
                     //{
-                        account.Balance += (int)(Ticket.IsBook.Equals("Yes") ? trainSchedule.Price * 0.7 : trainSchedule.Price * 0.8);
+                    account.Balance += (int)(Ticket.IsBook.Equals("Yes") ? trainSchedule.Price * 0.7 : trainSchedule.Price * 0.8);
                     //}
                 }
                 trainSchedule.NumberOfPassengers -= 1;
@@ -91,6 +91,14 @@ namespace LINDRailways.ViewModel
 
             Account account = await AccountService.GetAccountAsync(Ticket.AccountUsername);
 
+            if (account.Balance < trainSchedule.Price)
+            {
+                await Shell.Current.CurrentPage.DisplayAlert("Insufficient Funds",
+                                    $"Ticket costs ${trainSchedule.Price} the the account only has a balance of ${account.Balance}", "OK");
+
+                return;
+            }
+
             bool isConfirmed = await Shell.Current.CurrentPage.DisplayAlert("Pay Ticket", $"Pay ${trainSchedule.Price} to {account.Username}?",
                             "Pay", "Don't Pay");
 
@@ -107,6 +115,8 @@ namespace LINDRailways.ViewModel
 
                 await Shell.Current.CurrentPage.DisplayAlert("Success!",
                     $"Paid ${trainSchedule.Price} to {account.Username}", "OK");
+
+                await Shell.Current.GoToAsync("..");
             }
             catch (Exception ex)
             {

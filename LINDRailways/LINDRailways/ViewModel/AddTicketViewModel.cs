@@ -95,7 +95,7 @@ namespace LINDRailways.ViewModel
 
             int bookingPrice = (int)(ticketSchedule.Price * 0.8);
 
-            if (ticketAccount.Balance < ticketSchedule.Price)
+            if (ticketAccount.Balance < bookingPrice)
             {
                 await Shell.Current.CurrentPage.DisplayAlert("Insufficient Funds",
                     $"Ticket costs ${bookingPrice} the the account only has a balance of ${ticketAccount.Balance}", "OK");
