@@ -186,7 +186,7 @@ namespace LINDRailways.ViewModel
             if (ticketSchedule.NumberOfPassengers >= ticketSchedule.Capacity)
             {
                 await Shell.Current.CurrentPage.DisplayAlert("Full Capacity",
-                    $"The train is already full", "OK");
+                    $"The train is already full, We will notify you once a seat is available", "OK");
 
                 return;
             }
