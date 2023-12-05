@@ -43,8 +43,6 @@ namespace LINDRailways.ViewModel
                                    where ticket.ScheduleId == TrainSchedule.Id
                                    select ticket;
 
-                //DateTime departureDateTime = DateTime.Parse(TrainSchedule.DepartureDate).Add(DateTime.Parse(TrainSchedule.DepartureTime).TimeOfDay);
-
                 foreach (Ticket trainTicket in trainTickets)
                 {
                     if (trainTicket.IsPaid.Equals("Yes"))
